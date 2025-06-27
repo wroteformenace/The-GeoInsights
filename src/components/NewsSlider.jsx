@@ -8,7 +8,7 @@ const newsData = [
   {
     title: "Russia-China Strategic Pact Raises Eyebrows",
     description: "The recent meeting between Moscow and Beijing hints at deeper strategic alliances.",
-    image: "https://images.unsplash.com/photo-1702925181659-b31df53edded",
+    image: "http://www.xinhuanet.com/english/2019-06/07/138124711_15599137507861n.jpg",
   },
   {
     title: "Taiwan Conducts Military Drills Amid Rising Tensions",
@@ -33,7 +33,7 @@ const newsData = [
   {
     title: "AI Warfare: Defense Sectors Race for Algorithms",
     description: "Autonomous tech begins shaping tomorrow’s military doctrines.",
-    image: "https://images.unsplash.com/photo-1617692855027-64d62c10288a",
+    image: "https://newo.ai/wp-content/uploads/2024/12/1-Artificial-Intelligence-in-Military-Revolutionizing-Defense-and-Warfare.jpg",
   },
 ];
 
