@@ -5,8 +5,9 @@ import "@fontsource/dm-serif-display";
 import BriefingSection from "./BriefingSection";
 import NewsSlider from "./NewsSlider";
 import VideoSection from "./VideoSection";
+import HERO_IMAGE from '../assets/heroimage.png';
 
-const HERO_IMAGE = "https://www.shutterstock.com/image-vector/simple-world-map-flat-style-260nw-1919585165.jpg"; // Unsplash or CDN image
+// const HERO_IMAGE = "https://www.shutterstock.com/image-vector/simple-world-map-flat-style-260nw-1919585165.jpg"; // Unsplash or CDN image
 
 const Home = () => {
   const [fadeIn, setFadeIn] = useState(false);
