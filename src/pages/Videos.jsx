@@ -6,46 +6,46 @@ import { FaGlobeAmericas} from "react-icons/fa";
 
 const featuredCreators = [
   {
-    name: "John Doe",
-    avatar: "https://i.pravatar.cc/100?u=1",
-    video: "https://www.youtube.com/embed/rdvuDByLmig",
+    name: "Caspian Report",
+    avatar: "https://yt3.googleusercontent.com/zTPr0Jg_Xg3qQ0PtpMLspaKm54x4trKqyyKbaob8IjTjx9O5GZGZCRzMpR9dOOeJB4u2ps_F=s160-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/Evm4t4prtWo",
   },
   {
-    name: "Jane Smith",
-    avatar: "https://i.pravatar.cc/100?u=2",
-    video: "https://www.youtube.com/embed/Ai1W5kX-BRA",
+    name: "Zeihan on Geopolitics",
+    avatar: "https://yt3.ggpht.com/SjXtqswYvURCBih8Kn2TffHbjAozT49FIZXBsl0KWbIicT55mGMk45U3npQjzbZ7Edjh0XEUlg=s176-c-k-c0x00ffffff-no-rj-mo",
+    video: "https://www.youtube.com/embed/S6mXqOk63Ss",
   },
   {
-    name: "Carlos Vega",
-    avatar: "https://i.pravatar.cc/100?u=3",
-    video: "https://www.youtube.com/embed/s2i6c9cV3CQ",
+    name: "KJ Vids",
+    avatar: "https://yt3.googleusercontent.com/ytc/AIdro_lNN-5TtS6L5x2MFq-M-btnKvREzbEmweJa1QdkpDlW88s=s160-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/B9A9N6evwus?si=7zktTq1S2OP1iiMi",
   },
 ];
 
 const latestVideos = [
   {
-    title: "Understanding Global Alliances",
-    src: "https://www.youtube.com/embed/tjN1xVgJZIw",
+    title: "Is Putin Playing both sides in Middle East?",
+    src: "https://www.youtube.com/embed/9NrxtdYQYss?si=7bu6fQpvt7_jjvbr",
   },
   {
-    title: "Russia & Ukraine: Timeline",
-    src: "https://www.youtube.com/embed/k6g5U2iYHn4",
+    title: "Who controls eastern congo",
+    src: "https://www.youtube.com/embed/Y7NiZI9YL6A?si=p3SsNJsPqV_MQab1",
   },
   {
-    title: "Middle East Strategic Chokepoints",
-    src: "https://www.youtube.com/embed/Evm4t4prtWo",
+    title: "How China out played russia",
+    src: "https://www.youtube.com/embed/phfDV5p-wZQ?si=A6YvXrUM7N5rT6oX",
   },
   {
-    title: "China’s Navy & Pacific Ambitions",
-    src: "https://www.youtube.com/embed/S6mXqOk63Ss",
+    title: "No more Nuclear blackmail",
+    src: "https://www.youtube.com/embed/mySBHVgi8qg?si=hSB4ClXbH3IvI02S",
   },
 ];
 
 const patreonExclusives = [
-  "https://via.placeholder.com/320x180",
-  "https://via.placeholder.com/320x180",
-  "https://via.placeholder.com/320x180",
-  "https://via.placeholder.com/320x180",
+  "https://www.patreon.com/posts/will-america-go-131768578?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_fan&utm_content=web_share",
+  "",
+  "",
+  "",
 ];
 
 export default function Videos() {
