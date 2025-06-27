@@ -74,7 +74,7 @@ const Home = () => {
         height: 100vh;
         object-fit: cover;
         object-position: center;
-        filter: brightness(0.85) saturate(1.1);
+        filter: brightness(2.85) saturate(1.1);
         z-index: 1;
         transition: transform 3s ease;
       }
