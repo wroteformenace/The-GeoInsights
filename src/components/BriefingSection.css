@@ -1,0 +1,192 @@
+:root {
+  --card-bg: rgba(20, 30, 45, 0.76);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --card-shadow: 0 12px 32px rgba(0, 229, 255, 0.1);
+  --accent: #3fa7ff;
+  --accent-hover: #1a8fff;
+  --headline-color: #eaf4fb;
+  --desc-color: #ccdce5;
+  --font-heading: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.briefing-section {
+  padding: 4rem 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.briefing-heading {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--headline-color);
+  margin-bottom: 4.5rem;
+  position: relative;
+  user-select: none;
+}
+
+.briefing-heading::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 3px;
+  background: linear-gradient(90deg, #3fa7ff, #00e5ff);
+  margin: 0.6rem auto 0;
+  border-radius: 2px;
+  opacity: 0.9;
+  animation: underlineSlide 1.2s ease forwards;
+}
+
+@keyframes underlineSlide {
+  from { width: 0; opacity: 0; }
+  to { width: 90px; opacity: 0.9; }
+}
+
+.briefing-list {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: #3fa7ff transparent;
+}
+
+.briefing-list::-webkit-scrollbar {
+  height: 6px;
+  background: transparent;
+}
+.briefing-list::-webkit-scrollbar-thumb {
+  background: #3fa7ff;
+  border-radius: 10px;
+}
+
+.briefing-card {
+  flex: 0 0 340px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.6rem 1.4rem;
+  backdrop-filter: blur(10px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+  position: relative;
+  overflow: hidden;
+  animation: fadeSlideUp 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.briefing-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 16px 42px rgba(63, 167, 255, 0.2);
+  border-color: var(--accent-hover);
+  z-index: 2;
+}
+
+.briefing-card::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -30%;
+  width: 160%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(63, 167, 255, 0.15) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+.briefing-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.briefing-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(63, 167, 255, 0.15);
+  color: var(--accent);
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  margin-bottom: 0.7rem;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  letter-spacing: 0.06em;
+  user-select: none;
+}
+
+.briefing-title {
+  font-size: 1.22rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  margin-bottom: 0.4rem;
+  color: var(--headline-color);
+  line-height: 1.4;
+  user-select: text;
+}
+
+.briefing-summary {
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: var(--desc-color);
+  margin-bottom: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  user-select: text;
+}
+
+.briefing-readmore {
+  margin-top: auto;
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+.briefing-readmore:hover,
+.briefing-readmore:focus {
+  color: #ffffff;
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .briefing-card {
+    flex: 0 0 85vw;
+    padding: 1.3rem 1.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .briefing-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .briefing-heading {
+    font-size: 1.8rem;
+  }
+
+  .briefing-card {
+    flex: 0 0 92vw;
+    padding: 1.2rem;
+  }
+}

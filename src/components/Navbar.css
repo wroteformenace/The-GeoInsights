@@ -1,0 +1,211 @@
+:root {
+  --brand-accent: #00b0ff;
+  --hover-accent: #00e0ff;
+  --hover-accent-2: #26c6da;
+  --focus-outline: 2px solid #00b0ff;
+  --font-brand: 'Poppins', 'Segoe UI', sans-serif;
+  --glass-bg: rgba(18, 20, 24, 0.75);
+  --glass-bg-blur: rgba(18, 20, 24, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-inner: rgba(255, 255, 255, 0.04);
+}
+
+/* === NAVBAR CONTAINER === */
+.navbar-container {
+  position: absolute;
+  top: 36px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.navbar-container.sticky {
+  position: fixed;
+  top: 0;
+  animation: fadeInSticky 0.4s ease forwards;
+  backdrop-filter: blur(18px);
+}
+
+@keyframes fadeInSticky {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === NAVBAR STYLING === */
+.navbar {
+  background: linear-gradient(135deg, var(--glass-bg-blur) 0%, var(--glass-bg) 100%);
+  position: relative;
+  padding: 1rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  border-radius: 56px;
+  backdrop-filter: blur(16px);
+  border: 1.5px solid var(--glass-border);
+  pointer-events: auto;
+  width: 92%;
+  max-width: 1200px;
+  min-width: 320px;
+  overflow: hidden;
+}
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 56px;
+  background: linear-gradient(120deg, var(--glass-inner) 0%, transparent 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* === BRAND LOGO === */
+.brand {
+  color: var(--brand-accent);
+  font-family: var(--font-brand);
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.brand:hover,
+.brand:focus {
+  color: var(--hover-accent);
+  outline: none;
+}
+
+/* === NAV LINKS === */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.2rem;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  font-family: var(--font-brand);
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 0.2rem 0.3rem;
+  border-radius: 0;
+  letter-spacing: 0.4px;
+  display: inline-block;
+  position: relative;
+  background: none;
+  transition: color 0.2s ease;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00e0ff, #26c6da);
+  border-radius: 1px;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-links li a:hover,
+.nav-links li.active a,
+.nav-links li a:focus {
+  color: var(--hover-accent);
+  background: none;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.nav-links li a:hover::after,
+.nav-links li.active a::after,
+.nav-links li a:focus::after {
+  width: 100%;
+}
+
+/* === HAMBURGER ICON === */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 200;
+}
+.bar {
+  width: 26px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+.bar.open:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.bar.open:nth-child(2) { opacity: 0; }
+.bar.open:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* === MOBILE NAV === */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0.7rem 1.2rem;
+    gap: 1.1rem;
+    border-radius: 38px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .brand {
+    font-size: 1.18rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.3rem;
+    letter-spacing: 1px;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.1rem;
+  }
+  .nav-links li a {
+    font-size: 0.95rem;
+    padding: 0.2rem 0.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: rgba(22, 22, 26, 0.96);
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.14);
+  }
+  .nav-links.menu-active {
+    max-height: 500px;
+  }
+  .navbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1.5rem;
+    border-radius: 24px;
+  }
+  .brand {
+    font-size: 1.4rem;
+  }
+}
