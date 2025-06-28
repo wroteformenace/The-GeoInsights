@@ -1,0 +1,141 @@
+:root {
+  --bg: #0b0f1a;
+  --text: #dce6f7;
+  --accent: #00bfff;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --shadow: 0 8px 24px rgba(0, 191, 255, 0.2);
+  --radius: 18px;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem 2rem;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 10%, #0f1523 20%, #070c15 80%);
+}
+
+.about-title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+}
+
+.globe-wrapper {
+  width: 100%;
+  height: 500px;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: linear-gradient(to bottom, #0e1726, #1a2236);
+}
+
+.about-mission {
+  text-align: center;
+  margin: 4rem auto 2rem;
+  max-width: 800px;
+  padding: 0 1.2rem;
+}
+
+.mission-text {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--headline);
+  line-height: 1.6;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: slideFade 1s ease forwards;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin: 3rem auto 5rem;
+  max-width: 960px;
+  padding: 0 1.2rem;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2rem 1rem;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+  border: 1px solid var(--border);
+}
+
+.stat-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(63, 167, 255, 0.15);
+}
+
+.stat-number {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.stat-label {
+  margin-top: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.social-dock {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.social-dock a {
+  font-size: 1.8rem;
+  color: var(--text);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-dock a:hover {
+  color: var(--accent);
+  transform: scale(1.2);
+}
+
+@media (max-width: 600px) {
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .globe-wrapper {
+    height: 320px;
+  }
+
+  .stat-card {
+    padding: 1.2rem 1rem;
+    min-width: 140px;
+  }
+
+  .stat-number {
+    font-size: 1.8rem;
+  }
+
+  .social-dock {
+    gap: 1.4rem;
+  }
+}
+
