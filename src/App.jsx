@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />          {/* ✅ Default route */}
         <Route path="/videos" element={<Videos />} />  {/* ✅ Videos route */}
-        <Route path="/about" element={<About />}></Route>
+        <Route path="/about" element={<About />} />
       </Routes>
     </>
   );
