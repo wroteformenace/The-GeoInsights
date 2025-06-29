@@ -6,7 +6,10 @@ import "./About.css";
 
 function Earth() {
   const earthRef = useRef();
-  const texture = useTexture("https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-dashboard-pro/assets/img/earthmap.jpg");
+  const [texture] = useTexture([
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Whole_world_-_land_and_oceans.jpg/1920px-Whole_world_-_land_and_oceans.jpg"
+]);
+
 
   useFrame(() => {
     if (earthRef.current) {
