@@ -49,7 +49,7 @@
   opacity: 0;
   animation: fadeInUp 1.2s 0.1s forwards;
   filter: drop-shadow(0 2px 16px #38bdf844);
-  margin-top: 10%;
+  margin-top: 7%;
 }
 
 .kinetic-headline .highlight {
