@@ -1,141 +1,784 @@
 :root {
-  --bg: #0b0f1a;
-  --text: #dce6f7;
-  --accent: #00bfff;
-  --card-bg: rgba(255, 255, 255, 0.04);
-  --shadow: 0 8px 24px rgba(0, 191, 255, 0.2);
-  --radius: 18px;
+  --bg-gradient: linear-gradient(135deg, #0e141b 0%, #1a2a3c 100%);
+  --panel-bg: rgba(255, 255, 255, 0.10);
+  --panel-glass: blur(10px) saturate(120%);
+  --bubble-gradient: linear-gradient(135deg, #38bdf8 60%, #3b82f6 100%);
+  --bubble-label: #0a1623;
+  --headline-accent: #38bdf8;
+  --headline-highlight: #67e8f9;
+  --panel-title: #38bdf8;
+  --text-main: #eaf6ff;
+  --text-sub: #cbe7ff;
+  --belief-quote: #67e8f9;
+  --belief-bg: linear-gradient(100deg, #1a293a 70%, #38bdf822 100%);
+  --social-bg: #101b28;
+  --social-accent: #38bdf8;
+  --social-hover: #67e8f9;
+  --shadow: 0 8px 32px #38bdf833;
+  --glass-border: 1.5px solid #3b82f633;
+  font-family: 'DM Sans', 'Inter', sans-serif;
 }
 
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
+/* --- Base --- */
+.about-wrapper {
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
-.about-page {
+/* --- Hero --- */
+.about-hero {
+  text-align: center;
+  padding: 5rem 1rem 3rem;
+  position: relative;
+  z-index: 5;
+}
+
+.kinetic-headline {
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -2px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2em;
+  opacity: 0;
+  animation: fadeInUp 1.2s 0.1s forwards;
+  filter: drop-shadow(0 2px 16px #38bdf844);
+  margin-top: 10%;
+}
+
+.kinetic-headline .highlight {
+  color: #0a1623;
+  background: linear-gradient(90deg, var(--headline-accent) 60%, var(--headline-highlight) 100%);
+  border-radius: 0.3em;
+  padding: 0 0.2em;
+  box-shadow: 0 2px 18px #38bdf833;
+}
+
+.hero-sub {
+  max-width: 540px;
+  margin: 2rem auto 0;
+  font-size: 1.25rem;
+  color: var(--text-sub);
+  opacity: 0;
+  animation: fadeInUp 1.4s 0.6s forwards;
+  filter: drop-shadow(0 1px 6px #38bdf844);
+}
+
+@keyframes fadeInUp {
+  0% { transform: translateY(40px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Slide Panels Section --- */
+/* === Slide Panels === */
+.slide-panels-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 4rem 1rem 2rem;
-  min-height: 100vh;
-  background: radial-gradient(circle at 50% 10%, #0f1523 20%, #070c15 80%);
+  gap: 4.5rem;
+  padding: 6rem 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  z-index: 3;
+  position: relative;
 }
 
-.about-title {
-  font-size: 3rem;
-  font-weight: 900;
-  color: var(--accent);
-  text-align: center;
-  margin-bottom: 2rem;
-  letter-spacing: 2px;
-}
-
-.globe-wrapper {
+.slide-panel {
+  max-width: 100%;
   width: 100%;
-  height: 500px;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  background: linear-gradient(to bottom, #0e1726, #1a2236);
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease-out;
+  will-change: transform, opacity;
 }
 
-.about-mission {
-  text-align: center;
-  margin: 4rem auto 2rem;
-  max-width: 800px;
-  padding: 0 1.2rem;
+.slide-panel.left-panel {
+  text-align: left;
+  transform: translateX(-100px);
 }
 
-.mission-text {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--headline);
-  line-height: 1.6;
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: slideFade 1s ease forwards;
+.slide-panel.right-panel {
+  text-align: right;
+  transform: translateX(100px);
 }
 
-.about-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2rem;
-  margin: 3rem auto 5rem;
-  max-width: 960px;
-  padding: 0 1.2rem;
+.slide-panel.slide-in-left,
+.slide-panel.slide-in-right {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.stat-box {
-  background: rgba(255, 255, 255, 0.03);
-  padding: 2rem 1rem;
-  border-radius: var(--radius);
-  text-align: center;
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease;
-  border: 1px solid var(--border);
+.slide-content {
+  color: var(--text-main);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  padding: 0 1rem;
 }
 
-.stat-box:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(63, 167, 255, 0.15);
-}
-
-.stat-number {
-  font-size: 2.6rem;
+.slide-content h2 {
+  font-size: 2rem;
   font-weight: 800;
-  color: var(--accent);
+  letter-spacing: -0.5px;
+  color: var(--panel-title);
+  text-shadow: 0 2px 12px #0a162355;
+  margin-bottom: 0.5rem;
 }
 
-.stat-label {
-  margin-top: 0.6rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text);
+.slide-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-sub);
+  max-width: 760px;
+  text-shadow: 0 1px 4px #101b2844;
 }
 
-.social-dock {
+
+.slide-panel p {
+  font-size: 1.13rem;
+  color: var(--text-main);
+  position: relative;
+  z-index: 1;
+  line-height: 1.7;
+}
+
+/* --- Stat Bubbles --- */
+.stats-bubbles {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
-  margin-top: 4rem;
+  gap: 4rem;
+  padding: 5rem 1rem;
+  position: relative;
+  z-index: 3;
+  background: radial-gradient(circle at center, #1a2a3c 0%, transparent 90%);
+  perspective: 800px;
+  overflow: visible;
 }
 
-.social-dock a {
-  font-size: 1.8rem;
-  color: var(--text);
-  transition: color 0.3s ease, transform 0.3s ease;
+.stat-bubble {
+  width: 120px;
+  height: 120px;
+  background: var(--bubble-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(80px) scale(0.8) rotate(-4deg);
+  animation: floatIn 0.8s forwards;
+  box-shadow:
+    0 0 0.5rem #67e8f944,
+    0 0 2rem #38bdf855,
+    inset 0 0 1.2rem #67e8f955;
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+  border: 2px solid #67e8f922;
+  backdrop-filter: blur(3px) saturate(140%);
 }
 
-.social-dock a:hover {
-  color: var(--accent);
-  transform: scale(1.2);
+.stat-bubble.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0deg);
+}
+
+.stat-bubble:hover {
+  transform: scale(1.1) rotate(1deg);
+  box-shadow:
+    0 0 0.7rem #67e8f977,
+    0 0 2.5rem #38bdf888,
+    inset 0 0 1.6rem #67e8f9aa;
+}
+
+.bubble-number {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 2px 12px #101b2866;
+}
+
+.bubble-label {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--bubble-label);
+  opacity: 0.9;
+  text-shadow: 0 1px 2px #00000022;
+  letter-spacing: 0.4px;
+  margin-top: 0.2rem;
+}
+.stats-bubbles::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 90%;
+  height: 100%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, #38bdf811 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(50px);
+  z-index: 1;
+}
+
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(80px) scale(0.8) rotate(-4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+
+
+/* --- Social Dock --- */
+:root {
+  --social-bg: rgba(16, 27, 40, 0.97);
+  --social-accent: #38bdf8;
+  --social-hover: #67e8f9;
+  --social-glow: #67e8f966;
+  --social-label-bg: #101b28ee;
+}
+
+/* --- Desktop Vertical Dock --- */
+.social-dock-vertical {
+  position: fixed;
+  top: 50%;
+  left: 2rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+  z-index: 100;
+  background: var(--social-bg);
+  padding: 1.1rem 0.6rem;
+  border-radius: 2.2rem;
+  box-shadow: 0 8px 40px var(--social-glow), 0 0 0 2.5px #38bdf822;
+  border: 2.5px solid #38bdf833;
+  backdrop-filter: blur(9px) saturate(150%);
+  overflow: hidden;
+  animation: dockPulse 5s infinite alternate cubic-bezier(.22,.68,.43,1.01);
+}
+
+@keyframes dockPulse {
+  0% { box-shadow: 0 4px 28px #38bdf822, 0 0 0 2px #38bdf822; }
+  100% { box-shadow: 0 10px 44px #67e8f944, 0 0 0 3px #67e8f933; }
+}
+
+.social-dock-vertical a {
+  font-size: 2.3rem;
+  color: var(--social-accent);
+  padding: 0.5em;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #101b28 60%, #38bdf822 100%);
+  transition: 
+    color 0.25s, 
+    background 0.25s, 
+    box-shadow 0.25s, 
+    transform 0.22s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 18px #38bdf844;
+  outline: none;
+}
+
+.social-dock-vertical a:focus-visible {
+  outline: 2.5px solid var(--social-hover);
+}
+
+.social-dock-vertical a:hover, .social-dock-vertical a:focus-visible {
+  background: linear-gradient(135deg, #67e8f922 60%, #38bdf822 100%);
+  color: var(--social-hover);
+  box-shadow: 0 0 20px 8px var(--social-glow);
+  transform: scale(1.18) translateX(10px) rotate(-3deg);
+}
+
+.social-dock-vertical a span {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-10px);
+  white-space: nowrap;
+  background: var(--social-label-bg);
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.32em 0.9em;
+  border-radius: 0.5em;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(.22,.68,.43,1.01);
+  box-shadow: 0 2px 10px #38bdf822;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.social-dock-vertical a:hover span,
+.social-dock-vertical a:focus-visible span {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* --- Mobile Bottom Dock --- */
+@media (max-width: 700px) {
+  .social-dock-vertical {
+    display: none;
+  }
+  .social-dock-bottom {
+    position: fixed;
+    left: 50%;
+    bottom: 1.2rem;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2.2rem;
+    background: var(--social-bg);
+    border-radius: 2rem;
+    padding: 0.7rem 1.2rem;
+    box-shadow: 0 6px 24px #38bdf844;
+    z-index: 99;
+    backdrop-filter: blur(7px) saturate(140%);
+    border: 2px solid #38bdf833;
+    animation: dockPulse 5s infinite alternate cubic-bezier(.22,.68,.43,1.01);
+  }
+  .social-dock-bottom a {
+    font-size: 2.1rem;
+    color: var(--social-accent);
+    background: rgba(56, 189, 248, 0.11);
+    border-radius: 50%;
+    padding: 0.42em;
+    transition: all 0.25s cubic-bezier(.22,.68,.43,1.01);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px #38bdf844;
+  }
+  .social-dock-bottom a:focus-visible {
+    outline: 2.5px solid var(--social-hover);
+  }
+  .social-dock-bottom a:hover, .social-dock-bottom a:focus-visible {
+    background: #67e8f922;
+    color: var(--social-hover);
+    transform: scale(1.13) rotate(-5deg);
+    box-shadow: 0 0 12px 4px #67e8f966;
+  }
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .stat-bubble {
+    width: 85px;
+    height: 85px;
+    font-size: 1rem;
+  }
+  .social-dock-vertical {
+    left: 1rem;
+  }
+  .slide-panel {
+    padding: 2rem 1.1rem;
+  }
 }
 
 @media (max-width: 600px) {
-  .about-title {
-    font-size: 2rem;
+  .about-hero {
+    padding: 3.5rem 0.5rem 2rem;
   }
-
-  .globe-wrapper {
-    height: 320px;
+  .social-dock-vertical {
+    display: none;
   }
-
-  .stat-card {
-    padding: 1.2rem 1rem;
-    min-width: 140px;
+  .slide-panel h2 {
+    font-size: 1.3rem;
   }
-
-  .stat-number {
-    font-size: 1.8rem;
+  .slide-panel p {
+    font-size: 1rem;
   }
-
-  .social-dock {
-    gap: 1.4rem;
+  .slide-panels-section {
+    gap: 1.5rem;
   }
 }
+@media (max-width: 700px) {
+  .slide-content h2 {
+    font-size: 1.5rem;
+  }
+  .slide-content p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+}
+@media (max-width: 600px) {
+  .stat-bubble {
+    width: 90px;
+    height: 90px;
+    font-size: 1rem;
+  }
+  .bubble-number {
+    font-size: 1.6rem;
+  }
+  .bubble-label {
+    font-size: 0.9rem;
+  }
+}
+.social-compass-dock {
+  position: fixed;
+  top: 50%;
+  left: 2rem;
+  transform: translateY(-50%);
+  z-index: 100;
+  pointer-events: none;
+}
 
+.compass-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 2px solid #38bdf8aa;
+  position: relative;
+  animation: rotateCompass 16s linear infinite;
+  box-shadow: 0 0 12px #38bdf833, inset 0 0 20px #67e8f944;
+  backdrop-filter: blur(4px);
+  pointer-events: auto;
+  background: rgba(16, 27, 40, 0.8);
+}
+
+@keyframes rotateCompass {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.compass-point {
+  position: absolute;
+  font-size: 1.7rem;
+  color: #38bdf8;
+  background: #1c2a3a;
+  border-radius: 50%;
+  padding: 0.45rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+  box-shadow: 0 2px 12px #38bdf844;
+}
+
+.compass-point:hover {
+  transform: scale(1.2);
+  color: #67e8f9;
+  background: #22394d;
+}
+
+.github   { top: -15px; left: 50%; transform: translateX(-50%); }
+.linkedin { left: -15px; top: 50%; transform: translateY(-50%); }
+.instagram{ bottom: -15px; left: 50%; transform: translateX(-50%); }
+
+/* Optional glow pulse */
+.compass-circle::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 1px dashed #38bdf822;
+  animation: pulse 4s linear infinite;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(1.15); opacity: 0.1; }
+}
+
+@media (max-width: 768px) {
+  .social-compass-dock {
+    display: none;
+  }
+}
+:root {
+  --compass-bg: rgba(16, 27, 40, 0.92);
+  --compass-glow: #38bdf8cc;
+  --compass-border: #38bdf8aa;
+  --compass-pulse: #67e8f9;
+  --icon-bg: #1c2a3a;
+  --icon-hover-bg: #22394d;
+  --icon-color: #38bdf8;
+  --icon-hover: #67e8f9;
+  --label-bg: #101b28ee;
+}
+
+/* --- Desktop Compass Dock --- */
+.social-compass-dock {
+  position: fixed;
+  top: 50%;
+  left: 2rem;
+  transform: translateY(-50%);
+  z-index: 100;
+  pointer-events: none;
+  display: block;
+}
+
+.compass-circle {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  border: 2.5px solid var(--compass-border);
+  position: relative;
+  animation: rotateCompass 18s linear infinite;
+  box-shadow: 0 0 16px var(--compass-glow), 0 0 40px #38bdf822, inset 0 0 32px var(--compass-pulse);
+  backdrop-filter: blur(6px) saturate(150%);
+  background: radial-gradient(ellipse at 60% 40%, #38bdf844 0%, var(--compass-bg) 90%);
+  pointer-events: auto;
+  overflow: visible;
+  transition: box-shadow 0.3s;
+}
+
+.compass-circle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 32px 8px var(--compass-pulse);
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.compass-circle::after {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  width: 184px;
+  height: 184px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--compass-pulse);
+  animation: pulse 4s linear infinite;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@keyframes rotateCompass {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0%   { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(1.13); opacity: 0.08; }
+}
+
+/* --- Compass Points --- */
+.compass-point {
+  position: absolute;
+  font-size: 2rem;
+  color: var(--icon-color);
+  background: var(--icon-bg);
+  border-radius: 50%;
+  padding: 0.52rem;
+  transition: 
+    transform 0.3s cubic-bezier(.22,.68,.43,1.01), 
+    color 0.3s, 
+    background 0.3s, 
+    box-shadow 0.25s;
+  box-shadow: 0 2px 12px #38bdf844;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  outline: none;
+}
+
+.compass-point:focus-visible {
+  outline: 2.5px solid var(--icon-hover);
+}
+
+.compass-point:hover, .compass-point:focus-visible {
+  transform: scale(1.22) translateY(-4px);
+  color: var(--icon-hover);
+  background: var(--icon-hover-bg);
+  box-shadow: 0 0 24px 8px var(--compass-pulse), 0 2px 12px #38bdf844;
+}
+
+.compass-point span {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-10px);
+  opacity: 0;
+  background: var(--label-bg);
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.28em 0.9em;
+  border-radius: 0.5em;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(.22,.68,.43,1.01);
+  box-shadow: 0 2px 10px #38bdf822;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.compass-point:hover span,
+.compass-point:focus-visible span {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* --- Place Points in Compass --- */
+.github   { top: -18px; left: 50%; transform: translateX(-50%); }
+.linkedin { left: -18px; top: 50%; transform: translateY(-50%); }
+.instagram{ bottom: -18px; left: 50%; transform: translateX(-50%); }
+.twitter  { right: -18px; top: 50%; transform: translateY(-50%); }
+
+/* --- Compass Arrow (Optional) --- */
+.compass-arrow {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 4px; height: 40px;
+  background: linear-gradient(180deg, #38bdf8 0%, #67e8f9 100%);
+  border-radius: 2px;
+  transform: translate(-50%, -100%) rotate(-15deg);
+  z-index: 1;
+  box-shadow: 0 0 12px #38bdf877;
+  opacity: 0.7;
+  animation: arrowWobble 3s infinite alternate cubic-bezier(.22,.68,.43,1.01);
+}
+@keyframes arrowWobble {
+  0% { transform: translate(-50%, -100%) rotate(-15deg);}
+  100% { transform: translate(-50%, -100%) rotate(15deg);}
+}
+
+/* --- Mobile: Floating Compass Button with Fan-out --- */
+@media (max-width: 768px) {
+  .social-compass-dock {
+    display: none;
+  }
+  .mobile-compass-fab {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 101;
+    pointer-events: auto;
+  }
+  .fab-main {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #38bdf8 60%, #1a2a3c 100%);
+    box-shadow: 0 4px 24px #38bdf844;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.3rem;
+    color: #fff;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.15s;
+    border: 2px solid #38bdf8aa;
+    outline: none;
+  }
+  .fab-main:active, .fab-main:focus-visible {
+    box-shadow: 0 0 16px 4px #67e8f966;
+    transform: scale(1.08);
+  }
+  .fab-points {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.6rem;
+    pointer-events: auto;
+    transition: opacity 0.25s, transform 0.25s;
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  .fab-points.open {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  .fab-point {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #1c2a3a;
+    color: #38bdf8;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px #38bdf844;
+    margin-bottom: 0.15rem;
+    transition: background 0.2s, color 0.2s, transform 0.18s;
+  }
+  .fab-point:active, .fab-point:focus-visible {
+    background: #22394d;
+    color: #67e8f9;
+    transform: scale(1.15);
+  }
+}
+.mobile-compass-container {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .social-compass-dock {
+    display: none;
+  }
+
+  .mobile-compass-container {
+    display: block;
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 200;
+  }
+
+  .mobile-compass-toggle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #38bdf8 60%, #1a2a3c 100%);
+    color: #fff;
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #38bdf8aa;
+    box-shadow: 0 4px 16px #38bdf844;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .mobile-compass-toggle:active {
+    transform: scale(1.08);
+  }
+
+  .mobile-compass-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 20, 30, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 201;
+    backdrop-filter: blur(4px);
+  }
+
+  .compass-circle.mobile {
+    width: 200px;
+    height: 200px;
+    animation: rotateCompass 14s linear infinite;
+  }
+
+  .compass-point {
+    font-size: 2.3rem;
+    padding: 0.7rem;
+  }
+
+  .compass-arrow {
+    display: none; /* Optional */
+  }
+}
