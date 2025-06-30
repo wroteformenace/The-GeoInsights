@@ -103,7 +103,7 @@ const Home = () => {
           background: var(--glass);
           border-radius: 20px;
           box-shadow: 0 6px 28px rgba(0, 229, 255, 0.1);
-          backdrop-filter: blur(6px);
+          backdrop-filter: blur(3px);
           max-width: 600px;
           opacity: 0;
           animation: ${fadeIn ? "fadeSlide 1.4s ease forwards" : "none"};
