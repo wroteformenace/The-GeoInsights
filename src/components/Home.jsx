@@ -88,7 +88,7 @@ const Home = () => {
           position: absolute;
           inset: 0;
           background: linear-gradient(120deg, rgba(14, 20, 27, 0.85) 60%, rgba(0,229,255,0.08));
-          backdrop-filter: blur(4px);
+          // backdrop-filter: blur(4px);
           z-index: 2;
         }
 
