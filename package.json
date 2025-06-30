@@ -16,7 +16,11 @@
     "@fontsource/inter": "^5.2.6",
     "@react-three/drei": "^10.3.0",
     "@react-three/fiber": "^9.1.2",
+<<<<<<< HEAD
     "framer-motion": "^12.19.2",
+=======
+    "framer-motion": "^12.18.1",
+>>>>>>> f08794535a0a17a7b9c2153a968afc07653adb72
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
