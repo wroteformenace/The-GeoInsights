@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap');
 
-:root {
-  --glass-bg: rgba(20, 28, 40, 1);
-  --glass-border: rgba(255, 255, 255, 0.08);
+:root { 
+  --glass-bg: rgba(20, 28, 40, 1); 
+  --glass-border: rgba(255, 255, 255, 0.08); 
   --accent: #2e94e3;
   --accent-hover: #48aaff;
   --button-text: #cde9ff;
@@ -10,34 +10,18 @@
   --body-font: 'Inter', sans-serif;
 }
 
-/* === Global Reset === */
-/* html, body {
-  background: #0f151d !important;
-  margin: 0;
-  padding: 0;
-  box-shadow: none !important;
-  filter: none !important;
-}
-
-* {
-  box-shadow: none !important;
-  filter: none !important;
-} */
-
-/* === Section === */
 .video-section {
   padding: 4rem 1.5rem;
   max-width: 1280px;
   margin: 0 auto;
-  background: transparent !important;
-  box-shadow: none !important;
-  filter: none !important;
+  background: transparent;
+  box-shadow: none;
+  filter: none;
 }
 
-/* === Heading === */
 .video-heading {
   text-align: center;
-  font-family: var(--font-heading);
+  font-family: var(--heading-font);
   font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -63,27 +47,24 @@
   from { width: 0; opacity: 0; }
   to { width: 90px; opacity: 0.9; }
 }
-/* === Carousel === */
+
 .video-carousel {
   display: flex;
-  justify-content: center;
-  gap: 1.6rem;
+  justify-content: flex-start;
+  gap: 1.2rem;
   overflow-x: auto;
   padding-bottom: 2rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  background: none !important;
-  mask-image: none !important;
-  -webkit-mask-image: none !important;
-  box-shadow: none !important;
-  filter: none !important;
+  scroll-padding-left: 1rem;
+  padding-left: 1rem;
 }
+
 .video-carousel::-webkit-scrollbar {
   display: none;
 }
 
-/* === Video Card === */
 .video-card {
   flex: 0 0 320px;
   background: var(--glass-bg);
@@ -91,9 +72,6 @@
   border-radius: 14px;
   overflow: hidden;
   scroll-snap-align: center;
-  backdrop-filter: none !important;
-  filter: none !important;
-  box-shadow: none !important;
   display: flex;
   flex-direction: column;
   transition: transform 0.25s ease;
@@ -108,7 +86,6 @@
   border-top-right-radius: 14px;
 }
 
-/* === Video Title === */
 .video-title {
   padding: 1rem 1rem 1rem;
   font-family: var(--heading-font);
@@ -122,7 +99,6 @@
   box-shadow: none;
 }
 
-/* === View More Button === */
 .view-more-wrapper {
   display: flex;
   justify-content: flex-end;
@@ -148,7 +124,6 @@
   border-color: darkcyan;
 }
 
-/* === Responsive === */
 @media (max-width: 900px) {
   .video-card {
     flex: 0 0 85vw;
@@ -162,7 +137,7 @@
   .video-section {
     padding: 2.5rem 1rem;
   }
-    .video-heading {
+  .video-heading {
     font-size: 1.8rem;
   }
   .video-card {
@@ -176,3 +151,38 @@
   }
 }
 
+@media (max-width: 480px) {
+  .video-carousel {
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 80vh;
+    padding: 0 0 2rem 0;
+    scroll-snap-type: none;
+  }
+
+  .video-card {
+    flex: none;
+    width: 92vw;
+    height: 92vw;
+    margin-bottom: 1.4rem;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    scroll-snap-align: unset;
+  }
+
+  .video-card iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-title {
+    display: none;
+  }
+}

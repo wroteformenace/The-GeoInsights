@@ -303,8 +303,9 @@ import "@fontsource/dm-serif-display";
 import BriefingSection from "./BriefingSection";
 import NewsSlider from "./NewsSlider";
 import VideoSection from "./VideoSection";
+import HERO_IMAGE from '../assets/heroimage.png';
 
-const HERO_IMAGE = "https://www.shutterstock.com/image-vector/simple-world-map-flat-style-260nw-1919585165.jpg"; // Unsplash or CDN image
+// const HERO_IMAGE = "../assets/heroimage.png"; // Unsplash or CDN image
 
 const Home = () => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -325,7 +326,7 @@ const Home = () => {
           --accent: #00e5ff;
           --shadow: 0 24px 72px rgba(0, 229, 255, 0.25);
           --transition: all 0.35s ease;
-          --glass: rgba(10, 14, 20, 0.7);
+          --glass: rgba(10, 14, 20, 0.47);
         }
 
         body {
@@ -371,7 +372,7 @@ const Home = () => {
         height: 100vh;
         object-fit: cover;
         object-position: center;
-        filter: brightness(0.85) saturate(1.1);
+        filter: brightness(1.85) saturate(1.1);
         z-index: 1;
         transition: transform 3s ease;
       }
@@ -385,22 +386,22 @@ const Home = () => {
           position: absolute;
           inset: 0;
           background: linear-gradient(120deg, rgba(14, 20, 27, 0.85) 60%, rgba(0,229,255,0.08));
-          backdrop-filter: blur(4px);
+          backdrop-filter: blur(2px);
           z-index: 2;
         }
 
         .hero-content {
           position: relative;
           z-index: 3;
-          top: 50%;
+          top: 55%;
           left: 50%;
           transform: translate(-50%, -50%);
           text-align: center;
           padding: 2rem;
           background: var(--glass);
           border-radius: 20px;
-          box-shadow: 0 6px 28px rgba(0, 229, 255, 0.1);
-          backdrop-filter: blur(6px);
+          box-shadow: 0 6px 28px rgba(0, 229, 255, 0);
+          backdrop-filter: blur(1px);
           max-width: 600px;
           opacity: 0;
           animation: ${fadeIn ? "fadeSlide 1.4s ease forwards" : "none"};
