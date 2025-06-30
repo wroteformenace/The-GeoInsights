@@ -1,114 +1,210 @@
-import React, { useRef, useEffect, useState, Suspense } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls, Stars, useTexture } from "@react-three/drei";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import React, { useEffect, useRef, useState } from "react";
 import "./About.css";
+import { FaGithub, FaLinkedin, FaInstagram, FaCompass } from "react-icons/fa";
 
-function Earth() {
-  const earthRef = useRef();
-  const [texture] = useTexture([
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Whole_world_-_land_and_oceans.jpg/1920px-Whole_world_-_land_and_oceans.jpg"
-]);
+const panels = [
+  {
+    title: "Our Mission",
+    text: "Deliver sharp, reliable geopolitical insights with curated sources and real-time context.",
+  },
+  {
+    title: "Our Vision",
+    text: "Make global intelligence clear, accessible, and empowering to anyone navigating complex international narratives.",
+  },
+  {
+    title: "Our Growth",
+    text: "Fueled by purpose and clarity, we evolve through innovation, user trust, and a razor-sharp focus on accuracy.",
+  },
+];
 
-
-  useFrame(() => {
-    if (earthRef.current) {
-      earthRef.current.rotation.y += 0.0015;
-    }
-  });
-
-  return (
-    <mesh ref={earthRef} scale={2}>
-      <sphereGeometry args={[1, 64, 64]} />
-      <meshStandardMaterial map={texture} />
-    </mesh>
-  );
-}
-function isWebGLAvailable() {
-  try {
-    const canvas = document.createElement('canvas');
-    return !!window.WebGLRenderingContext && (
-      canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
-    );
-  } catch (e) {
-    return false;
-  }
-}
-
+const stats = [
+  { value: 30, label: "Countries" },
+  { value: 150, label: "Videos" },
+  { value: 20, label: "Contributors" },
+  { value: 60, label: "Sources" },
+];
 
 export default function About() {
+  const statRefs = useRef([]);
+  const panelRefs = useRef([]);
+  const [showMobileDock, setShowMobileDock] = useState(false);
+
+  // Animate stats and panels on scroll
   useEffect(() => {
-    const counters = document.querySelectorAll(".stat-number");
+    const handleScroll = () => {
+      statRefs.current.forEach((ref) => {
+        if (!ref) return;
+        const rect = ref.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          ref.classList.add("visible");
+        }
+      });
 
-    const animate = () => {
-      counters.forEach(counter => {
-        const target = +counter.getAttribute("data-target");
-        const count = +counter.innerText;
-        const increment = target / 50;
-
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          setTimeout(animate, 20);
-        } else {
-          counter.innerText = target;
+      panelRefs.current.forEach((ref, i) => {
+        if (!ref) return;
+        const rect = ref.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          ref.classList.add(i % 2 === 0 ? "slide-in-left" : "slide-in-right");
         }
       });
     };
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animate();
-          observer.disconnect();
-        }
-      });
-    });
-
-    counters.forEach(counter => observer.observe(counter));
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent scroll when mobile dock is open
+  useEffect(() => {
+    if (showMobileDock) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showMobileDock]);
+
   return (
-    <section className="about-page">
-      <h1 className="about-heading">About Our Mission</h1>
+    <div className="about-wrapper">
+      {/* Desktop Compass Dock */}
+      <nav className="social-compass-dock" aria-label="Social links">
+        <div className="compass-circle">
+          <a
+            href="https://github.com/yourprofile"
+            className="compass-point github"
+            aria-label="GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={0}
+          >
+            <FaGithub />
+            <span>GitHub</span>
+          </a>
+          <a
+            href="https://linkedin.com/in/yourprofile"
+            className="compass-point linkedin"
+            aria-label="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={0}
+          >
+            <FaLinkedin />
+            <span>LinkedIn</span>
+          </a>
+          <a
+            href="https://instagram.com/yourprofile"
+            className="compass-point instagram"
+            aria-label="Instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={0}
+          >
+            <FaInstagram />
+            <span>Instagram</span>
+          </a>
+          <span className="compass-arrow" aria-hidden="true" />
+        </div>
+      </nav>
 
-      <div className="globe-wrapper">
-        <Canvas>
-        <Suspense fallback={null}>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[2, 2, 5]} intensity={1} />
-          <OrbitControls enableZoom={false} />
-          <Earth />
-        </Suspense>
-      </Canvas>
+      {/* Mobile Compass Button & Overlay */}
+      <div className="mobile-compass-container">
+        <button
+          className="mobile-compass-toggle"
+          onClick={() => setShowMobileDock(true)}
+          aria-label="Open social menu"
+        >
+          <FaCompass />
+        </button>
 
+        {showMobileDock && (
+          <div
+            className="mobile-compass-overlay"
+            onClick={() => setShowMobileDock(false)}
+            aria-label="Close social menu"
+            tabIndex={-1}
+          >
+            <div
+              className="compass-circle mobile"
+              onClick={e => e.stopPropagation()}
+            >
+              <a
+                href="https://github.com/yourprofile"
+                className="compass-point github"
+                aria-label="GitHub"
+                target="_blank"
+                rel="noopener noreferrer"
+                tabIndex={0}
+              >
+                <FaGithub />
+              </a>
+              <a
+                href="https://linkedin.com/in/yourprofile"
+                className="compass-point linkedin"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
+                tabIndex={0}
+              >
+                <FaLinkedin />
+              </a>
+              <a
+                href="https://instagram.com/yourprofile"
+                className="compass-point instagram"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+                tabIndex={0}
+              >
+                <FaInstagram />
+              </a>
+              <span className="compass-arrow" aria-hidden="true" />
+            </div>
+          </div>
+        )}
       </div>
 
-      <div className="about-mission">
-        <h2 className="mission-text">
-          Empowering insights on global events through verified analysis,
-          curated videos, and data-driven perspectives.
-        </h2>
-      </div>
+      {/* Hero Section */}
+      <header className="about-hero">
+        <h1 className="kinetic-headline">
+          <span>Geo-Intelligence</span>
+          <span className="highlight">&nbsp;with Clarity&nbsp;</span>
+          <span>and Power.</span>
+        </h1>
+        <p className="hero-sub">
+          We decode the world’s power shifts with data, context, and diverse voices.
+        </p>
+      </header>
 
-      <div className="about-stats">
-        {[
-          { number: 28, label: "Countries Covered" },
-          { number: 130, label: "Videos Curated" },
-          { number: 12, label: "Active Contributors" },
-          { number: 50, label: "Sources Integrated" },
-        ].map((stat, index) => (
-          <div className="stat-box" key={index}>
-            <h2 className="stat-number" data-target={stat.number}>0</h2>
-            <p className="stat-label">{stat.label}</p>
+      {/* Sliding Panels Left/Right */}
+      <section className="slide-panels-section">
+        {panels.map((panel, i) => (
+          <div
+            className={`slide-panel ${i % 2 === 0 ? "left-panel" : "right-panel"}`}
+            key={i}
+            ref={el => (panelRefs.current[i] = el)}
+          >
+            <h2>{panel.title}</h2>
+            <p>{panel.text}</p>
           </div>
         ))}
-      </div>
+      </section>
 
-      <footer className="social-dock">
-        <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
-        <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-      </footer>
-    </section>
+      {/* Stats Bubbles */}
+      <section className="stats-bubbles">
+        {stats.map((stat, i) => (
+          <div
+            className="stat-bubble"
+            key={i}
+            ref={el => (statRefs.current[i] = el)}
+            style={{ animationDelay: `${i * 0.3 + 0.5}s` }}
+          >
+            <div className="bubble-number">{stat.value}</div>
+            <div className="bubble-label">{stat.label}</div>
+          </div>
+        ))}
+      </section>
+    </div>
   );
 }
+
