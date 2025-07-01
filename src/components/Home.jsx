@@ -7,11 +7,7 @@ import NewsSlider from "./NewsSlider";
 import VideoSection from "./VideoSection";
 import HERO_IMAGE from '../assets/heroimage.png';
 
-<<<<<<< HEAD
 // const HERO_IMAGE = "../assets/heroimage.png"; // Unsplash or CDN image
-=======
-// const HERO_IMAGE = "https://www.shutterstock.com/image-vector/simple-world-map-flat-style-260nw-1919585165.jpg"; // Unsplash or CDN image
->>>>>>> f08794535a0a17a7b9c2153a968afc07653adb72
 
 const Home = () => {
   const [fadeIn, setFadeIn] = useState(false);

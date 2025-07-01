@@ -1,10 +1,6 @@
 import React from "react";
 import "./Videos.css";
-<<<<<<< HEAD
 import { FaPlay } from "react-icons/fa";
-=======
-import { FaPlay, FaThumbsUp, FaCommentDots } from "react-icons/fa";
->>>>>>> f08794535a0a17a7b9c2153a968afc07653adb72
 import { FaGlobeAmericas } from "react-icons/fa";
 
 const featuredCreators = [
@@ -30,7 +26,6 @@ const featuredCreators = [
 
 const latestVideos = [
   {
-<<<<<<< HEAD
     title: "Is Putin Playing Both Sides in the Middle East?",
     src: "https://www.youtube.com/embed/9NrxtdYQYss?si=7bu6fQpvt7_jjvbr",
   },
@@ -44,21 +39,6 @@ const latestVideos = [
   },
   {
     title: "No More Nuclear Blackmail",
-=======
-    title: "Is Putin Playing both sides in Middle East?",
-    src: "https://www.youtube.com/embed/9NrxtdYQYss?si=7bu6fQpvt7_jjvbr",
-  },
-  {
-    title: "Who controls eastern congo",
-    src: "https://www.youtube.com/embed/Y7NiZI9YL6A?si=p3SsNJsPqV_MQab1",
-  },
-  {
-    title: "How China out played russia",
-    src: "https://www.youtube.com/embed/phfDV5p-wZQ?si=A6YvXrUM7N5rT6oX",
-  },
-  {
-    title: "No more Nuclear blackmail",
->>>>>>> f08794535a0a17a7b9c2153a968afc07653adb72
     src: "https://www.youtube.com/embed/mySBHVgi8qg?si=hSB4ClXbH3IvI02S",
   },
 ];
@@ -81,11 +61,7 @@ export default function Videos() {
       {/* Featured Creators - Horizontal Scroll */}
       <section className="featured-creators">
         <h2 className="section-subtitle">Featured Creators</h2>
-<<<<<<< HEAD
         <div className="creator-scroller">
-=======
-        <div className="creator-scroller horizontal-scroll">
->>>>>>> f08794535a0a17a7b9c2153a968afc07653adb72
           {featuredCreators.map((creator, index) => (
             <div className="creator-card scroll-card" key={index}>
               <div className="creator-video-wrapper">
@@ -112,11 +88,7 @@ export default function Videos() {
       {/* Latest Videos - Horizontal Scroll */}
       <section className="latest-videos">
         <h2 className="section-subtitle">Latest Videos</h2>
-<<<<<<< HEAD
         <div className="video-scroller">
-=======
-        <div className="video-scroller horizontal-scroll">
->>>>>>> f08794535a0a17a7b9c2153a968afc07653adb72
           {latestVideos.map((video, index) => (
             <div className="video-thumb scroll-card" key={index}>
               <div className="thumb-wrapper">
