@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 :root {
   --bg-gradient: linear-gradient(135deg, #0e141b 0%, #1a2a3c 100%);
   --panel-bg: rgba(255, 255, 255, 0.10);
@@ -783,7 +783,7 @@
     display: none; /* Optional */
   }
 }
-=======
+
 :root {
   --bg-gradient: linear-gradient(135deg, #0e141b 0%, #1a2a3c 100%);
   --panel-bg: rgba(255, 255, 255, 0.10);
@@ -1568,4 +1568,3 @@
     display: none; /* Optional */
   }
 }
->>>>>>> f08794535a0a17a7b9c2153a968afc07653adb72
