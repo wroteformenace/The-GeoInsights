@@ -8,11 +8,7 @@ const newsData = [
   {
     title: "Russia-China Strategic Pact Raises Eyebrows",
     description: "The recent meeting between Moscow and Beijing hints at deeper strategic alliances.",
-<<<<<<< HEAD
     image: "http://www.xinhuanet.com/english/2019-06/07/138124711_15599137507861n.jpg",
-=======
-    image: "https://jamestown.org/wp-content/uploads/2015/01/Putin_Xi_Xinhua.jpg",
->>>>>>> f08794535a0a17a7b9c2153a968afc07653adb72
   },
   {
     title: "Taiwan Conducts Military Drills Amid Rising Tensions",

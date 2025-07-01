@@ -15,6 +15,14 @@ const videoData = [
     title: "Understanding Modern Conflicts",
     src: "https://www.youtube.com/embed/s2i6c9cV3CQ?si=sGxh8lLgQymR5Xyc",
   },
+  {
+    title: "What is Pakistan Upto?",
+    src: "https://www.youtube.com/embed/l6HiztV656g?si=8Y8OounAj4ytHzvB",
+  },
+  {
+    title: "Game Changer",
+    src: "https://www.youtube.com/embed/RIMFTq4paCg?si=NJir6yu6npwkIf2r",
+  },
 ];
 
 export default function VideoSection() {

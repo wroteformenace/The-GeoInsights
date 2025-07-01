@@ -22,6 +22,18 @@ const featuredCreators = [
       "https://yt3.googleusercontent.com/ytc/AIdro_lNN-5TtS6L5x2MFq-M-btnKvREzbEmweJa1QdkpDlW88s=s160-c-k-c0x00ffffff-no-rj",
     video: "https://www.youtube.com/embed/B9A9N6evwus?si=7zktTq1S2OP1iiMi",
   },
+  {
+    name: "The Prof G Pod",
+    avatar: 
+      "https://yt3.googleusercontent.com/YY2f8pLntAhTaMQ_xFLn5SXh4ckFxlz1xe3hDHBovdeHsNZFrTfsinnPhP23jlw4K1Yej238ekw=s160-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/UltVl2Qlf6A?si=AUkf7bRQW4d8tF2J",
+  },
+  {
+    name: "The Geopolitical Info",
+    avatar: 
+      "https://yt3.googleusercontent.com/vAzr4K-aKVjGdME6C-GD_PPEdpsQ7Eny5Ee0wOZ6OS0MWCRShRHMV1b9JAhIHgW4rVBku4y7=s160-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/JUfoGphBLdE?si=kc1W1WJ91qgD495C",
+  }
 ];
 
 const latestVideos = [
@@ -40,6 +52,14 @@ const latestVideos = [
   {
     title: "No More Nuclear Blackmail",
     src: "https://www.youtube.com/embed/mySBHVgi8qg?si=hSB4ClXbH3IvI02S",
+  },
+  {
+    title: "Irsrael-Palestine explained",
+    src: "https://www.youtube.com/embed/wZBE5j2kIgY?si=muCfHWImyNYJBE0r",
+  },
+  {
+    title: "Why is India NOT SUPERPOWER YET?",
+    src: "https://www.youtube.com/embed/gWwNZGRCDM4?si=L0Cdngi_MzIq1u1_",
   },
 ];
 

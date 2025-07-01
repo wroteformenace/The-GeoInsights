@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
-// import "@fontsource/inter";
-// import "@fontsource/anton";
 import "@fontsource/dm-serif-display";
 import BriefingSection from "./BriefingSection";
 import NewsSlider from "./NewsSlider";
 import VideoSection from "./VideoSection";
 import HERO_IMAGE from '../assets/heroimage.png';
-
-// const HERO_IMAGE = "../assets/heroimage.png"; // Unsplash or CDN image
 
 const Home = () => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -26,9 +22,10 @@ const Home = () => {
           --headline: #e0f7fa;
           --subtext: #b0bec5;
           --accent: #00e5ff;
-          --shadow: 0 24px 72px rgba(0, 229, 255, 0.25);
-          --transition: all 0.35s ease;
-          --glass: rgba(10, 14, 20, 0.47);
+          --accent-hover: #00bcd4;
+          --glass: rgba(10, 14, 20, 0.35);
+          --shadow: 0 18px 42px rgba(0, 229, 255, 0.15);
+          --transition: all 0.3s ease;
         }
 
         body {
@@ -38,88 +35,65 @@ const Home = () => {
           color: var(--headline);
         }
 
-       .hero {
-  /* This wraps the whole hero section */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+        /* HERO */
+        .hero {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          position: relative;
+          background-color: var(--bg-primary);
+          margin: 0;
+          padding: 0;
+        }
 
-  /* Make this section take full screen height */
-  height: 100vh;
-
-  /* Remove padding/margin to avoid white gaps */
-  margin: 0;
-  padding: 0;
-
-  position: relative;
-  background-color: var(--bg-primary); /* fallback if image doesn't load */
-}
-
-.hero-inner {
-  /* Fill the screen with content, including the image and overlay */
-  position: relative;
-  width: 100vw;
-  height: 100vh; /* Makes it match full screen */
-  overflow: hidden;
-  border-radius: 0; /* Remove corner radius for full bleed */
-  box-shadow: none; /* Optional: remove shadows for fullscreen */
-  border: none;
-}
+        .hero-inner {
+          position: relative;
+          width: 100vw;
+          height: 100vh;
+          overflow: hidden;
+        }
 
         .hero-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-        object-position: center;
-<<<<<<< HEAD
-        filter: brightness(1.85) saturate(1.1);
-=======
-        filter: brightness(2.85) saturate(1.1);
->>>>>>> f08794535a0a17a7b9c2153a968afc07653adb72
-        z-index: 1;
-        transition: transform 3s ease;
-      }
-
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          object-fit: cover;
+          object-position: center;
+          filter: brightness(1.15) contrast(1.1);
+          z-index: 1;
+          transition: transform 3s ease;
+        }
 
         .hero-inner:hover .hero-image {
-          transform: scale(1.05);
+          transform: scale(1.02);
         }
 
         .overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(120deg, rgba(14, 20, 27, 0.85) 60%, rgba(0,229,255,0.08));
-<<<<<<< HEAD
-          backdrop-filter: blur(2px);
-=======
-          // backdrop-filter: blur(4px);
->>>>>>> f08794535a0a17a7b9c2153a968afc07653adb72
+          background: linear-gradient(120deg, rgba(14, 20, 27, 0.7) 55%, rgba(0,229,255,0.05));
           z-index: 2;
         }
 
         .hero-content {
-          position: relative;
-          z-index: 3;
-          top: 55%;
+          position: absolute;
+          z-index: 2;
+          top: 56%;
           left: 50%;
           transform: translate(-50%, -50%);
           text-align: center;
-          padding: 2rem;
-          background: var(--glass);
+          padding: 2rem 2.5rem;
           border-radius: 20px;
-<<<<<<< HEAD
-          box-shadow: 0 6px 28px rgba(0, 229, 255, 0);
-          backdrop-filter: blur(1px);
-=======
-          box-shadow: 0 6px 28px rgba(0, 229, 255, 0.1);
-          backdrop-filter: blur(0px);
->>>>>>> f08794535a0a17a7b9c2153a968afc07653adb72
-          max-width: 600px;
+          background: var(--glass);
+          backdrop-filter: blur(1.2px);
+          box-shadow: none;
+          max-width: 540px;
+          width: 92%;
           opacity: 0;
-          animation: ${fadeIn ? "fadeSlide 1.4s ease forwards" : "none"};
+          animation: ${fadeIn ? "fadeSlide 1.3s ease forwards" : "none"};
         }
 
         @keyframes fadeSlide {
@@ -128,28 +102,29 @@ const Home = () => {
         }
 
         .hero-content h1 {
-          font-family: "Anton Variable", sans-serif;
-          font-size: clamp(2.6rem, 5vw, 4.2rem);
-          letter-spacing: 1px;
+          font-family: "Inter", sans-serif;
+          font-size: clamp(2.4rem, 6vw, 4.2rem);
+          font-weight: 800;
           margin-bottom: 1rem;
-          text-shadow: 0 3px 12px rgba(0,229,255,0.1);
+          color: var(--headline);
         }
 
         .hero-content p {
-          font-size: 1.1rem;
+          font-size: 1.15rem;
+          font-weight: 400;
           color: var(--subtext);
-          margin-bottom: 2rem;
           line-height: 1.6;
+          margin-bottom: 2rem;
         }
 
         .hero-content button {
           background: var(--accent);
           color: #000;
-          padding: 0.85rem 2rem;
+          padding: 0.9rem 2rem;
           font-size: 1rem;
           font-weight: 600;
           border: none;
-          border-radius: 20px;
+          border-radius: 100px;
           cursor: pointer;
           transition: var(--transition);
           display: inline-flex;
@@ -158,18 +133,34 @@ const Home = () => {
         }
 
         .hero-content button:hover {
-          background: #00bcd4;
-          transform: scale(1.04);
+          background: var(--accent-hover);
+          transform: scale(1.05);
         }
 
+        /* Section Separator */
+        .section-separator {
+          height: 5px;
+          background: linear-gradient(
+            to right,
+            transparent,
+            #00e5ff88,
+            #67e8f988,
+            transparent
+          );
+          width: 100%;
+          border-radius: 4px;
+          margin: 4rem 0 3rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
           .hero-content {
-            max-width: 90vw;
-            padding: 1.2rem;
+            max-width: 92vw;
+            padding: 1.5rem;
           }
 
           .hero-content h1 {
-            font-size: 2rem;
+            font-size: 2.2rem;
           }
 
           .hero-content p {
@@ -178,6 +169,7 @@ const Home = () => {
         }
       `}</style>
 
+      {/* HERO */}
       <section className="hero">
         <div className="hero-inner">
           <img src={HERO_IMAGE} alt="News Hero" className="hero-image" draggable="false" />
@@ -192,14 +184,30 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Section Separator */}
+      <div className="section-separator" />
+
+      {/* News Slider */}
       <NewsSlider />
+
+      {/* Section Separator */}
+      <div className="section-separator" />
+
+      {/* Briefing Section */}
       <BriefingSection />
+
+      {/* Section Separator */}
+      <div className="section-separator" />
+
+      {/* Video Section */}
       <VideoSection />
     </>
   );
 };
 
 export default Home;
+
 
 
 
