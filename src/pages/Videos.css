@@ -119,8 +119,8 @@ body {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  /* mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); */
 }
 
 .creator-scroller::-webkit-scrollbar,
@@ -148,7 +148,6 @@ body {
   border-radius: var(--radius);
   scroll-snap-align: start;
   overflow: hidden;
-  box-shadow: var(--shadow);
   border: 1.5px solid var(--border);
   transition: transform 0.28s cubic-bezier(.68,-0.55,.27,1.55), border-color 0.25s;
   max-width: 300px;

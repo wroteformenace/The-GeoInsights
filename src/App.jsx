@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Videos from './pages/Videos';
 import About from './pages/About';
+import NewsExplorer from './pages/NewsExplorer';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />          {/* ✅ Default route */}
         <Route path="/videos" element={<Videos />} />  {/* ✅ Videos route */}
+        <Route path="/news" element={<NewsExplorer />} />
         <Route path="/about" element={<About />} />
       </Routes>
     </>

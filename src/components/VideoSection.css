@@ -21,6 +21,7 @@
 
 .video-heading {
   text-align: center;
+  margin-top: auto;
   font-family: var(--heading-font);
   font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 700;
