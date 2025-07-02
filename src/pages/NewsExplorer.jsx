@@ -2,6 +2,8 @@ import React, { useState, useMemo } from "react";
 import WorldMapSVG from "./WorldMapSVG"; // ✅ Your custom SVG map
 import { localNews } from "../data/localNews";
 import "./NewsExplorer.css";
+import Footer from "../components/Footer";
+
 
 const NewsExplorer = () => {
   const [selectedContinent, setSelectedContinent] = useState(null);
@@ -23,6 +25,7 @@ const NewsExplorer = () => {
   };
 
   return (
+    <>
     <div className="news-explorer">
       <h1 className="ne-heading">Global News</h1>
 
@@ -60,6 +63,8 @@ const NewsExplorer = () => {
         )}
       </ul>
     </div>
+     <Footer className="geo-footer"/>
+     </>
   );
 };
 

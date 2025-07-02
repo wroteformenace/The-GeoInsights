@@ -9,7 +9,6 @@
   --radius: 18px;
   --shadow-soft: 0 4px 24px rgba(63, 167, 255, 0.09), 0 1px 14px #0e1726;
 }
-
 *,
 *::before,
 *::after {
@@ -27,12 +26,14 @@ body {
 
 /* ========== MAIN CONTAINER ========== */
 .news-explorer {
-  max-width: 1100px;
+  width: 100%;
+  flex: 1 0 auto;
   margin: 7.5rem auto 3rem;
   padding: 0 1.2rem;
   color: var(--text);
   text-align: center;
   scroll-margin-top: 6rem;
+  align-items: center;
 }
 
 /* ========== HEADING ========== */
@@ -202,6 +203,7 @@ body {
   animation: fadeInUp 0.7s ease forwards;
   max-width: 96%;
   opacity: 0;
+  margin-bottom: 2.5rem;
 }
 
 .news-card:hover {
@@ -272,4 +274,3 @@ body {
     font-size: 1.6rem;
   }
 }
-

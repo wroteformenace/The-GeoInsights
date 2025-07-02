@@ -3,6 +3,7 @@ import "@fontsource/dm-serif-display";
 import BriefingSection from "./BriefingSection";
 import NewsSlider from "./NewsSlider";
 import VideoSection from "./VideoSection";
+import Footer from "./Footer";
 import HERO_IMAGE from '../assets/heroimage.png';
 
 const Home = () => {
@@ -137,20 +138,38 @@ const Home = () => {
           transform: scale(1.05);
         }
 
-        /* Section Separator */
-        .section-separator {
-          height: 5px;
-          background: linear-gradient(
-            to right,
-            transparent,
-            #00e5ff88,
-            #67e8f988,
-            transparent
-          );
-          width: 100%;
-          border-radius: 4px;
-          margin: 4rem 0 3rem;
-        }
+      .section-separator {
+  width: 100%;
+  height: 7px;
+  margin: 4rem 0 3rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #3fa7ff 18%,
+    #8acfff 50%,
+    #3fa7ff 82%,
+    transparent 100%
+  );
+  box-shadow:
+    0 2px 18px 0 #3fa7ff44,
+    0 0 0 1.5px #8acfff33;
+  position: relative;
+  overflow: visible;
+}
+.section-separator::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 100%;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #eaf6ff77 0%, transparent 100%);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -197,11 +216,10 @@ const Home = () => {
       {/* Briefing Section */}
       <BriefingSection />
 
-      {/* Section Separator */}
-      <div className="section-separator" />
-
       {/* Video Section */}
       <VideoSection />
+
+      <Footer />
     </>
   );
 };

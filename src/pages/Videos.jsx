@@ -1,6 +1,7 @@
 import React from "react";
 import "./Videos.css";
 import { FaPlay } from "react-icons/fa";
+import Footer from "../components/Footer";
 import { FaGlobeAmericas } from "react-icons/fa";
 
 const featuredCreators = [
@@ -124,6 +125,8 @@ export default function Videos() {
           ))}
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }
