@@ -200,7 +200,7 @@ body {
   justify-content: flex;
   gap: 0.6rem;
   animation: fadeInUp 0.7s ease forwards;
-  max-width: 92%;
+  max-width: 96%;
   opacity: 0;
 }
 

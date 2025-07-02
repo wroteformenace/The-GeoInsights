@@ -1,68 +1,37 @@
 import React, { useState, useMemo } from "react";
+import WorldMapSVG from "./WorldMapSVG"; // ✅ Your custom SVG map
 import { localNews } from "../data/localNews";
 import "./NewsExplorer.css";
-import WorldMap from "react-world-map";
 
-const continentCodeToName = {
-  AF: "Africa",
-  AN: "Antarctica",
-  AS: "Asia",
-  EU: "Europe",
-  NA: "North America",
-  OC: "Oceania",
-  SA: "South America",
-};
-
-export default function NewsExplorer() {
-  const [search, setSearch] = useState("");
+const NewsExplorer = () => {
   const [selectedContinent, setSelectedContinent] = useState(null);
 
-  const handleContinentSelect = (continentCode) => {
+  const filteredNews = useMemo(() => {
+    if (!selectedContinent) return localNews;
+
+    return localNews.filter(
+      (item) =>
+        item.region === selectedContinent ||
+        item.region.toLowerCase() === "global"
+    );
+  }, [selectedContinent]);
+
+  const handleContinentSelect = (continentName) => {
     setSelectedContinent((prev) =>
-      prev === continentCode ? null : continentCode
+      prev === continentName ? null : continentName
     );
   };
 
-  const filteredNews = useMemo(() => {
-  const continentName = selectedContinent
-    ? continentCodeToName[selectedContinent]
-    : null;
-
-  return localNews.filter((item) => {
-    const titleMatches = item.title
-      .toLowerCase()
-      .includes(search.toLowerCase());
-    // ONLY match the selected continent or "Global"
-    const regionMatches =
-      !continentName ||
-      item.region.trim().toLowerCase() === continentName.trim().toLowerCase() ||
-      item.region.trim().toLowerCase() === "global";
-    return titleMatches && regionMatches;
-  });
-}, [search, selectedContinent]);
-
-
   return (
     <div className="news-explorer">
-      <h1 className="ne-heading">World News</h1>
-
-      <div className="ne-search-wrapper">
-        <input
-          className="ne-search"
-          placeholder="🔍 Search news by title..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          aria-label="Search news"
-        />
-      </div>
+      <h1 className="ne-heading">Global News</h1>
 
       <div className="ne-map-section">
         <label htmlFor="world-map" className="continent-filter-label">
           Filter by Continent:
         </label>
-        <WorldMap
-          id="world-map"
-          selected={selectedContinent}
+        <WorldMapSVG
+          selectedContinent={selectedContinent}
           onSelect={handleContinentSelect}
         />
         {selectedContinent && (
@@ -70,7 +39,7 @@ export default function NewsExplorer() {
             className="ne-clear-btn"
             onClick={() => setSelectedContinent(null)}
           >
-            Clear Filter ({continentCodeToName[selectedContinent]})
+            Clear Filter ({selectedContinent})
           </button>
         )}
       </div>
@@ -78,17 +47,21 @@ export default function NewsExplorer() {
       <ul className="news-list">
         {filteredNews.length === 0 ? (
           <li className="news-item news-empty">
-            ❌ No news found for your search or selected continent.
+            ❌ No news found for your selected continent.
           </li>
         ) : (
           filteredNews.map((news) => (
             <li key={news.id} className="news-card">
               <h3>{news.title}</h3>
               <p>{news.description}</p>
+              <span className="news-tag">{news.region}</span>
             </li>
           ))
         )}
       </ul>
     </div>
   );
-}
+};
+
+export default NewsExplorer;
+

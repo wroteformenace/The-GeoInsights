@@ -28,15 +28,14 @@ const briefings = [
     id: 4,
     label: "SITUATION",
     title: "After meeting goals in Israel-Iran war, IDF turns back to Gaza",
-    summary: "Finally, one of the founders of Hamas, who was also one of the planners of its onslaught of October 7, 2023, was killed in an airstrike in Gaza City on Friday night.",
+    summary: "Finally, one of the founders of Hamas,also one of the planners of its onslaught of October 7, was killed in an airstrike in Gaza City on Friday night.",
     url: "https://www.timesofisrael.com/daily-briefing-june-29-day-632-after-meeting-goals-in-israel-iran-war-idf-turns-back-to-gaza/",
   },
   {
     id: 5,
     label: "ASIA",
     title: "New Financial Rules in India Effective July 1, 2025",
-    summary: "From income tax to GSTR filing, new financial rules bring a wave of reforms designed to boost transparency, improve user experience, and tighten compliance. Whether you’re a taxpayer or a business owner in India, staying informed and adapting early can help avoid penalties and ensure smooth transitions.",
-    url: "https://www.india-briefing.com/news/indias-new-financial-rules-from-july-1-2025-an-overview-38356.html/",
+    summary: "From income tax to GSTR filing, new financial rules bring a wave of reforms designed to boost transparency.",
   },
   {
     id: 6,
