@@ -81,8 +81,8 @@ const Home = () => {
 
         .hero-content {
           position: absolute;
-          z-index: 2;
-          top: 56%;
+          z-index: 3;
+          top: 58%;
           left: 50%;
           transform: translate(-50%, -50%);
           text-align: center;
@@ -141,7 +141,7 @@ const Home = () => {
       .section-separator {
   width: 100%;
   height: 7px;
-  margin: 4rem 0 3rem;
+  margin: 0;
   border-radius: 12px;
   background: linear-gradient(
     90deg,
@@ -209,9 +209,6 @@ const Home = () => {
 
       {/* News Slider */}
       <NewsSlider />
-
-      {/* Section Separator */}
-      <div className="section-separator" />
 
       {/* Briefing Section */}
       <BriefingSection />
