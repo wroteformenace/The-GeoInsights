@@ -140,7 +140,7 @@
 }
 
 .section-separator {
-  width: 60vw;
+  width: 100%;
   max-width: 700px;
   height: 10px;
   margin: 4rem auto 4rem auto;
@@ -155,7 +155,7 @@
   position: absolute;
   left: 50%; top: 50%;
   transform: translate(-50%, -50%);
-  width: 60%;
+  width: 100%;
   height: 100%;
   border-radius: 8px;
   background: linear-gradient(90deg, #eaf6ff77 0%, transparent 100%);

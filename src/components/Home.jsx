@@ -137,8 +137,7 @@ const Home = () => {
           background: var(--accent-hover);
           transform: scale(1.05);
         }
-
-      .section-separator {
+.section-separator {
   width: 100%;
   height: 7px;
   margin: 0;
@@ -155,14 +154,17 @@ const Home = () => {
     0 2px 18px 0 #3fa7ff44,
     0 0 0 1.5px #8acfff33;
   position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   overflow: visible;
+  padding: 0;
 }
 .section-separator::after {
   content: "";
   position: absolute;
   left: 50%; top: 50%;
   transform: translate(-50%, -50%);
-  width: 60%;
+  width: 100%;
   height: 100%;
   border-radius: 8px;
   background: linear-gradient(90deg, #eaf6ff77 0%, transparent 100%);
