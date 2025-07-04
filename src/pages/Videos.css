@@ -30,53 +30,48 @@
 
 /* === Section Title === */
 .videos-header {
-  width: 100%;
+  width: 100vw;
   text-align: center;
-  margin-top: calc(var(--navbar-height, 72px) + 1.5rem);
-  margin-bottom: 3.5rem;
+  margin-top: calc(var(--navbar-height, 72px) + 2rem);
+  margin-bottom: 4rem;
   position: relative;
-  padding: 0;
+  z-index: 2;
 }
-
 .videos-title {
-  font-size: clamp(2.8rem, 7vw, 5.2rem);
+  font-size: clamp(3.2rem, 8vw, 5.5rem);
   font-weight: 1000;
+  letter-spacing: 2.5px;
   background: var(--accent-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  letter-spacing: 2.5px;
   display: inline-flex;
   align-items: center;
-  gap: 0.15em;
-  user-select: none;
-  text-shadow: 0 2px 22px #3fa7ff44;
-  filter: drop-shadow(0 4px 32px #3fa7ff22);
+  gap: 0.2em;
   position: relative;
+  user-select: none;
+  filter: drop-shadow(0 4px 32px #3fa7ff33);
 }
-
 .videos-title::after {
   content: '';
-  display: block;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -1.2rem;
+  bottom: -1.3rem;
   width: 0%;
-  height: 7px;
+  height: 8px;
   background: var(--accent-gradient);
-  border-radius: 7px;
+  border-radius: 8px;
   box-shadow: 0 2px 24px #3fa7ff55;
-  opacity: 0.85;
-  animation: underline-grow 1.7s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+  opacity: 0.9;
+  animation: underline-grow 1.5s cubic-bezier(.68,-0.55,.27,1.55) forwards;
 }
-
 @keyframes underline-grow {
   0% { width: 0%; opacity: 0; }
-  40% { width: 0%; opacity: 0.7; }
-  100% { width: 64%; opacity: 0.85; }
+  100% { width: 70%; opacity: 0.9; }
 }
+
 
 .letter {
   background: var(--accent-gradient);
@@ -87,7 +82,7 @@
 }
 
 .globe-icon {
-  font-size: clamp(2.5rem, 6vw, 4.1rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   color: var(--accent);
   animation: spin 12s linear infinite;
   margin: 0 0.2rem;
@@ -113,23 +108,20 @@
 
 /* === Section Subtitles === */
 .section-subtitle {
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-size: clamp(2.1rem, 5vw, 2.7rem);
   font-weight: 900;
-  margin: 0 auto 2.2rem auto;
+  margin: 3.5rem 0 2.2rem 0;
   background: var(--accent-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
   letter-spacing: 1.2px;
+  text-align: center;
   user-select: none;
   text-shadow: 0 2px 18px #3fa7ff22;
-  text-align: center;
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  line-height: 1.15;
 }
+
 
 /* === Section Separation === */
 .featured-creators,
@@ -148,25 +140,16 @@
 }
 
 .section-separator {
-  width: 100%;
-  min-width: 100%;
+  width: 60vw;
+  max-width: 700px;
   height: 10px;
-  margin: 3.5rem 0 var(--section-gap);
-  border-radius: 14px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    #3fa7ff 18%,
-    #8acfff 50%,
-    #3fa7ff 82%,
-    transparent 100%
-  );
-  box-shadow:
-    0 2px 22px 0 #3fa7ff44,
-    0 0 0 2px #8acfff33;
-  position: relative;
-  overflow: visible;
+  margin: 4rem auto 4rem auto;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #3fa7ff88, #8acfff88, transparent);
+  box-shadow: 0 2px 18px 0 #3fa7ff33;
+  opacity: 0.8;
 }
+
 .section-separator::after {
   content: "";
   position: absolute;
@@ -183,7 +166,7 @@
 /* === Scrollable Card Containers === */
 .creator-scroller,
 .video-scroller {
-  width: 100%;
+  width: 100vw;
   max-width: 1300px;
   display: flex;
   gap: 2.2rem;
@@ -192,69 +175,62 @@
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  margin-bottom: 4.5rem;
-  box-sizing: border-box;
-  justify-content: flex-start;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .creator-scroller::-webkit-scrollbar,
 .video-scroller::-webkit-scrollbar {
   display: none;
-  height: 0;
-  width: 0;
 }
 
+.interviews-section {
+  margin-bottom: 4.5rem;
+}
 /* === Cards === */
 .creator-card,
 .video-thumb {
   background: var(--card-bg);
   border-radius: var(--radius);
   width: 340px;
-  min-width: 340px;
+  min-width: 280px;
   max-width: 340px;
-  scroll-snap-align: start;
-  overflow: hidden;
-  border: 1.5px solid var(--border);
-  transition: transform 0.22s cubic-bezier(.68,-0.55,.27,1.55), border-color 0.22s;
+  margin: 0 auto;
   box-shadow: var(--shadow);
+  border: 1.5px solid var(--border);
+  transition: transform 0.18s cubic-bezier(.68,-0.55,.27,1.55), border-color 0.18s, box-shadow 0.18s;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   position: relative;
 }
-
 .creator-card:hover,
 .video-thumb:hover {
-  transform: translateY(-8px) scale(1.012);
+  transform: translateY(-8px);
   border-color: var(--card-hover-border);
-  box-shadow: 0 12px 28px rgba(63, 167, 255, 0.17), 0 4px 20px #0e1726;
+  box-shadow: 0 12px 32px rgba(63, 167, 255, 0.15);
   z-index: 2;
 }
-
-/* === Video/Thumbnail === */
 .creator-video-wrapper,
 .thumb-wrapper {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16/9;
   background: #0f1b2d;
   overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
 }
-
 .creator-video-wrapper iframe,
 .thumb-wrapper iframe {
   width: 100%;
   height: 100%;
   border: none;
-  display: block;
-  aspect-ratio: 16/9;
-  background: #101a28;
   border-radius: 0;
+  display: block;
+  background: #101a28;
 }
+
 
 /* === Card Content === */
 .creator-info-row {
@@ -312,7 +288,7 @@
 @media (max-width: 900px) {
   .creator-card,
   .video-thumb {
-    width: 85vw;
+    width: 105vw;
     min-width: 85vw;
     max-width: 85vw;
   }
@@ -332,26 +308,6 @@
     font-size: 1.1rem;
   }
 }
-
-/* === Footer: Always at Bottom ===== */
-/* .footer,
-.geo-footer {
-  width: 100%;
-  background: linear-gradient(145deg, #0f1928, #1a2c39);
-  padding: 2.2rem 3vw 2rem 3vw;
-  color: #eaf6ff;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 -2px 12px rgba(63, 167, 255, 0.05);
-  flex-shrink: 0;
-  margin-top: auto;
-  position: relative;
-  z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-} */
 
 @media (max-width: 900px) {
   .footer,

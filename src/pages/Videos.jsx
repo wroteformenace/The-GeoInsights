@@ -1,9 +1,8 @@
-import React from "react";
 import "./Videos.css";
-import { FaPlay } from "react-icons/fa";
+import React, { useRef } from "react";
+import YouTube from "react-youtube";
+import { FaPlay, FaGlobeAmericas } from "react-icons/fa";
 import Footer from "../components/Footer";
-import { FaGlobeAmericas } from "react-icons/fa";
-
 const featuredCreators = [
   {
     name: "Caspian Report",
@@ -64,10 +63,46 @@ const latestVideos = [
   },
 ];
 
+const interviews = [
+  {
+    title: "Interview with Sergey Lavrov (Russia's Foreign Minister)",
+    src: "https://www.youtube.com/embed/qIkzReERAcM?si=2LMpYgrQniQWr9kJ",
+  },
+  {
+    title: "India's S. Jaishankar on Global Diplomacy",
+    src: "https://www.youtube.com/embed/2aA7JHM1_Ik?si=BvnouT2602J7LjlU",
+  },
+  {
+    title: "US Secretary of State Antony Blinken on World Affairs",
+    src: "https://www.youtube.com/embed/kI3F9OP5d04?si=QYa8cXwnLBw6BLKt",
+  },
+  {
+    title: "French Foreign Minister Catherine Colonna Interview",
+    src: "https://www.youtube.com/embed/4_HWLfMz6js?si=KYpFVBjnfsj6yLI6",
+  },
+  {
+    title: "UK's David Cameron: Foreign Policy Insights",
+    src: "https://www.youtube.com/embed/hvy5GeqtyAY?si=JDKUMGMD32PYASdb",
+  }
+];
+
+function extractId(url) {
+  // Extracts the video ID from a YouTube embed or URL
+  const match = url.match(/(?:embed\/|v=|be\/)([A-Za-z0-9_\-]+)/);
+  return match ? match[1] : url;
+}
+
 export default function Videos() {
+  const playersRef = useRef([]);
+
+  function onPlay(idx) {
+    playersRef.current.forEach((player, i) => {
+      if (player && i !== idx) player.pauseVideo();
+    });
+  }
+
   return (
     <div className="videos-page">
-      {/* Header */}
       <header className="videos-header">
         <h1 className="videos-title">
           <span className="letter">VIDE</span>
@@ -79,19 +114,19 @@ export default function Videos() {
         </h1>
       </header>
 
-      {/* Featured Creators - Horizontal Scroll */}
+      {/* Featured Creators */}
       <section className="featured-creators">
         <h2 className="section-subtitle">Featured Creators</h2>
         <div className="creator-scroller">
-          {featuredCreators.map((creator, index) => (
-            <div className="creator-card scroll-card" key={index}>
+          {featuredCreators.map((creator, idx) => (
+            <div className="creator-card scroll-card" key={idx}>
               <div className="creator-video-wrapper">
-                <iframe
-                  src={creator.video}
-                  title={`${creator.name} Video`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+                <YouTube
+                  videoId={extractId(creator.video)}
+                  onReady={e => (playersRef.current[idx] = e.target)}
+                  onPlay={() => onPlay(idx)}
+                  opts={{ width: "100%", height: "100%" }}
+                />
               </div>
               <div className="creator-info-row">
                 <img
@@ -106,19 +141,38 @@ export default function Videos() {
         </div>
       </section>
 
-      {/* Latest Videos - Horizontal Scroll */}
+      {/* Latest Videos */}
       <section className="latest-videos">
         <h2 className="section-subtitle">Latest Videos</h2>
         <div className="video-scroller">
-          {latestVideos.map((video, index) => (
-            <div className="video-thumb scroll-card" key={index}>
+          {latestVideos.map((video, idx) => (
+            <div className="video-thumb scroll-card" key={idx}>
               <div className="thumb-wrapper">
-                <iframe
-                  src={video.src}
-                  title={video.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
+                <YouTube
+                  videoId={extractId(video.src)}
+                  onReady={e => (playersRef.current[featuredCreators.length + idx] = e.target)}
+                  onPlay={() => onPlay(featuredCreators.length + idx)}
+                  opts={{ width: "100%", height: "100%" }}
+                />
+              </div>
+              <p className="video-title">{video.title}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Interviews */}
+      <section className="interviews-section">
+        <h2 className="section-subtitle">Interviews of Foreign Ministers</h2>
+        <div className="video-scroller">
+          {interviews.map((video, idx) => (
+            <div className="video-thumb scroll-card" key={idx}>
+              <div className="thumb-wrapper">
+                <YouTube
+                  videoId={extractId(video.src)}
+                  onReady={e => (playersRef.current[featuredCreators.length + latestVideos.length + idx] = e.target)}
+                  onPlay={() => onPlay(featuredCreators.length + latestVideos.length + idx)}
+                />
               </div>
               <p className="video-title">{video.title}</p>
             </div>

@@ -72,7 +72,7 @@ export default function About() {
       <nav className="social-compass-dock" aria-label="Social links">
         <div className="compass-circle">
           <a
-            href="https://github.com/yourprofile"
+            href="https://github.com/wroteformenace"
             className="compass-point github"
             aria-label="GitHub"
             target="_blank"
@@ -130,7 +130,7 @@ export default function About() {
               onClick={e => e.stopPropagation()}
             >
               <a
-                href="https://github.com/yourprofile"
+                href="https://github.com/wroteformenace"
                 className="compass-point github"
                 aria-label="GitHub"
                 target="_blank"
