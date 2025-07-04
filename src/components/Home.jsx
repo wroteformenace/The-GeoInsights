@@ -157,6 +157,8 @@ const Home = () => {
   left: 50%;
   transform: translateX(-50%);
   overflow: visible;
+  max-width: 100%;
+  min-width: 100%;
   padding: 0;
 }
 .section-separator::after {
