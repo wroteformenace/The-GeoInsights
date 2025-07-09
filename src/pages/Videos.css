@@ -10,7 +10,7 @@
   --navbar-height: 72px;
   --border: rgba(255, 255, 255, 0.05);
   --card-hover-border: #3fa7ffcc;
-  --section-gap: 4.5rem;
+  --section-gap: 4rem;
 }
 
 /* === Main Page Layout === */
@@ -128,7 +128,7 @@
 .latest-videos {
   width: 100%;
   max-width: 100%;
-  margin: 0 auto;
+  margin-top: 2rem;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -175,8 +175,6 @@
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -186,7 +184,8 @@
 }
 
 .interviews-section {
-  margin-bottom: 4.5rem;
+  margin-bottom: 12rem;
+  margin-top: 4rem;
 }
 /* === Cards === */
 .creator-card,
