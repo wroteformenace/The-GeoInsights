@@ -130,6 +130,12 @@ body {
   background: var(--accent-hover);
   transform: scale(1.05);
 }
+.hero,
+.section-separator,
+.hero + .section-separator {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
 
 /* Section Separator */
 .section-separator {
