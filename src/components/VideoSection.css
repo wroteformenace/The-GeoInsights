@@ -1,34 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap');
 
-:root { 
-  --glass-bg: rgba(20, 28, 40, 1); 
-  --glass-border: rgba(255, 255, 255, 0.08); 
+:root {
+  --glass-bg: rgba(20, 28, 40, 0.92);
+  --glass-border: rgba(255, 255, 255, 0.13);
   --accent: #2e94e3;
   --accent-hover: #48aaff;
   --button-text: #cde9ff;
+  --button-bg-hover: rgba(46, 148, 227, 0.17);
   --heading-font: 'Space Grotesk', 'Inter', sans-serif;
   --body-font: 'Inter', sans-serif;
+  --card-radius: 18px;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* === Section === */
 .video-section {
   padding: 4rem 1.5rem;
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 0 auto 12rem;
   background: transparent;
-  box-shadow: none;
-  filter: none;
-  margin-bottom: 12rem;
 }
 
+/* === Heading === */
 .video-heading {
   text-align: center;
-  margin-top: auto;
   font-family: var(--heading-font);
   font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: var(--headline-color);
-  margin-bottom: 4.5rem;
+  color: #eaf6ff;
+  margin-bottom: 4rem;
   position: relative;
   user-select: none;
 }
@@ -50,57 +55,92 @@
   to { width: 90px; opacity: 0.9; }
 }
 
-.video-carousel {
-  display: flex;
-  justify-content: flex-start;
-  gap: 1.2rem;
+/* === Scroll Wrapper === */
+.video-scroll-wrapper {
   overflow-x: auto;
-  padding-bottom: 2rem;
   scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
   scroll-padding-left: 1rem;
   padding-left: 1rem;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 
-.video-carousel::-webkit-scrollbar {
+.video-scroll-wrapper::-webkit-scrollbar {
   display: none;
 }
 
+/* === Carousel Container === */
+.video-carousel {
+  display: flex;
+  gap: 2.5rem; /* More gap for scale effect */
+  position: relative;
+  overflow: visible !important; /* Ensures overlay on scale */
+  z-index: 1;
+  min-width: 100vw;
+  padding-bottom: 0.5rem;
+}
+
+/* === Card === */
 .video-card {
   flex: 0 0 320px;
   background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 14px;
-  overflow: hidden;
+  border: 1.5px solid var(--glass-border);
+  border-radius: 16px var(--card-radius);
+  overflow: hidden; /* Allow scaling overlay */
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease;
+  transition: 
+    box-shadow 0.28s cubic-bezier(.4,2,.4,1), 
+    transform 0.22s cubic-bezier(.4,2,.4,1),
+    z-index 0s;
+  box-shadow: 0 4px 24px rgba(46, 148, 227, 0.12), 0 2px 8px rgba(0,0,0,0.12);
+  position: relative;
+  z-index: 1;
+  will-change: transform;
 }
 
+.video-card:hover,
+.video-card:focus-within {
+  z-index: 10;
+  transform: scale(1.06);
+  box-shadow: 0 0 0 3px var(--accent-hover), 0 18px 48px 0 rgba(46, 148, 227, 0.25), 0 2px 8px rgba(0,0,0,0.12);
+}
+
+/* === Iframe === */
 .video-card iframe {
   width: 100%;
   height: 190px;
   border: none;
+  border-top-left-radius: 16px var(--card-radius);
+  border-top-right-radius: 16px var(--card-radius);
   background-color: #0e1825;
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
+  display: block;
+  box-shadow: 0 2px 12px rgba(46, 148, 227, 0.07);
+  transition: filter 0.2s;
 }
 
+.video-card:hover iframe {
+  filter: brightness(1.07) saturate(1.1);
+}
+
+/* === Title === */
 .video-title {
-  padding: 1rem 1rem 1rem;
+  padding: 1rem;
   font-family: var(--heading-font);
-  font-size: 1.02rem;
+  font-size: 1.08rem;
   font-weight: 600;
   text-align: center;
   border-top: 1px solid var(--glass-border);
   color: #cde9ff;
-  background: none;
-  user-select: none;
-  box-shadow: none;
+  background: rgba(14, 24, 37, 0.68);
+  backdrop-filter: blur(4px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
+/* === View More Button === */
 .view-more-wrapper {
   display: flex;
   justify-content: flex-end;
@@ -115,38 +155,58 @@
   background-color: transparent;
   border: 1px solid var(--glass-border);
   color: var(--button-text);
-  border-radius: 7px;
+  border-radius: 8px;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.22s cubic-bezier(.4,2,.4,1);
+  backdrop-filter: blur(4px);
 }
 
-.view-more-button:hover {
-  background: darkcyan;
+.view-more-button:hover,
+.view-more-button:focus-visible {
+  background: var(--button-bg-hover);
   color: #fff;
-  border-color: darkcyan;
+  border-color: var(--accent-hover);
+  outline: none;
+}
+
+/* === Responsive Tweaks === */
+@media (max-width: 1100px) {
+  .video-section {
+    padding: 3rem 0.5rem;
+  }
+  .video-card {
+    flex: 0 0 380px;
+  }
 }
 
 @media (max-width: 900px) {
+  .video-carousel {
+    gap: 1.3rem;
+  }
   .video-card {
     flex: 0 0 85vw;
   }
   .video-card iframe {
-    height: 140px;
+    height: 160px;
   }
 }
 
 @media (max-width: 600px) {
   .video-section {
-    padding: 2.5rem 1rem;
+    padding: 2.5rem 0.5rem;
+    margin-bottom: 6rem;
   }
   .video-heading {
     font-size: 1.8rem;
+  }
+  .video-carousel {
+    gap: 1rem;
   }
   .video-card {
     flex: 0 0 95vw;
   }
   .video-card iframe {
-    height: 100px;
+    height: 120px;
   }
   .view-more-wrapper {
     justify-content: center;
@@ -154,37 +214,28 @@
 }
 
 @media (max-width: 480px) {
+  .video-scroll-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
   .video-carousel {
     flex-direction: column;
     align-items: center;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: visible !important;
     max-height: 80vh;
-    padding: 0 0 2rem 0;
     scroll-snap-type: none;
+    min-width: 0;
+    gap: 0.7rem;
   }
-
   .video-card {
-    flex: none;
     width: 92vw;
-    height: 92vw;
     margin-bottom: 1.4rem;
-    border-radius: 16px;
-    overflow: hidden;
-    position: relative;
-    scroll-snap-align: unset;
+    flex: none;
   }
-
   .video-card iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 200px;
   }
-
   .video-title {
-    display: none;
+    font-size: 1rem;
   }
 }

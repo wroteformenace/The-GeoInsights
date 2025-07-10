@@ -29,20 +29,25 @@ export default function VideoSection() {
   return (
     <section className="video-section">
       <h2 className="video-heading">Featured Videos</h2>
-      <div className="video-carousel no-mask">
-        {videoData.map((video, index) => (
-          <div className="video-card" key={index}>
-            <iframe
-              src={video.src}
-              title={video.title}
-              allowFullScreen
-              loading="lazy"
-            ></iframe>
-            <p className="video-title">{video.title}</p>
-          </div>
-        ))}
+
+      {/* Scrollable Wrapper */}
+      <div className="video-scroll-wrapper">
+        <div className="video-carousel">
+          {videoData.map((video, index) => (
+            <div className="video-card" key={index}>
+              <iframe
+                src={video.src}
+                title={video.title}
+                allowFullScreen
+                loading="lazy"
+              ></iframe>
+              <p className="video-title">{video.title}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
+      {/* View More Button */}
       <div className="view-more-wrapper">
         <Link to="/videos" className="view-more-button">
           View All Videos →

@@ -75,7 +75,6 @@ body {
   box-shadow: none;
   max-width: 540px;
   width: 92%;
-  height: 79%;
   opacity: 0;
   animation: fadeSlide 1.3s ease forwards;
   transition: box-shadow 0.4s cubic-bezier(.4,2,.4,1), background 0.4s;
