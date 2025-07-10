@@ -64,17 +64,18 @@ body {
 .hero-content {
   position: absolute;
   z-index: 3;
-  top: 58%;
+  top: 59%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  padding: 2rem 2.5rem;
+  padding: 2rem 1.5rem;
   border-radius: 20px;
   background: var(--glass);
   backdrop-filter: blur(1.2px);
   box-shadow: none;
   max-width: 540px;
   width: 92%;
+  height: 79%;
   opacity: 0;
   animation: fadeSlide 1.3s ease forwards;
   transition: box-shadow 0.4s cubic-bezier(.4,2,.4,1), background 0.4s;
@@ -108,7 +109,7 @@ body {
   font-weight: 400;
   color: var(--subtext);
   line-height: 1.6;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .hero-content button {

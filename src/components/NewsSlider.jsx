@@ -40,17 +40,17 @@ const newsData = [
 const NewsSlider = () => (
   <section className="news-card-slider">
     <h2 className="slider-heading">Global Affairs</h2>
-    <Swiper
+      <Swiper
       modules={[Autoplay]}
+      spaceBetween={40}
       slidesPerView={3}
-      spaceBetween={32}
       loop
       autoplay={{ delay: 3500, disableOnInteraction: false }}
       className="slider-wrapper"
       breakpoints={{
-        1024: { slidesPerView: 3 },
-        768: { slidesPerView: 2 },
-        0: { slidesPerView: 1 },
+        1024: { slidesPerView: 3, spaceBetween: 40 },
+        768: { slidesPerView: 2, spaceBetween: 32 },
+        0: { slidesPerView: 1, spaceBetween: 24 },
       }}
     >
       {newsData.map((item, i) => (
