@@ -54,7 +54,7 @@
 
 /* === Swiper Styles === */
 .slider-wrapper {
-  padding-bottom: 1rem;
+  padding-bottom: 0rem;
 }
 
 /* Make all slides stretch to the same height */
