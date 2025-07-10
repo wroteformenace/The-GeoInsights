@@ -11,16 +11,18 @@
   --card-radius: 18px;
 }
 
+/* === Slider Container === */
 .news-card-slider {
   width: 100%;
   max-width: 1400px;
-  margin: 5rem auto 1rem;
+  margin: 5rem auto;
   padding: 0 1rem;
   box-sizing: border-box;
   overflow: hidden;
 }
 
-.slider-heading{
+/* === Slider Heading === */
+.slider-heading {
   text-align: center;
   margin-top: auto;
   font-family: var(--font-heading);
@@ -49,21 +51,29 @@
   from { width: 0; opacity: 0; }
   to { width: 90px; opacity: 0.9; }
 }
-/* Swiper styles */
+
+/* === Swiper Styles === */
 .slider-wrapper {
   padding-bottom: 1rem;
 }
 
-/* Slide styling */
+/* Make all slides stretch to the same height */
+.swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
 .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: stretch;
+  height: auto;
 }
 
 /* === News Card === */
 .news-card {
   width: 380px;
+  height: 440px; /* Fixed height for all cards */
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--card-radius);
@@ -76,6 +86,8 @@
   opacity: 1;
   cursor: pointer;
   margin-right: 0.5rem;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .news-card:last-child {
@@ -88,23 +100,31 @@
   z-index: 2;
 }
 
+/* === Card Image === */
 .card-image {
   width: 100%;
-  height: 220px;
+  height: 180px; /* Fixed image height for uniformity */
   object-fit: cover;
   border-top-left-radius: var(--card-radius);
   border-top-right-radius: var(--card-radius);
   filter: brightness(0.96) saturate(1.05);
+  flex-shrink: 0;
 }
 
+/* === Card Content === */
 .card-content {
-  padding: 1.3rem 1.4rem 1.6rem;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  justify-content: flex-start;
+  padding: 1.3rem 1.4rem 1.6rem;
   font-family: var(--body-font);
+  min-height: 0;
+  box-sizing: border-box;
+  gap: 0.6rem;
 }
 
+/* === Card Title === */
 .card-title {
   font-size: 1.2rem;
   font-weight: 700;
@@ -115,21 +135,27 @@
   line-height: 1.4;
 }
 
+/* === Card Description === */
 .card-description {
   font-size: 0.96rem;
   color: var(--desc-color);
   line-height: 1.6;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Show max 3 lines for uniformity */
+  -webkit-box-orient: vertical;
+  min-height: 4.8em; /* Reserve space for 3 lines */
 }
 
 /* === Responsive Tweaks === */
 @media (max-width: 1024px) {
   .news-card {
     width: 280px;
+    height: 380px;
     margin-right: 0.4rem;
   }
-
   .card-image {
-    height: 180px;
+    height: 140px;
   }
 }
 
@@ -137,23 +163,26 @@
   .news-card {
     width: 85vw;
     max-width: 320px;
+    height: 340px;
     margin-right: 0.3rem;
   }
-
   .card-image {
-    height: 160px;
+    height: 120px;
   }
 }
 
 @media (max-width: 480px) {
   .news-card {
     width: 92vw;
+    height: 300px;
   }
-    .slider-heading {
+  .slider-heading {
     font-size: 1.8rem;
   }
-
   .card-content {
     padding: 1rem 0.8rem 1.1rem;
+  }
+  .card-image {
+    height: 100px;
   }
 }

@@ -54,7 +54,7 @@ const NewsExplorer = () => {
           </li>
         ) : (
           filteredNews.map((news) => (
-            <li key={news.id} className="news-card">
+            <li key={news.id} className="news-cardy">
               <h3>{news.title}</h3>
               <p>{news.description}</p>
               <span className="news-tag">{news.region}</span>

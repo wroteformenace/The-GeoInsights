@@ -108,18 +108,33 @@
 
 /* === Section Subtitles === */
 .section-subtitle {
-  font-size: clamp(2.1rem, 5vw, 2.7rem);
-  font-weight: 900;
-  margin: 3.5rem 0 2.2rem 0;
-  background: var(--accent-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: 1.2px;
   text-align: center;
+  margin-top: auto;
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--headline-color);
+  margin-bottom: 4.5rem;
+  position: relative;
   user-select: none;
-  text-shadow: 0 2px 18px #3fa7ff22;
+}
+
+.section-subtitle::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 3px;
+  background: linear-gradient(90deg, #3fa7ff, #00e5ff);
+  margin: 0.6rem auto 0;
+  border-radius: 2px;
+  opacity: 0.9;
+  animation: underlineSlide 1.2s ease forwards;
+}
+
+@keyframes underlineSlide {
+  from { width: 0; opacity: 0; }
+  to { width: 90px; opacity: 0.9; }
 }
 
 

@@ -39,13 +39,11 @@ const newsData = [
 
 const NewsSlider = () => (
   <section className="news-card-slider">
-    <h2 className="slider-heading">Global Affairs
-    </h2>
+    <h2 className="slider-heading">Global Affairs</h2>
     <Swiper
       modules={[Autoplay]}
       slidesPerView={3}
       spaceBetween={32}
-      centeredSlides
       loop
       autoplay={{ delay: 3500, disableOnInteraction: false }}
       className="slider-wrapper"
