@@ -48,6 +48,7 @@ const briefings = [
 
 const BriefingSection = () => {
   return (
+    <div class="glass-panel">
     <section className="briefing-section">
       <h2 className="briefing-heading">Strategic Briefings</h2>
       <div className="briefing-list">
@@ -75,6 +76,7 @@ const BriefingSection = () => {
         ))}
       </div>
     </section>
+    </div>
   );
 };
 

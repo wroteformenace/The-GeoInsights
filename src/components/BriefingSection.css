@@ -9,13 +9,17 @@
   --font-heading: 'Inter', 'Segoe UI', sans-serif;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 .briefing-section {
-  padding: 0rem 1.5rem;
-  max-width: 1280px;
-  margin: 0 auto;
+  max-width: 100%;
   background: transparent;
   position: relative;
   z-index: 1;
+  /* Remove invalid padding: auto; */
 }
 
 .briefing-heading {
@@ -51,10 +55,12 @@
   display: flex;
   gap: 2rem;
   overflow-x: auto;
-  padding-bottom: 1rem;
+  padding-bottom: 1rem;   /* Add left space */
+  padding-right: 0;
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
   scrollbar-color: #3fa7ff transparent;
+  box-sizing: border-box;
 }
 
 .briefing-list::-webkit-scrollbar {
@@ -68,7 +74,7 @@
 
 .briefing-card {
   flex: 0 0 calc((100% - 6rem) / 4);
-  max-width: 340px; /* Optional: limit max width for very large screens */
+  max-width: 340px;
   min-width: 220px;
   height: 360px;
   background: var(--card-bg);
@@ -192,4 +198,10 @@
     flex: 0 0 92vw;
     padding: 1.2rem;
   }
+  .briefing-list {
+    padding-left: 2vw;
+    padding-right: 6vw;
+    gap: 1.2rem;
+  }
 }
+

@@ -1,41 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap');
 
 :root {
-  --glass-bg: rgba(20, 28, 40, 0.92);
-  --glass-border: rgba(255, 255, 255, 0.13);
+  --glass-bg: rgba(20, 28, 40, 0.93);
+  --glass-border: rgba(255, 255, 255, 0.10);
   --accent: #2e94e3;
   --accent-hover: #48aaff;
   --button-text: #cde9ff;
-  --button-bg-hover: rgba(46, 148, 227, 0.17);
+  --button-bg-hover: rgba(46, 148, 227, 0.14);
   --heading-font: 'Space Grotesk', 'Inter', sans-serif;
   --body-font: 'Inter', sans-serif;
   --card-radius: 18px;
+  --headline-color: #eaf4fb;
 }
 
 html, body {
+  min-height: 100%;
+  width: 100vw;
+  box-sizing: border-box;
+  font-family: var(--body-font);
+  background: #101822;
+  color: var(--headline-color);
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
-  max-width: 100vw;
 }
 
-/* === Section === */
 .video-section {
-  padding: 4rem 1.5rem;
-  max-width: 1280px;
-  margin: 0 auto 12rem;
+  padding: 0;
+  margin: 0;
   background: transparent;
+  box-sizing: border-box;
 }
 
-/* === Heading === */
 .video-heading {
   text-align: center;
   font-family: var(--heading-font);
   font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 700;
-  letter-spacing: 0.05em;
-  color: #eaf6ff;
-  margin-bottom: 4rem;
+  letter-spacing: 0.04em;
+  color: var(--headline-color);
+  margin-bottom: 3.5rem;
   position: relative;
   user-select: none;
+  line-height: 1.1;
 }
 
 .video-heading::after {
@@ -47,7 +54,7 @@ html, body {
   margin: 0.6rem auto 0;
   border-radius: 2px;
   opacity: 0.9;
-  animation: underlineSlide 1.2s ease forwards;
+  animation: underlineSlide 1.2s cubic-bezier(.77,0,.18,1) forwards;
 }
 
 @keyframes underlineSlide {
@@ -55,78 +62,71 @@ html, body {
   to { width: 90px; opacity: 0.9; }
 }
 
-/* === Scroll Wrapper === */
 .video-scroll-wrapper {
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-left: 1rem;
-  padding-left: 1rem;
-  padding-bottom: 2rem;
-  padding-top: 1rem;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
 .video-scroll-wrapper::-webkit-scrollbar {
   display: none;
 }
 
-/* === Carousel Container === */
 .video-carousel {
   display: flex;
-  gap: 2.5rem; /* More gap for scale effect */
+  gap: 1rem;
   position: relative;
-  overflow: visible !important; /* Ensures overlay on scale */
+  overflow: auto !important;
   z-index: 1;
-  min-width: 100vw;
-  padding-bottom: 0.5rem;
+  width: fit-content;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
-/* === Card === */
 .video-card {
   flex: 0 0 320px;
   background: var(--glass-bg);
   border: 1.5px solid var(--glass-border);
-  border-radius: 16px var(--card-radius);
-  overflow: hidden; /* Allow scaling overlay */
-  scroll-snap-align: center;
+  border-radius: var(--card-radius);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: 
-    box-shadow 0.28s cubic-bezier(.4,2,.4,1), 
-    transform 0.22s cubic-bezier(.4,2,.4,1),
-    z-index 0s;
-  box-shadow: 0 4px 24px rgba(46, 148, 227, 0.12), 0 2px 8px rgba(0,0,0,0.12);
+  transition: box-shadow 0.25s cubic-bezier(.4,2,.4,1), transform 0.19s cubic-bezier(.4,2,.4,1), z-index 0s;
+  box-shadow: 0 4px 24px rgba(46, 148, 227, 0.10), 0 2px 8px rgba(0,0,0,0.10);
   position: relative;
   z-index: 1;
   will-change: transform;
+  min-width: 0;
+  margin: 2rem 1rem 2rem 1rem;
 }
 
 .video-card:hover,
 .video-card:focus-within {
   z-index: 10;
-  transform: scale(1.06);
-  box-shadow: 0 0 0 3px var(--accent-hover), 0 18px 48px 0 rgba(46, 148, 227, 0.25), 0 2px 8px rgba(0,0,0,0.12);
+  transform: scale(1.055);
+  box-shadow: 0 0 0 3px var(--accent-hover), 0 18px 48px 0 rgba(46, 148, 227, 0.22), 0 2px 8px rgba(0,0,0,0.10);
 }
 
-/* === Iframe === */
 .video-card iframe {
   width: 100%;
   height: 190px;
   border: none;
-  border-top-left-radius: 16px var(--card-radius);
-  border-top-right-radius: 16px var(--card-radius);
+  border-top-left-radius: var(--card-radius);
+  border-top-right-radius: var(--card-radius);
   background-color: #0e1825;
   display: block;
-  box-shadow: 0 2px 12px rgba(46, 148, 227, 0.07);
-  transition: filter 0.2s;
+  box-shadow: 0 2px 12px rgba(46, 148, 227, 0.06);
+  transition: filter 0.18s;
 }
 
 .video-card:hover iframe {
-  filter: brightness(1.07) saturate(1.1);
+  filter: brightness(1.08) saturate(1.08);
 }
 
-/* === Title === */
 .video-title {
   padding: 1rem;
   font-family: var(--heading-font);
@@ -136,15 +136,17 @@ html, body {
   border-top: 1px solid var(--glass-border);
   color: #cde9ff;
   background: rgba(14, 24, 37, 0.68);
-  backdrop-filter: blur(4px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(3px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  margin: 0;
+  line-height: 1.3;
 }
 
-/* === View More Button === */
 .view-more-wrapper {
   display: flex;
   justify-content: flex-end;
   margin-top: 0.5rem;
+  padding-right: 2vw;
 }
 
 .view-more-button {
@@ -157,8 +159,9 @@ html, body {
   color: var(--button-text);
   border-radius: 8px;
   text-decoration: none;
-  transition: all 0.22s cubic-bezier(.4,2,.4,1);
-  backdrop-filter: blur(4px);
+  transition: all 0.18s cubic-bezier(.4,2,.4,1);
+  backdrop-filter: blur(3px);
+  cursor: pointer;
 }
 
 .view-more-button:hover,
@@ -169,22 +172,19 @@ html, body {
   outline: none;
 }
 
-/* === Responsive Tweaks === */
 @media (max-width: 1100px) {
-  .video-section {
-    padding: 3rem 0.5rem;
-  }
   .video-card {
-    flex: 0 0 380px;
+    flex: 0 0 340px;
+  }
+  .view-more-wrapper {
+    padding-right: 1vw;
   }
 }
 
 @media (max-width: 900px) {
-  .video-carousel {
-    gap: 1.3rem;
-  }
   .video-card {
-    flex: 0 0 85vw;
+    flex: 0 0 82vw;
+    max-width: 99vw;
   }
   .video-card iframe {
     height: 160px;
@@ -193,49 +193,54 @@ html, body {
 
 @media (max-width: 600px) {
   .video-section {
-    padding: 2.5rem 0.5rem;
-    margin-bottom: 6rem;
+    margin-bottom: 5rem;
   }
   .video-heading {
-    font-size: 1.8rem;
-  }
-  .video-carousel {
-    gap: 1rem;
+    font-size: 1.5rem;
   }
   .video-card {
-    flex: 0 0 95vw;
+    flex: 0 0 96vw;
+    max-width: 99vw;
   }
   .video-card iframe {
     height: 120px;
   }
   .view-more-wrapper {
     justify-content: center;
+    padding-right: 0;
   }
 }
 
 @media (max-width: 480px) {
   .video-scroll-wrapper {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
+    margin: 0;
   }
   .video-carousel {
     flex-direction: column;
     align-items: center;
     overflow: visible !important;
-    max-height: 80vh;
-    scroll-snap-type: none;
     min-width: 0;
-    gap: 0.7rem;
+    gap: 0.6rem;
+    padding: 0;
   }
   .video-card {
-    width: 92vw;
-    margin-bottom: 1.4rem;
+    width: 96vw;
+    margin-bottom: 1.3rem;
     flex: none;
+    max-width: 99vw;
   }
   .video-card iframe {
-    height: 200px;
+    height: 180px;
   }
   .video-title {
     font-size: 1rem;
   }
+}
+
+.video-section,
+.video-scroll-wrapper,
+.video-carousel {
+  margin: 0;
+  box-sizing: border-box;
 }

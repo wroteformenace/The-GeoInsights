@@ -190,3 +190,59 @@ body {
     font-size: 1rem;
   }
 }
+/* === Base Glass Panel === */
+.glass-panel {
+  max-width: 96%;
+  margin: 4rem auto;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, rgba(20, 30, 45, 0.65), rgba(25, 35, 50, 0.58));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  transition: box-shadow 0.4s ease, border 0.3s ease;
+}
+
+/* === Glow on Hover === */
+.glass-panel:hover {
+  box-shadow:
+    0 0 0 1px rgba(63, 167, 255, 0.2),
+    0 10px 40px rgba(63, 167, 255, 0.25),
+    0 0 20px rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(63, 167, 255, 0.2);
+}
+
+/* === Light shimmer line at the bottom (already included, but refined) === */
+.glass-panel::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(63,167,255,0.25), rgba(0,229,255,0.15));
+  border-radius: 2px;
+  opacity: 0.9;
+  pointer-events: none;
+  animation: shimmerLine 4s ease-in-out infinite;
+}
+
+/* === Shimmer Animation === */
+@keyframes shimmerLine {
+  0% {
+    transform: translateX(-10%);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translateX(10%);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(-10%);
+    opacity: 0.1;
+  }
+}

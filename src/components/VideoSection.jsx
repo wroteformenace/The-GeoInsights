@@ -27,6 +27,7 @@ const videoData = [
 
 export default function VideoSection() {
   return (
+    <div class="glass-panel">
     <section className="video-section">
       <h2 className="video-heading">Featured Videos</h2>
 
@@ -54,5 +55,6 @@ export default function VideoSection() {
         </Link>
       </div>
     </section>
+    </div>
   );
 }
