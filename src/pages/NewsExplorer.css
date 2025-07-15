@@ -65,7 +65,7 @@ body {
 }
 
 .ne-heading:hover::after {
-  width: 40%;
+  width: 50%;
 }
 
 @keyframes slideIn {

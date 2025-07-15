@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-// import ContinentSVG from "../assets/Continent.svg"; // Assuming SVG uses paths with IDs
+import ContinentSVG from "../assets/Continent.svg"; // Assuming SVG uses paths with IDs
 import { localNews } from "../data/localNews";
 import "./NewsExplorer.css";
 import Footer from "../components/Footer";
@@ -36,7 +36,7 @@ const NewsExplorer = () => {
           <label className="continent-filter-label">Select a Continent:</label>
 
           <div className="map-wrapper">
-          <img src="/src/assets/Continent.svg" alt="World Map" className="continent-img" />
+          <img src={ContinentSVG} alt="World Map" className="continent-img" />
           
           {CONTINENTS.map((continent) => (
             <button
