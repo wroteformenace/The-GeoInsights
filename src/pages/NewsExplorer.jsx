@@ -1,72 +1,90 @@
 import React, { useState, useMemo } from "react";
-import WorldMapSVG from "./WorldMapSVG"; // ✅ Your custom SVG map
+// import ContinentSVG from "../assets/Continent.svg"; // Assuming SVG uses paths with IDs
 import { localNews } from "../data/localNews";
 import "./NewsExplorer.css";
 import Footer from "../components/Footer";
 
+const CONTINENTS = ["africa", "europe", "asia", "north america", "south america", "australia", "antarctica", "global"];
 
 const NewsExplorer = () => {
   const [selectedContinent, setSelectedContinent] = useState(null);
 
+  // Memoized filtering logic
   const filteredNews = useMemo(() => {
     if (!selectedContinent) return localNews;
-
-    return localNews.filter(
-      (item) =>
-        item.region === selectedContinent ||
-        item.region.toLowerCase() === "global"
-    );
+    return localNews.filter(({ region }) => {
+      if (typeof region !== "string") return false;
+      const reg = region.toLowerCase();
+      return reg === selectedContinent || reg === "global";
+    });
   }, [selectedContinent]);
 
-  const handleContinentSelect = (continentName) => {
-    setSelectedContinent((prev) =>
-      prev === continentName ? null : continentName
+  // Handle continent click
+  const handleContinentClick = (continent) => {
+    setSelectedContinent(prev =>
+      prev === continent.toLowerCase() ? null : continent.toLowerCase()
     );
   };
 
   return (
     <>
-    <div className="news-explorer">
-      <h1 className="ne-heading">Global News</h1>
+      <div className="news-explorer">
+        <h1 className="ne-heading">Global News</h1>
 
-      <div className="ne-map-section">
-        <label htmlFor="world-map" className="continent-filter-label">
-          Filter by Continent:
-        </label>
-        <WorldMapSVG
-          selectedContinent={selectedContinent}
-          onSelect={handleContinentSelect}
-        />
-        {selectedContinent && (
-          <button
-            className="ne-clear-btn"
-            onClick={() => setSelectedContinent(null)}
-          >
-            Clear Filter ({selectedContinent})
-          </button>
-        )}
+        {/* === Continent Filter === */}
+        <div className="ne-map-section">
+          <label className="continent-filter-label">Select a Continent:</label>
+
+          <div className="map-wrapper">
+          <img src="/src/assets/Continent.svg" alt="World Map" className="continent-img" />
+          
+          {CONTINENTS.map((continent) => (
+            <button
+              key={continent}
+              className={`map-button ${
+                selectedContinent === continent ? "active" : ""
+              }`}
+              data-continent={continent}
+              onClick={() => handleContinentClick(continent)}
+            >
+              {continent.charAt(0).toUpperCase() + continent.slice(1)}
+            </button>
+          ))}
+        </div>
+
+
+          {/* Clear Filter */}
+          {selectedContinent && (
+            <button
+              className="ne-clear-btn"
+              onClick={() => setSelectedContinent(null)}
+            >
+              Clear Filter ({selectedContinent})
+            </button>
+          )}
+        </div>
+
+        {/* === News List === */}
+        <ul className="news-list">
+          {filteredNews.length === 0 ? (
+            <li className="news-item news-empty">
+              No news found for this continent!!!
+            </li>
+          ) : (
+            filteredNews.map((news) => (
+              <li key={news.id} className="news-cardy">
+                <h3>{news.title}</h3>
+                <p>{news.description}</p>
+                <span className="news-tag">{news.region}</span>
+              </li>
+            ))
+          )}
+        </ul>
       </div>
 
-      <ul className="news-list">
-        {filteredNews.length === 0 ? (
-          <li className="news-item news-empty">
-            ❌ No news found for your selected continent.
-          </li>
-        ) : (
-          filteredNews.map((news) => (
-            <li key={news.id} className="news-cardy">
-              <h3>{news.title}</h3>
-              <p>{news.description}</p>
-              <span className="news-tag">{news.region}</span>
-            </li>
-          ))
-        )}
-      </ul>
-    </div>
-     <Footer className="geo-footer"/>
-     </>
+      <Footer />
+    </>
   );
 };
 
 export default NewsExplorer;
-
