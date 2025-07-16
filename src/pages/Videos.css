@@ -10,7 +10,7 @@
   --navbar-height: 72px;
   --border: rgba(255, 255, 255, 0.05);
   --card-hover-border: #3fa7ffcc;
-  --section-gap: 4rem;
+  --section-gap: 2rem;
 }
 
 /* === Layout === */
@@ -147,7 +147,7 @@
 .creator-scroller,
 .video-scroller {
   display: flex;
-  gap: 2.2rem;
+  gap: 1.5rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -166,7 +166,7 @@
 /* === Cards === */
 .creator-card,
 .video-thumb {
-  flex: 0 0 33.33%;
+  flex: 0 0 23.5%;
   min-width: 280px;
   max-width: 33.33%;
   background: var(--card-bg);
@@ -291,5 +291,28 @@
 @media (max-width: 768px) {
   .scroller-arrow {
     display: none;
+  }
+}
+@media (max-width: 1200px) {
+  .creator-card,
+  .video-thumb {
+    flex: 0 0 30%;
+    max-width: 30%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .creator-card,
+  .video-thumb {
+    flex: 0 0 45%;
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .creator-card,
+  .video-thumb {
+    flex: 0 0 80%;
+    max-width: 85%;
   }
 }

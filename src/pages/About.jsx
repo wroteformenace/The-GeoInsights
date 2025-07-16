@@ -178,6 +178,7 @@ export default function About() {
       </header>
 
       {/* Sliding Panels Left/Right */}
+      <div className="glass-panel">
       <section className="slide-panels-section">
         {panels.map((panel, i) => (
           <div
@@ -190,6 +191,7 @@ export default function About() {
           </div>
         ))}
       </section>
+      </div>
 
       {/* Stats Bubbles */}
       <section className="stats-bubbles">
