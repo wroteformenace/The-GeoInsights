@@ -10,130 +10,65 @@
   --body-font: 'Inter', sans-serif;
   --card-radius: 18px;
 }
+
 html, body {
-  overflow-x: hidden; /* prevent horizontal scroll */
-}
-
-.news-card-slider {
-  padding-bottom: 3rem; /* space for hover pop */
-  position: relative;
-}
-
-.swiper {
-  overflow: visible !important;
-}
-
-.swiper-wrapper {
-  overflow: visible !important;
-  padding-bottom: 0rem; /* Allow bottom space for scaling */
-}
-
-.swiper-slide {
-  overflow: visible !important;
-  position: relative;
-}
-
-/* Keep scaling on hover */
-.news-card:hover {
-  z-index: 999;
-  transform: scale(1.055);
-  box-shadow: 0 22px 64px 0 rgba(63, 167, 255, 0.24), 0 0 0 2px var(--accent-hover);
-}
-
-/* Prevent scaling from causing page scroll */
-body {
-  position: relative;
-  max-width: 100vw;
   overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
 }
 
-/* === Slider Wrapper === */
+/* === Slider Container === */
 .news-card-slider {
   width: 100%;
   max-width: 1400px;
-  margin: 5rem auto;
-  padding: 0 1rem;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
   box-sizing: border-box;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+  overflow: hidden;
+  position: relative;
 }
 
-/* Hide scrollbar */
-.news-card-slider::-webkit-scrollbar {
-  display: none;
-}
-.news-card-slider {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.slider-wrapper {
+/* === Framer Motion Wrapper === */
+.motion-slider-wrapper {
   display: flex;
-  gap: 1rem;
-  scroll-snap-type: x mandatory;
-}
-
-/* === Slider Heading === */
-.slider-heading {
-  text-align: center;
-  font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 5vw, 3rem);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--headline-color);
-  margin-bottom: 4.5rem;
+  gap: 1.5rem;
+  padding: 0 0.5rem;
   user-select: none;
+  cursor: grab;
+  will-change: transform;
 }
 
-.slider-heading::after {
-  content: "";
-  display: block;
-  width: 90px;
-  height: 3px;
-  background: linear-gradient(90deg, #3fa7ff, #00e5ff);
-  margin: 0.6rem auto 0;
-  border-radius: 2px;
-  opacity: 0.9;
-  animation: underlineSlide 1.2s ease forwards;
-}
-
-@keyframes underlineSlide {
-  from { width: 0; opacity: 0; }
-  to { width: 90px; opacity: 0.9; }
-}
-
-/* === Swiper Slide Fix === */
-.swiper-wrapper,
-.swiper-slide {
-  overflow: visible;
-  height: auto;
-  align-items: stretch;
-}
-
-/* === Enhanced Glassmorphism for Cards === */
+/* === Card === */
 .news-card {
-  scroll-snap-align: start;
-  gap: 2rem;
-  width: 380px;
-  height: 440px;
-  background: linear-gradient(135deg, rgba(15, 25, 38, 0.82), rgba(20, 30, 48, 0.76));
+  width: 320px;
+  height: 370px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(15, 25, 38, 0.9), rgba(24, 36, 56, 0.82));
   border: 1px solid var(--card-border);
   border-radius: var(--card-radius);
-  box-shadow: 0 10px 30px rgba(63, 167, 255, 0.08), inset 0 0 0.4px rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  box-shadow: var(--card-shadow), inset 0 0 0.4px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
   cursor: pointer;
   position: relative;
-  z-index: 1;
-  flex-shrink: 0;
   overflow: hidden;
+  z-index: 1;
+  transform-style: preserve-3d;
 }
 
-/* === Subtle Highlight Effect on Hover === */
+/* === Hover & Glow Effect === */
+.news-card:hover {
+  transform: scale(1.05) rotateX(2deg) rotateY(2deg);
+  z-index: 999 !important;
+  border: 1px solid var(--accent-hover);
+  box-shadow:
+    0 28px 64px rgba(63, 167, 255, 0.28),
+    0 0 0 2px var(--accent-hover),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.05);
+}
 .news-card::before {
   content: '';
   position: absolute;
@@ -148,25 +83,8 @@ body {
   pointer-events: none;
   z-index: 0;
 }
-
 .news-card:hover::before {
   opacity: 1;
-}
-
-.news-card:hover {
-  z-index: 10;
-  transform: scale(1.06);
-  box-shadow:
-    0 22px 64px rgba(63, 167, 255, 0.25),
-    0 0 0 2px var(--accent-hover),
-    inset 0 0 0.5px rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-/* === Optional: Title hover for interactivity === */
-.card-title:hover {
-  color: var(--accent-hover);
-  transition: color 0.25s ease;
 }
 
 /* === Card Image === */
@@ -176,31 +94,41 @@ body {
   object-fit: cover;
   border-top-left-radius: var(--card-radius);
   border-top-right-radius: var(--card-radius);
-  filter: brightness(0.96) saturate(1.05);
-  flex-shrink: 0;
+  filter: brightness(0.95) saturate(1.1);
+  transition: filter 0.3s ease;
+}
+.news-card:hover .card-image {
+  filter: brightness(1.03) saturate(1.2);
 }
 
-/* === Card Content === */
+/* === Content === */
 .card-content {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  padding: 1.3rem 1.4rem 1.6rem;
-  font-family: var(--body-font);
   gap: 0.6rem;
+  padding: 1rem 1rem 1.2rem;
   box-sizing: border-box;
+  font-family: var(--body-font);
 }
 
+/* === Title === */
 .card-title {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--headline-color);
   font-family: var(--section-title);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.045em;
   line-height: 1.4;
+  transition: color 0.25s ease;
+  transform: translateZ(20px);
+}
+.card-title:hover {
+  color: var(--accent-hover);
 }
 
+/* === Description === */
 .card-description {
   font-size: 0.96rem;
   color: var(--desc-color);
@@ -212,11 +140,49 @@ body {
   min-height: 4.8em;
 }
 
-/* === Responsive === */
-@media (max-width: 1024px) {
+/* === Heading === */
+.slider-heading {
+  text-align: center;
+  font-family: var(--heading-font);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--headline-color);
+  margin-bottom: 3.5rem;
+  position: relative;
+  user-select: none;
+  line-height: 1.1;
+}
+
+.slider-heading::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 3px;
+  background: linear-gradient(90deg, #3fa7ff, #00e5ff);
+  margin: 0.6rem auto 0;
+  border-radius: 2px;
+  opacity: 0.9;
+  animation: underlineSlide 1.2s cubic-bezier(.77,0,.18,1) forwards;
+}
+
+@keyframes underlineSlide {
+  from { width: 0; opacity: 0; }
+  to { width: 90px; opacity: 0.9; }
+}
+
+/* === Responsive Cards === */
+@media (max-width: 1280px) {
   .news-card {
     width: 280px;
-    height: 380px;
+    height: 360px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .news-card {
+    width: 240px;
+    height: 340px;
   }
   .card-image {
     height: 140px;
@@ -227,7 +193,7 @@ body {
   .news-card {
     width: 85vw;
     max-width: 320px;
-    height: 340px;
+    height: 320px;
   }
   .card-image {
     height: 120px;
@@ -237,7 +203,7 @@ body {
 @media (max-width: 480px) {
   .news-card {
     width: 92vw;
-    height: 300px;
+    height: 280px;
   }
   .slider-heading {
     font-size: 1.8rem;
@@ -249,25 +215,3 @@ body {
     height: 100px;
   }
 }
-/* Make sure Swiper containers allow overflow */
-.news-card-slider,
-.swiper,
-.swiper-wrapper,
-.slider-wrapper {
-  overflow: visible !important;
-  position: relative;
-  z-index: 0;
-}
-
-/* Critical fix: Allow card to pop over neighboring slides */
-.swiper-slide {
-  overflow: visible !important;
-  position: relative;
-  z-index: 1;
-}
-
-/* Ensure hovered card stacks highest */
-.news-card:hover {
-  z-index: 999 !important;
-}
-

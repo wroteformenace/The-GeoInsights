@@ -1,7 +1,5 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
+import { motion } from "framer-motion";
 import "./NewsSlider.css";
 
 const newsData = [
@@ -37,41 +35,47 @@ const newsData = [
   },
 ];
 
-const NewsSlider = () => (
-  <div class="glass-panel">
-  <section className="news-card-slider">
-    <h2 className="slider-heading">Global Affairs</h2>
-      <Swiper
-      modules={[Autoplay]}
-      spaceBetween={40}
-      slidesPerView={3}
-      loop
-      autoplay={{ delay: 3500, disableOnInteraction: false }}
-      className="slider-wrapper"
-      breakpoints={{
-        1024: { slidesPerView: 3, spaceBetween: 40 },
-        768: { slidesPerView: 2, spaceBetween: 32 },
-        0: { slidesPerView: 1, spaceBetween: 24 },
-      }}
-    >
-      {newsData.map((item, i) => (
-        <SwiperSlide key={i}>
-          <div className="news-card">
-            <img
-              src={`${item.image}?auto=format&fit=crop&w=600&q=80`}
-              alt={item.title}
-              className="card-image"
-            />
-            <div className="card-content">
-              <div className="card-title">{item.title}</div>
-              <div className="card-description">{item.description}</div>
-            </div>
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  </section>
-  </div>
-);
+const cardVariants = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const NewsSlider = () => {
+  return (
+    <div className="glass-panel">
+      <section className="news-card-slider">
+        <h2 className="slider-heading">Global Affairs</h2>
+
+        <motion.div
+          className="motion-slider-wrapper"
+          drag="x"
+          dragConstraints={{ left: -2000, right: 0 }}
+          whileTap={{ cursor: "grabbing" }}
+        >
+          {newsData.map((item, i) => (
+            <motion.div
+              className="news-card"
+              key={i}
+              variants={cardVariants}
+              initial="initial"
+              animate="animate"
+              whileHover={{ scale: 1.05 }}
+            >
+              <img
+                src={`${item.image}?auto=format&fit=crop&w=600&q=80`}
+                alt={item.title}
+                className="card-image"
+              />
+              <div className="card-content">
+                <div className="card-title">{item.title}</div>
+                <div className="card-description">{item.description}</div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+    </div>
+  );
+};
 
 export default NewsSlider;

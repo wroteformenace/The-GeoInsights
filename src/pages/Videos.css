@@ -28,7 +28,7 @@
   width: 100vw;
   text-align: center;
   margin-top: calc(var(--navbar-height) + 2rem);
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   position: relative;
   z-index: 2;
 }
@@ -110,7 +110,8 @@
   font-weight: 700;
   letter-spacing: 0.05em;
   color: var(--headline);
-  margin-bottom: 4rem;
+  padding-top: 2rem;
+  margin-bottom: 2rem;
   position: relative;
   user-select: none;
   margin-top: auto;
