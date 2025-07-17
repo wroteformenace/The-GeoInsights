@@ -27,7 +27,7 @@ html, body {
 
 .video-section {
   padding: 0;
-  margin: 0;
+  margin: auto;
   background: transparent;
   box-sizing: border-box;
 }
@@ -44,7 +44,6 @@ html, body {
   user-select: none;
   line-height: 1.1;
 }
-
 .video-heading::after {
   content: "";
   display: block;
@@ -56,7 +55,6 @@ html, body {
   opacity: 0.9;
   animation: underlineSlide 1.2s cubic-bezier(.77,0,.18,1) forwards;
 }
-
 @keyframes underlineSlide {
   from { width: 0; opacity: 0; }
   to { width: 90px; opacity: 0.9; }
@@ -64,31 +62,38 @@ html, body {
 
 .video-scroll-wrapper {
   overflow-x: auto;
+  overflow-y: visible;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   scroll-behavior: smooth;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 0 0.6rem; /* Soft outer padding */
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1170px; /* Ensures 3 cards fit nicely */
 }
-
 .video-scroll-wrapper::-webkit-scrollbar {
   display: none;
 }
 
 .video-carousel {
   display: flex;
-  gap: 0.3rem;
-  position: relative;
-  overflow: auto !important;
-  z-index: 1;
+  flex-direction: row;
+  gap: 1.6rem;
+  min-width: calc(3 * 320px + 2 * 1.6rem); /* 3 cards + 2 gaps for desktop */
   width: fit-content;
-  padding: 0;
   box-sizing: border-box;
-  margin: 0;
+  /* Remove margin: 0; for natural alignment */
+  padding: 0.6rem 0;
+  align-items: stretch;
 }
 
+/* CARD STYLE */
 .video-card {
   flex: 0 0 320px;
+  width: 320px;           /* Ensures all cards are same width */
+  min-width: 320px;
+  max-width: 320px;
   background: var(--glass-bg);
   border: 1.5px solid var(--glass-border);
   border-radius: var(--card-radius);
@@ -100,8 +105,7 @@ html, body {
   position: relative;
   z-index: 1;
   will-change: transform;
-  min-width: 0;
-  margin: 1rem 1rem 1rem 1rem;
+  margin: 0; /* Remove inline margins for perfect alignment, spacing comes from gap */
 }
 
 .video-card:hover,
@@ -111,6 +115,7 @@ html, body {
   box-shadow: 0 0 0 3px var(--accent-hover), 0 18px 48px 0 rgba(46, 148, 227, 0.22), 0 2px 8px rgba(0,0,0,0.10);
 }
 
+/* CARD CONTENT */
 .video-card iframe {
   width: 100%;
   height: 190px;
@@ -122,11 +127,9 @@ html, body {
   box-shadow: 0 2px 12px rgba(46, 148, 227, 0.06);
   transition: filter 0.18s;
 }
-
 .video-card:hover iframe {
   filter: brightness(1.08) saturate(1.08);
 }
-
 .video-title {
   padding: 1rem;
   font-family: var(--heading-font);
@@ -148,7 +151,6 @@ html, body {
   margin-top: 0.5rem;
   padding-right: 2vw;
 }
-
 .view-more-button {
   font-family: var(--body-font);
   font-size: 1rem;
@@ -163,7 +165,6 @@ html, body {
   backdrop-filter: blur(3px);
   cursor: pointer;
 }
-
 .view-more-button:hover,
 .view-more-button:focus-visible {
   background: var(--button-bg-hover);
@@ -172,25 +173,37 @@ html, body {
   outline: none;
 }
 
+/* RESPONSIVE: Adjust card sizes for different screens */
 @media (max-width: 1100px) {
+  .video-scroll-wrapper {
+    max-width: 740px;
+  }
+  .video-card,
   .video-card {
-    flex: 0 0 340px;
+    width: 340px;
+    min-width: 340px;
+    max-width: 340px;
+  }
+  .video-card iframe {
+    height: 160px;
   }
   .view-more-wrapper {
     padding-right: 1vw;
   }
 }
-
 @media (max-width: 900px) {
+  .video-scroll-wrapper {
+    max-width: 96vw;
+  }
   .video-card {
-    flex: 0 0 82vw;
+    width: 82vw;
+    min-width: 82vw;
     max-width: 99vw;
   }
   .video-card iframe {
-    height: 160px;
+    height: 140px;
   }
 }
-
 @media (max-width: 600px) {
   .video-section {
     margin-bottom: 5rem;
@@ -198,8 +211,13 @@ html, body {
   .video-heading {
     font-size: 1.5rem;
   }
+  .video-scroll-wrapper {
+    padding: 0 0.4rem;
+    max-width: 99vw;
+  }
   .video-card {
-    flex: 0 0 96vw;
+    width: 96vw;
+    min-width: 96vw;
     max-width: 99vw;
   }
   .video-card iframe {
@@ -210,34 +228,21 @@ html, body {
     padding-right: 0;
   }
 }
-
 @media (max-width: 480px) {
-  .video-scroll-wrapper {
-    padding: 0;
-    margin: 0;
-  }
-  .video-carousel {
-    flex-direction: column;
-    align-items: center;
-    overflow: visible !important;
-    min-width: 0;
-    gap: 0.6rem;
-    padding: 0;
-  }
   .video-card {
     width: 96vw;
-    margin-bottom: 1.3rem;
-    flex: none;
+    min-width: 96vw;
     max-width: 99vw;
   }
   .video-card iframe {
-    height: 180px;
+    height: 100px;
   }
   .video-title {
     font-size: 1rem;
   }
 }
 
+/* General resets for section and carousel */
 .video-section,
 .video-scroll-wrapper,
 .video-carousel {

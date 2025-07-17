@@ -29,7 +29,7 @@ html, body {
   font-weight: 700;
   letter-spacing: 0.05em;
   color: var(--headline-color);
-  margin-bottom: 4.5rem;
+  margin-bottom: 3.5rem;
   position: relative;
   user-select: none;
 }
