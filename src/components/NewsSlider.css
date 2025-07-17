@@ -105,12 +105,15 @@ html, body {
   overflow: hidden;
   z-index: 1;
   scroll-snap-align: start;
-  margin: 0.9rem;
+  margin-top: 0.9rem;
+  margin-bottom: 0.9rem;
+  margin-left: 0.69rem;
+  margin-right: 0.69rem;
 }
 
 .news-card:hover {
   transform: scale(1.05);
-  z-index: 10;
+  z-index: 8;
   border: 1px solid var(--accent-hover);
   box-shadow:
     0 28px 64px rgba(63, 167, 255, 0.28),
