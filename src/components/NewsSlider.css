@@ -20,19 +20,24 @@ html, body {
 /* === Slider Container === */
 .news-card-slider {
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1rem 3rem;
+  padding: 0 2rem 3rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
   box-sizing: border-box;
-  overflow: hidden;
-  position: relative;
+  scrollbar-width: none; /* Firefox */
+}
+.news-card-slider::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
 
 /* === Framer Motion Wrapper === */
 .motion-slider-wrapper {
   display: flex;
-  gap: 1.5rem;
-  padding: 0 0.5rem;
+  gap: 2rem;
+  width: max-content;
+  padding: 0;
   user-select: none;
   cursor: grab;
   will-change: transform;
@@ -40,9 +45,9 @@ html, body {
 
 /* === Card === */
 .news-card {
-  width: 320px;
-  height: 370px;
-  flex-shrink: 0;
+  flex: 0 0 calc((100% - 4rem) / 3); /* Show 3 cards at once with 2rem gap between */
+  max-width: 420px;
+  height: 380px;
   background: linear-gradient(135deg, rgba(15, 25, 38, 0.9), rgba(24, 36, 56, 0.82));
   border: 1px solid var(--card-border);
   border-radius: var(--card-radius);
@@ -57,6 +62,7 @@ html, body {
   overflow: hidden;
   z-index: 1;
   transform-style: preserve-3d;
+  scroll-snap-align: start;
 }
 
 /* === Hover & Glow Effect === */
@@ -143,15 +149,14 @@ html, body {
 /* === Heading === */
 .slider-heading {
   text-align: center;
-  font-family: var(--heading-font);
+  font-family: var(--font-heading);
   font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   color: var(--headline-color);
   margin-bottom: 3.5rem;
   position: relative;
   user-select: none;
-  line-height: 1.1;
 }
 
 .slider-heading::after {
@@ -163,7 +168,7 @@ html, body {
   margin: 0.6rem auto 0;
   border-radius: 2px;
   opacity: 0.9;
-  animation: underlineSlide 1.2s cubic-bezier(.77,0,.18,1) forwards;
+  animation: underlineSlide 1.2s ease forwards;
 }
 
 @keyframes underlineSlide {
@@ -174,25 +179,15 @@ html, body {
 /* === Responsive Cards === */
 @media (max-width: 1280px) {
   .news-card {
-    width: 280px;
+    flex: 0 0 calc((100% - 2rem) / 2); /* Show 2 cards */
     height: 360px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .news-card {
-    width: 240px;
-    height: 340px;
-  }
-  .card-image {
-    height: 140px;
   }
 }
 
 @media (max-width: 768px) {
   .news-card {
-    width: 85vw;
-    max-width: 320px;
+    flex: 0 0 92vw;
+    max-width: 92vw;
     height: 320px;
   }
   .card-image {
@@ -202,7 +197,8 @@ html, body {
 
 @media (max-width: 480px) {
   .news-card {
-    width: 92vw;
+    flex: 0 0 94vw;
+    max-width: 94vw;
     height: 280px;
   }
   .slider-heading {

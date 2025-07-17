@@ -27,34 +27,33 @@ const videoData = [
 
 export default function VideoSection() {
   return (
-    <div class="glass-panel">
-    <section className="video-section">
-      <h2 className="video-heading">Featured Videos</h2>
+    <div className="glass-panel">
+      <section className="video-section">
+        <div className="section-header">
+          <h2 className="video-heading">Featured Videos</h2>
+          <Link to="/videos" className="view-more-button">
+            View All Videos →
+          </Link>
+        </div>
 
-      {/* Scrollable Wrapper */}
-      <div className="video-scroll-wrapper">
+        {/* Scrollable Carousel */}
         <div className="video-carousel">
           {videoData.map((video, index) => (
-            <div className="video-card" key={index}>
-              <iframe
-                src={video.src}
-                title={video.title}
-                allowFullScreen
-                loading="lazy"
-              ></iframe>
+            <article className="video-card" key={index}>
+              <div className="video-frame">
+                <iframe
+                  src={video.src}
+                  title={video.title}
+                  allowFullScreen
+                  loading="lazy"
+                  aria-label={`Video: ${video.title}`}
+                ></iframe>
+              </div>
               <p className="video-title">{video.title}</p>
-            </div>
+            </article>
           ))}
         </div>
-      </div>
-
-      {/* View More Button */}
-      <div className="view-more-wrapper">
-        <Link to="/videos" className="view-more-button">
-          View All Videos →
-        </Link>
-      </div>
-    </section>
+      </section>
     </div>
   );
 }
