@@ -44,35 +44,39 @@ const NewsSlider = () => {
   return (
     <div className="glass-panel">
       <section className="news-card-slider">
+        {/* Fixed Heading outside the drag area */}
         <h2 className="slider-heading">Global Affairs</h2>
 
-        <motion.div
-          className="motion-slider-wrapper"
-          drag="x"
-          dragConstraints={{ left: -2000, right: 0 }}
-          whileTap={{ cursor: "grabbing" }}
-        >
-          {newsData.map((item, i) => (
-            <motion.div
-              className="news-card"
-              key={i}
-              variants={cardVariants}
-              initial="initial"
-              animate="animate"
-              whileHover={{ scale: 1.05 }}
-            >
-              <img
-                src={`${item.image}?auto=format&fit=crop&w=600&q=80`}
-                alt={item.title}
-                className="card-image"
-              />
-              <div className="card-content">
-                <div className="card-title">{item.title}</div>
-                <div className="card-description">{item.description}</div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Drag Wrapper */}
+        <div className="static-slider-container">
+          <motion.div
+            className="motion-slider-wrapper"
+            drag="x"
+            dragConstraints={{ left: -2000, right: 0 }}
+            whileTap={{ cursor: "grabbing" }}
+          >
+            {newsData.map((item, i) => (
+              <motion.div
+                className="news-card"
+                key={i}
+                variants={cardVariants}
+                initial="initial"
+                animate="animate"
+                whileHover={{ scale: 1.05 }}
+              >
+                <img
+                  src={`${item.image}?auto=format&fit=crop&w=600&q=80`}
+                  alt={item.title}
+                  className="card-image"
+                />
+                <div className="card-content">
+                  <div className="card-title">{item.title}</div>
+                  <div className="card-description">{item.description}</div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </section>
     </div>
   );

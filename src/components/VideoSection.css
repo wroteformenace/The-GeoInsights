@@ -89,7 +89,7 @@ html, body {
 .video-carousel {
   display: flex;
   flex-direction: row;
-  gap: clamp(1rem, 2vw, 2rem);
+  gap: clamp(1rem, 2vw, 1rem);
   padding-bottom: 1rem;
   padding-left: 0.2rem;
   scroll-snap-type: x mandatory;
@@ -112,7 +112,7 @@ html, body {
 
 /* ========== VIDEO CARD ========== */
 .video-card {
-  flex: 0 0 clamp(280px, 30%, 400px);
+  flex: 0 0 clamp(240px, 24%, 300px);
   min-width: 0;
   background: linear-gradient(135deg, rgba(15, 25, 38, 0.9), rgba(24, 36, 56, 0.82));
   border: 1px solid var(--card-border);
@@ -216,7 +216,6 @@ html, body {
   position: fixed;
   bottom: 2.5vh;
   right: 2.5vw;
-
   font-family: var(--body-font);
   font-size: 1rem;
   font-weight: 500;
