@@ -93,6 +93,7 @@ html, body {
   animation: fadeSlideUp 0.6s ease forwards;
   opacity: 0;
   transform: translateY(20px);
+  margin-bottom: 1rem;
 }
 
 .briefing-card:hover {
@@ -204,4 +205,3 @@ html, body {
     gap: 1.2rem;
   }
 }
-
