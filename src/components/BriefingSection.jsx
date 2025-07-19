@@ -1,6 +1,28 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import "./BriefingSection.css";
+import {
+  FaChevronLeft,
+  FaChevronRight
+} from "react-icons/fa";
+
+  const scrollLeft = (ref) => {
+    if (ref.current) {
+      ref.current.scrollBy({
+        left: -ref.current.offsetWidth * 0.8,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  const scrollRight = (ref) => {
+    if (ref.current) {
+      ref.current.scrollBy({
+        left: ref.current.offsetWidth * 0.8,
+        behavior: "smooth"
+      });
+    }
+  };
 
 const briefings = [
   {
@@ -47,11 +69,18 @@ const briefings = [
 ];
 
 const BriefingSection = () => {
+  const creatorsRef = useRef(null);
   return (
     <div class="glass-panel">
     <section className="briefing-section">
       <h2 className="briefing-heading">Strategic Briefings</h2>
-      <div className="briefing-list">
+        <button
+             className="scroller-arrow left"
+              onClick={() => scrollLeft(creatorsRef)}
+              >
+            <FaChevronLeft />
+        </button>
+        <div className="briefing-list"  ref={creatorsRef}>    
         {briefings.map((post, index) => (
           <motion.div
             className="briefing-card"
@@ -75,6 +104,12 @@ const BriefingSection = () => {
           </motion.div>
         ))}
       </div>
+           <button
+              className="scroller-arrow right"
+              onClick={() => scrollRight(creatorsRef)}
+            >
+              <FaChevronRight />
+            </button>
     </section>
     </div>
   );

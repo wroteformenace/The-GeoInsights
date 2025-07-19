@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import "./NewsSlider.css";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+
+  const scrollLeft = (ref) => {
+    if (ref.current) {
+      ref.current.scrollBy({
+        left: -ref.current.offsetWidth * 0.8,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  const scrollRight = (ref) => {
+    if (ref.current) {
+      ref.current.scrollBy({
+        left: ref.current.offsetWidth * 0.8,
+        behavior: "smooth"
+      });
+    }
+  };
 
 const newsData = [
   {
@@ -41,14 +61,21 @@ const cardVariants = {
 };
 
 const NewsSlider = () => {
+  const creatorsRef = useRef(null);
   return (
     <div className="glass-panel">
       <section className="news-card-slider">
         {/* Fixed Heading outside the drag area */}
         <h2 className="slider-heading">Global Affairs</h2>
+        <button
+              className="scroller-arrow left"
+              onClick={() => scrollLeft(creatorsRef)}
+            >
+              <FaChevronLeft />
+            </button>
 
         {/* Drag Wrapper */}
-        <div className="static-slider-container">
+        <div className="static-slider-container"  ref={creatorsRef}>
           <motion.div
             className="motion-slider-wrapper"
             drag="x"
@@ -77,6 +104,12 @@ const NewsSlider = () => {
             ))}
           </motion.div>
         </div>
+        <button
+              className="scroller-arrow right"
+              onClick={() => scrollRight(creatorsRef)}
+            >
+              <FaChevronRight />
+            </button>
       </section>
     </div>
   );

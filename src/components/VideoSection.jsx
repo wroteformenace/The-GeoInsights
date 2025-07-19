@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import "./VideoSection.css";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+const scrollLeft = (ref) => {
+  if (ref.current) {
+    ref.current.scrollBy({
+      left: -ref.current.offsetwidth * 0.6,
+      behavior: "smooth"
+    });
+  }
+};
+
+const scrollRight = (ref) => {
+  if(ref.current) {
+    ref.current.scrollBy({
+     left: ref.current.offsetwidth * 0.6,
+     behavior: "smooth"
+    });
+  }
+};
 
 const videoData = [
   {
@@ -26,6 +45,7 @@ const videoData = [
 ];
 
 export default function VideoSection() {
+  const creatorsRef = useRef(null);
   return (
     <div className="glass-panel">
       <section className="video-section">
@@ -36,8 +56,15 @@ export default function VideoSection() {
           </Link>
         </div>
 
+        <button
+              className="scroller-arrow left"
+              onClick={() => scrollLeft(creatorsRef)}
+            >
+              <FaChevronLeft />
+            </button>
+
         {/* Scrollable Carousel */}
-        <div className="video-carousel">
+        <div className="video-carousel" ref={creatorsRef}>
           {videoData.map((video, index) => (
             <article className="video-card" key={index}>
               <div className="video-frame">
@@ -53,6 +80,12 @@ export default function VideoSection() {
             </article>
           ))}
         </div>
+        <button
+              className="scroller-arrow right"
+              onClick={() => scrollRight(creatorsRef)}
+            >
+              <FaChevronRight />
+            </button>
       </section>
     </div>
   );

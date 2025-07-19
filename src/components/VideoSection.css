@@ -94,6 +94,7 @@ html, body {
   padding-left: 0.2rem;
   scroll-snap-type: x mandatory;
   overflow-x: auto;
+  scroll-behavior: smooth;
   box-sizing: border-box;
   align-items: stretch;
   scrollbar-width: thin;
