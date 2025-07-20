@@ -28,9 +28,9 @@ export default function Footer() {
   return (
     <>
       {/* CTA SECTION */}
-      <section
+      {/* <section
   className="footer-cta enhanced-cta"
-  style={{ backgroundImage: `url(${BG})` }}>
+  img src={BG}>
         <div className="cta-glow-bg" />
         <h3 className="cta-title">Stay ahead of the curve.</h3>
         <p className="cta-subtitle">
@@ -50,7 +50,7 @@ export default function Footer() {
         <p className="cta-note">
           Trusted by analysts from <strong>20+ countries</strong>
         </p>
-      </section>
+      </section> */}
 
       {/* FOOTER */}
       <footer className="geo-footer">
@@ -68,7 +68,7 @@ export default function Footer() {
               </p>
               <p className="footer-contact">
                 Phone: 1-800-201-1019<br />
-                Email: support@thegeopulse.com
+                Email: support@thegeoinsights.com
               </p>
             </div>
 
