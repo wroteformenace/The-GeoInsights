@@ -2,7 +2,6 @@ import React, { useState, useMemo } from "react";
 import ContinentSVG from "../assets/Continent.svg"; // Assuming SVG uses paths with IDs
 import { localNews } from "../data/localNews";
 import "./NewsExplorer.css";
-import Footer from "../components/Footer";
 
 const CONTINENTS = ["africa", "europe", "asia", "north america", "south america", "australia", "antarctica", "global"];
 
@@ -81,8 +80,6 @@ const NewsExplorer = () => {
           )}
         </ul>
       </div>
-
-      <Footer />
     </>
   );
 };

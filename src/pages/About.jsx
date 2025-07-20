@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./About.css";
-import Footer from "../components/Footer";
 import { FaGithub, FaLinkedin, FaInstagram, FaCompass } from "react-icons/fa";
 
 const panels = [
@@ -208,7 +207,6 @@ export default function About() {
           </div>
         ))}
       </section>
-      <Footer />
     </div>
   );
 }

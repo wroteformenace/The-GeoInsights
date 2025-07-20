@@ -197,7 +197,6 @@ export default function Videos() {
         </section>
       </div>
 
-      <Footer />
     </div>
   );
 }

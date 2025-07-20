@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Videos from './pages/Videos';
 import About from './pages/About';
 import NewsExplorer from './pages/NewsExplorer';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/news" element={<NewsExplorer />} />
         <Route path="/about" element={<About />} />
       </Routes>
+      <Footer />
     </>
   );
 }

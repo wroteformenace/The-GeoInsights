@@ -4,7 +4,6 @@ import "./Home.css";
 import BriefingSection from "./BriefingSection";
 import NewsSlider from "./NewsSlider";
 import VideoSection from "./VideoSection";
-import Footer from "./Footer";
 import HERO_IMAGE from '../assets/heroimage.png';
 
 const Home = () => {
@@ -45,8 +44,6 @@ const Home = () => {
 
       {/* Video Section */}
       <VideoSection />
-
-      <Footer />
     </>
   );
 };

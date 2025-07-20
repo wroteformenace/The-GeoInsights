@@ -23,8 +23,7 @@
     "react-router-dom": "^7.6.2",
     "react-swipeable": "^7.0.2",
     "react-youtube": "^10.1.0",
-    "swiper": "^11.2.8",
-    "three": "^0.177.0"
+    "swiper": "^11.2.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
