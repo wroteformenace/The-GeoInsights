@@ -224,3 +224,8 @@
     font-size: 1.5rem;
   }
 }
+
+.logo{
+  display: flex;
+  width: 150px;
+}
