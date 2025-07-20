@@ -8,6 +8,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import Logo from "../assets/logo.png";
+import BG from "../assets/CTA.png";
 
 export default function Footer() {
   useEffect(() => {
@@ -27,7 +28,9 @@ export default function Footer() {
   return (
     <>
       {/* CTA SECTION */}
-      <section className="footer-cta enhanced-cta">
+      <section
+  className="footer-cta enhanced-cta"
+  style={{ backgroundImage: `url(${BG})` }}>
         <div className="cta-glow-bg" />
         <h3 className="cta-title">Stay ahead of the curve.</h3>
         <p className="cta-subtitle">
