@@ -1,0 +1,159 @@
+/* =========================
+   GLOBAL THEME SETUP
+   ========================= */
+
+:root {
+  /* === LIGHT MODE (Default) === */
+
+  /* === Background Gradient Base === */
+  --bg-gradient: linear-gradient(180deg, #9fbce9 0%, #d5e7f8 40%, #eaf4fc 100%);
+  --bg-primary: #eaf4fc;
+  --bg-secondary: #d5e7f8;
+
+  /* === Card/Glass Base === */
+  --card-bg: rgba(255, 255, 255, 0.94);        /* soft neutral white */
+  --glass-bg: rgba(240, 245, 250, 0.7);        /* gentle bluish overlay */
+  --card-border: rgba(120, 160, 200, 0.12);    /* muted steel blue */
+  --glass-border: rgba(120, 160, 200, 0.2);    
+  --card-shadow: 0 12px 24px rgba(90, 140, 180, 0.12);
+
+  /* === Accent Colors === */
+  --accent: #5A9BEF;                            /* softened blue */
+  --accent-hover: #94C4F5;
+  --button-text: #19344D;
+  --button-bg-hover: rgba(90, 155, 230, 0.1);
+
+  /* === Typography === */
+  --headline-color: #1F2E45;                   /* deep mild navy */
+  --desc-color: #4A5F73;                       /* steel gray-blue */
+  --font-heading: 'Space Grotesk', 'Inter', sans-serif;
+  --body-font: 'Inter', sans-serif;
+  --section-title: 'Oswald', 'Anton', sans-serif;
+
+  /* === UI Styling === */
+  --card-radius: 18px;
+  --transition: all 0.3s ease;
+  --shadow: 0 18px 42px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+   DARK MODE OVERRIDES
+   ========================= */
+
+[data-theme="dark"] {
+  --bg-gradient: linear-gradient(180deg, #12161D, #1C222B);
+  --bg-primary: #12161D;
+  --bg-secondary: #1C222B;
+
+  --card-bg: rgba(20, 24, 30, 0.85);
+  --glass-bg: rgba(26, 30, 36, 0.75);
+  --card-border: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.07);
+  --card-shadow: 0 18px 42px rgba(0, 229, 255, 0.12);
+
+  --accent: #74E4FF;
+  --accent-hover: #45BCD9;
+  --button-text: #dff6ff;
+  --button-bg-hover: rgba(116, 228, 255, 0.1);
+
+  --headline-color: #DAF1FF;
+  --desc-color: #A3B6C5;
+
+  --brand-accent: #00b0ff;
+  --hover-accent: #00e0ff;
+  --hover-accent-2: #26c6da;
+  --glass-bg-blur: rgba(18, 20, 24, 0.45);
+  --glass-inner: rgba(255, 255, 255, 0.04);
+
+  --shadow: 0 18px 42px rgba(0, 229, 255, 0.1);
+}
+
+/* =========================
+   BODY STYLING & GRADIENT
+   ========================= */
+
+body {
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  font-family: var(--body-font);
+  color: var(--desc-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: var(--transition);
+  animation: gradientDrift 25s ease infinite;
+}
+
+@keyframes gradientDrift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   UTIL CLASSES (OPTIONAL)
+   ========================= */
+
+.heading {
+  font-family: var(--font-heading);
+  color: var(--headline-color);
+}
+
+.section-title {
+  font-family: var(--section-title);
+  color: var(--accent);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+}
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+  border-radius: var(--card-radius);
+}
+
+/* =========================
+   NAVBAR (Dark Always)
+   ========================= */
+
+.navbar {
+  --brand-accent: #00b0ff;
+  --hover-accent: #00e0ff;
+  --navbar-text: #e0f7fa;
+
+  background: rgba(18, 20, 24, 0.75);
+  color: var(--navbar-text);
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.navbar a {
+  color: var(--navbar-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: var(--hover-accent);
+}
+
+/* =========================
+   TOGGLE THEME VIA JS
+   ========================= */
+
+/* JS:
+document.documentElement.setAttribute('data-theme', 'dark');
+document.documentElement.removeAttribute('data-theme');
+*/
+
