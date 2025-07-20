@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { NavLink, Link } from "react-router-dom";
+import logo from '../assets/logo.png';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,7 +25,7 @@ export default function Navbar() {
     <div className={`navbar-container${scrolled ? " sticky" : ""}`}>
       <nav className="navbar" aria-label="Main navigation">
         <Link to="/" className="brand" tabIndex={0}>
-         <img className="logo" src="../assets/logo.png" alt="TheGeoInsights"></img>
+         <img className="logo" src={logo} alt="TheGeoInsights"></img>
         </Link>
 
         {/* Hamburger */}
