@@ -8,7 +8,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import Logo from "../assets/logo.png";
-import BG from "../assets/CTA.png";
+// import BG from "../assets/CTA.png";
 
 export default function Footer() {
   useEffect(() => {

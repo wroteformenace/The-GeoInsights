@@ -57,7 +57,7 @@ html {
 }
 
 .footer-logo img {
-  height: 50px;
+  height: 100px;
   object-fit: contain;
   filter: drop-shadow(0 0 10px rgba(63, 167, 255, 0.2));
   transition: transform 0.3s ease, filter 0.3s ease;
