@@ -4,7 +4,7 @@ import "./Home.css";
 import BriefingSection from "./BriefingSection";
 import NewsSlider from "./NewsSlider";
 import VideoSection from "./VideoSection";
-import HERO_IMAGE from '../assets/heroimage.png';
+import HERO_IMAGE from '../assets/Herovideo.mp4';
 
 const Home = () => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -20,7 +20,14 @@ const Home = () => {
       {/* HERO */}
       <section className="hero">
         <div className="hero-inner">
-          <img src={HERO_IMAGE} alt="News Hero" className="hero-image" draggable="false" />
+          <video src={HERO_IMAGE}  autoPlay
+      loop
+      muted
+      playsInline
+      style={{ width: '100%', height: 'auto' }}
+    >
+      Your browser does not support the video tag.
+    </video>
           <div className="overlay" />
           <div className="hero-content">
             <h1>Inside the Pulse of the Planet</h1>
