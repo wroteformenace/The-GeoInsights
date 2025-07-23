@@ -75,7 +75,7 @@ const BriefingSection = () => {
     <section className="briefing-section">
       <h2 className="briefing-heading">Strategic Briefings</h2>
         <button
-             className="scroller-arrow left"
+             className="arrow left"
               onClick={() => scrollLeft(creatorsRef)}
               >
             <FaChevronLeft />
@@ -105,7 +105,7 @@ const BriefingSection = () => {
         ))}
       </div>
            <button
-              className="scroller-arrow right"
+              className="arrow right"
               onClick={() => scrollRight(creatorsRef)}
             >
               <FaChevronRight />

@@ -20,11 +20,11 @@ const Home = () => {
       {/* HERO */}
       <section className="hero">
         <div className="hero-inner">
-          <video src={HERO_IMAGE}  autoPlay
+          <video src={HERO_IMAGE} className="hero-image" 
+      autoPlay
       loop
       muted
       playsInline
-      style={{ width: '100%', height: 'auto' }}
     >
       Your browser does not support the video tag.
     </video>

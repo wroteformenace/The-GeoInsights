@@ -68,7 +68,7 @@ const NewsSlider = () => {
         {/* Fixed Heading outside the drag area */}
         <h2 className="slider-heading">Global Affairs</h2>
         <button
-              className="scroller-arrow left"
+              className="arrow left"
               onClick={() => scrollLeft(creatorsRef)}
             >
               <FaChevronLeft />
@@ -105,7 +105,7 @@ const NewsSlider = () => {
           </motion.div>
         </div>
         <button
-              className="scroller-arrow right"
+              className="arrow right"
               onClick={() => scrollRight(creatorsRef)}
             >
               <FaChevronRight />

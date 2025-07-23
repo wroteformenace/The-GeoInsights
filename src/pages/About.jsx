@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./About.css";
-import { FaGithub, FaLinkedin, FaInstagram, FaCompass } from "react-icons/fa";
 
 const panels = [
   {
@@ -53,116 +52,9 @@ export default function About() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent scroll when mobile dock is open
-  useEffect(() => {
-    if (showMobileDock) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [showMobileDock]);
 
   return (
     <div className="about-wrapper">
-      {/* Desktop Compass Dock */}
-      <nav className="social-compass-dock" aria-label="Social links">
-        <div className="compass-circle">
-          <a
-            href="https://github.com/wroteformenace"
-            className="compass-point github"
-            aria-label="GitHub"
-            target="_blank"
-            rel="noopener noreferrer"
-            tabIndex={0}
-          >
-            <FaGithub />
-            <span>GitHub</span>
-          </a>
-          <a
-            href="https://linkedin.com/in/yourprofile"
-            className="compass-point linkedin"
-            aria-label="LinkedIn"
-            target="_blank"
-            rel="noopener noreferrer"
-            tabIndex={0}
-          >
-            <FaLinkedin />
-            <span>LinkedIn</span>
-          </a>
-          <a
-            href="https://instagram.com/yourprofile"
-            className="compass-point instagram"
-            aria-label="Instagram"
-            target="_blank"
-            rel="noopener noreferrer"
-            tabIndex={0}
-          >
-            <FaInstagram />
-            <span>Instagram</span>
-          </a>
-          <span className="compass-arrow" aria-hidden="true" />
-        </div>
-      </nav>
-
-      {/* Mobile Compass Button & Overlay */}
-      <div className="mobile-compass-container">
-        <button
-          className="mobile-compass-toggle"
-          onClick={() => setShowMobileDock(true)}
-          aria-label="Open social menu"
-        >
-          <FaCompass />
-        </button>
-
-        {showMobileDock && (
-          <div
-            className="mobile-compass-overlay"
-            onClick={() => setShowMobileDock(false)}
-            aria-label="Close social menu"
-            tabIndex={-1}
-          >
-            <div
-              className="compass-circle mobile"
-              onClick={e => e.stopPropagation()}
-            >
-              <a
-                href="https://github.com/wroteformenace"
-                className="compass-point github"
-                aria-label="GitHub"
-                target="_blank"
-                rel="noopener noreferrer"
-                tabIndex={0}
-              >
-                <FaGithub />
-              </a>
-              <a
-                href="https://linkedin.com/in/yourprofile"
-                className="compass-point linkedin"
-                aria-label="LinkedIn"
-                target="_blank"
-                rel="noopener noreferrer"
-                tabIndex={0}
-              >
-                <FaLinkedin />
-              </a>
-              <a
-                href="https://instagram.com/yourprofile"
-                className="compass-point instagram"
-                aria-label="Instagram"
-                target="_blank"
-                rel="noopener noreferrer"
-                tabIndex={0}
-              >
-                <FaInstagram />
-              </a>
-              <span className="compass-arrow" aria-hidden="true" />
-            </div>
-          </div>
-        )}
-      </div>
 
       {/* Hero Section */}
       <header className="about-hero">

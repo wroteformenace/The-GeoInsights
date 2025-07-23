@@ -6,11 +6,12 @@ import Videos from './pages/Videos';
 import About from './pages/About';
 import NewsExplorer from './pages/NewsExplorer';
 import Footer from './components/Footer';
-
+import CompassDock from './pages/CompassDock';
 function App() {
   return (
     <>
       <Navbar />
+      <CompassDock />
       <Routes>
         <Route path="/" element={<Home />} />          {/* ✅ Default route */}
         <Route path="/videos" element={<Videos />} />  {/* ✅ Videos route */}

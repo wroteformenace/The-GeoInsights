@@ -57,7 +57,7 @@ export default function VideoSection() {
         </div>
 
         <button
-              className="scroller-arrow left"
+              className="arrow left"
               onClick={() => scrollLeft(creatorsRef)}
             >
               <FaChevronLeft />
@@ -81,7 +81,7 @@ export default function VideoSection() {
           ))}
         </div>
         <button
-              className="scroller-arrow right"
+              className="arrow right"
               onClick={() => scrollRight(creatorsRef)}
             >
               <FaChevronRight />

@@ -40,6 +40,7 @@ body {
   font-size: clamp(3rem, 8vw, 5rem);
   font-weight: 900;
   letter-spacing: 0.12em;
+  line-height: 1.2;
   background: linear-gradient(90deg, var(--accent), var(--accent-light));
   background-clip: text;
   -webkit-background-clip: text;
@@ -48,8 +49,10 @@ body {
   filter: drop-shadow(0 0 6px #3fa7ff88);
   position: relative;
   animation: slideIn 0.9s ease forwards;
+  overflow: hidden;
 }
 
+/* Underline appears with its own animation */
 .ne-heading::after {
   content: "";
   position: absolute;
@@ -61,13 +64,22 @@ body {
   background: linear-gradient(90deg, var(--accent), var(--accent-light));
   box-shadow: 0 0 10px var(--accent-light);
   transform: translateX(-50%);
-  transition: width 0.5s ease;
+  animation: underlineGrow 0.6s ease-in-out 0.5s forwards; /* triggers once */
 }
 
-.ne-heading:hover::after {
-  width: 50%;
+/* Only runs once after delay, doesn’t reverse */
+@keyframes underlineGrow {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 60%;
+    opacity: 1;
+  }
 }
 
+/* Slide-in entrance animation */
 @keyframes slideIn {
   0% {
     transform: translateY(-16px);
@@ -79,13 +91,14 @@ body {
   }
 }
 
+
 /* Map Section */
 .ne-map-section {
   background: var(--bg-glass-dark);
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(63, 167, 255, 0.15);
-  padding: 1.6rem 1.2rem;
+  padding: 1rem 1.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,7 +119,7 @@ body {
 .map-wrapper {
   position: relative;
   width: 100%;
-  max-width: 880px;
+  max-width: 1040px;
   aspect-ratio: 16 / 9;
 }
 .continent-img {
@@ -154,11 +167,11 @@ body {
 .map-button[data-continent="africa"] { top: 62%; left: 56%; }
 .map-button[data-continent="europe"] { top: 23%; left: 55%; }
 .map-button[data-continent="asia"] { top: 30%; left: 75%; }
-.map-button[data-continent="north america"] { top: 25%; left: 21%; }
-.map-button[data-continent="south america"] { top: 68%; left: 31%; }
+.map-button[data-continent="north america"] { top: 25%; left: 16%; }
+.map-button[data-continent="south america"] { top: 68%; left: 25%; }
 .map-button[data-continent="australia"] { top: 70%; left: 88%; }
 .map-button[data-continent="antarctica"] { top: 95%; left: 50%; }
-.map-button[data-continent="global"] { top: 7%; left: 50%; }
+.map-button[data-continent="global"] { top: 3%; left: 50%; }
 
 /* Clear Button */
 .ne-clear-btn {

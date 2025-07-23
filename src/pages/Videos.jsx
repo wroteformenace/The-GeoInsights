@@ -7,7 +7,6 @@ import {
   FaChevronLeft,
   FaChevronRight
 } from "react-icons/fa";
-import Footer from "../components/Footer";
 import {
   featuredCreators,
   latestVideos,

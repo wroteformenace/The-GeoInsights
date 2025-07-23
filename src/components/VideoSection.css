@@ -34,6 +34,49 @@ html, body {
   background: transparent;
   box-sizing: border-box;
 }
+/* Arrow button styling specific to briefing carousel */
+.video-section .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(35, 60, 100, 0.5);
+  color: #72d0ff;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.25s ease;
+}
+
+.video-section .arrow:hover {
+  background-color: rgba(80, 160, 255, 0.25);
+  color: #b8e8ff;
+  transform: translateY(-50%) scale(1.1);
+  opacity: 1;
+  box-shadow: 0 0 14px rgba(114, 220, 255, 0.4);
+}
+
+.video-section .arrow.left {
+  left: 12px;
+}
+
+.video-section .arrow.right {
+  right: 12px;
+}
+
+@media (max-width: 768px) {
+  .video-section .arrow {
+    display: none;
+  }
+}
 
 .video-heading {
   text-align: center;

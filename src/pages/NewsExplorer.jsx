@@ -28,11 +28,12 @@ const NewsExplorer = () => {
   return (
     <>
       <div className="news-explorer">
-        <h1 className="ne-heading">Global News</h1>
+        
 
         {/* === Continent Filter === */}
         <div className="ne-map-section">
-          <label className="continent-filter-label">Select a Continent:</label>
+          {/* <label className="continent-filter-label">Select a Continent:</label> */}
+          <h1 className="ne-heading">Global News</h1>
 
           <div className="map-wrapper">
           <img src={ContinentSVG} alt="World Map" className="continent-img" />
