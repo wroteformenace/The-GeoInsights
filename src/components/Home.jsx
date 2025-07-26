@@ -5,6 +5,7 @@ import BriefingSection from "./BriefingSection";
 import NewsSlider from "./NewsSlider";
 import VideoSection from "./VideoSection";
 import HERO_IMAGE from '../assets/Herovideo.mp4';
+import NewsBubbles from "./NewsBubble";
 
 const Home = () => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -20,23 +21,26 @@ const Home = () => {
       {/* HERO */}
       <section className="hero">
         <div className="hero-inner">
-          <video src={HERO_IMAGE} className="hero-image" 
-      autoPlay
-      loop
-      muted
-      playsInline
-    >
-      Your browser does not support the video tag.
-    </video>
+         <video
+  src={HERO_IMAGE}
+  className="hero-image"
+  autoPlay
+  loop
+  muted
+  playsInline
+  alt="hero image"
+/>
+                     
+           <NewsBubbles />
           <div className="overlay" />
-          <div className="hero-content">
+          {/* <div className="hero-content">
             <h1>Inside the Pulse of the Planet</h1>
             <p>Global headlines, community blogs, and deep analysis — all in one intelligent hub, curated just for you.</p>
             <button>
               Explore Now
               <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 5l5 5-5 5" /></svg>
             </button>
-          </div>
+          </div> */}
         </div>
       </section>
 
