@@ -13,8 +13,8 @@ function App() {
       <Navbar />
       <CompassDock />
       <Routes>
-        <Route path="/" element={<Home />} />          {/* ✅ Default route */}
-        <Route path="/videos" element={<Videos />} />  {/* ✅ Videos route */}
+        <Route path="/" element={<Home />} />         
+        <Route path="/videos" element={<Videos />} />  
         <Route path="/news" element={<NewsExplorer />} />
         <Route path="/about" element={<About />} />
       </Routes>

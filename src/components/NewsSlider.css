@@ -37,7 +37,7 @@ html, body {
 /* Arrow button styling specific to briefing carousel */
 .news-card-slider .arrow {
   position: absolute;
-  top: 55%;
+  top: 65%;
   transform: translateY(-50%);
   z-index: 5;
   width: 44px;
@@ -52,7 +52,7 @@ html, body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 1;
   transition: all 0.25s ease;
 }
 
@@ -210,10 +210,10 @@ html, body {
 
 /* === Title === */
 .card-title {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--headline-color);
-  font-family: var(--section-title);
+  font-family: 'Inter';
   text-transform: uppercase;
   letter-spacing: 0.045em;
   line-height: 1.4;

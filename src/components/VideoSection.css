@@ -37,7 +37,7 @@ html, body {
 /* Arrow button styling specific to briefing carousel */
 .video-section .arrow {
   position: absolute;
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
   z-index: 5;
   width: 44px;
@@ -52,7 +52,7 @@ html, body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 1;
   transition: all 0.25s ease;
 }
 
