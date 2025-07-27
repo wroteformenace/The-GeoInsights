@@ -4,8 +4,8 @@ import "./Home.css";
 import BriefingSection from "./BriefingSection";
 import NewsSlider from "./NewsSlider";
 import VideoSection from "./VideoSection";
-import HERO_IMAGE from '../assets/Herovideo.mp4';
-import NewsBubbles from "./NewsBubble";
+import HERO_IMAGE from '../assets/hero-image.png';
+// import NewsBubbles from "./NewsBubble";
 
 const Home = () => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -21,17 +21,17 @@ const Home = () => {
       {/* HERO */}
       <section className="hero">
         <div className="hero-inner">
-         <video
+         <img
   src={HERO_IMAGE}
   className="hero-image"
-  autoPlay
-  loop
-  muted
-  playsInline
+  // autoPlay
+  // loop
+  // muted
+  // playsInline
   alt="hero image"
 />
                      
-           <NewsBubbles />
+           {/* <NewsBubbles /> */}
           <div className="overlay" />
           {/* <div className="hero-content">
             <h1>Inside the Pulse of the Planet</h1>
