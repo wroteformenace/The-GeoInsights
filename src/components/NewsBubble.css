@@ -16,7 +16,7 @@
   border-radius: 50%;
   width: 80px;
   height: 80px;
-  font-size: 12px;
+  font-size: 17px;
   text-align: center;
   padding: 10px;
   color: var(--headline);
@@ -46,7 +46,6 @@
     0 8px 24px rgba(0, 229, 255, 0.4),
     0 0 35px rgba(0, 229, 255, 0.25);
 }
-
 
 /* Responsive */
 @media (max-width: 768px) {

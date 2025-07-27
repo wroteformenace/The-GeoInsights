@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import "./NewsBubble.css";
 
@@ -40,7 +39,7 @@ const NewsBubbles = () => {
         const xDrift = Math.random() * 100 - 50;
         const yDrift = Math.random() * 100 - 50;
         const delay = Math.random() * 3;
-        const size = 90;
+        const size = 100;
         return (
           <motion.a
             key={index}
