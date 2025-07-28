@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import ContinentSVG from "../assets/Continent.svg"; // Assuming SVG uses paths with IDs
 import { localNews } from "../data/localNews";
 import "./NewsExplorer.css";
+import NewsBubbles from "../components/NewsBubble";
 
 const CONTINENTS = ["africa", "europe", "asia", "north america", "south america", "australia", "antarctica", "global"];
 
@@ -31,14 +32,15 @@ const NewsExplorer = () => {
         
 
         {/* === Continent Filter === */}
-        <div className="ne-map-section">
+        {/* <div className="ne-map-section"> */}
           {/* <label className="continent-filter-label">Select a Continent:</label> */}
           <h1 className="ne-heading">Global News</h1>
 
-          <div className="map-wrapper">
-          <img src={ContinentSVG} alt="World Map" className="continent-img" />
+          {/* <div className="map-wrapper"> */}
+          {/* <img src={ContinentSVG} alt="World Map" className="continent-img" /> */}
+          <NewsBubbles />
           
-          {CONTINENTS.map((continent) => (
+          {/* {CONTINENTS.map((continent) => (
             <button
               key={continent}
               className={`map-button ${
@@ -49,8 +51,8 @@ const NewsExplorer = () => {
             >
               {continent.charAt(0).toUpperCase() + continent.slice(1)}
             </button>
-          ))}
-        </div>
+          ))} */}
+        {/* </div> */}
 
 
           {/* Clear Filter */}
@@ -62,7 +64,7 @@ const NewsExplorer = () => {
               Clear Filter ({selectedContinent})
             </button>
           )}
-        </div>
+        {/* </div> */}
 
         {/* === News List === */}
         <ul className="news-list">

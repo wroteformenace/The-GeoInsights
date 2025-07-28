@@ -48,7 +48,8 @@ font-weight: 700;
 letter-spacing: 0.05em;
 color: var(--headline-color);
 margin-top: 0; /* removed top margin */
-margin-bottom: 1rem; /* reduced bottom margin */
+margin-bottom: 2rem; /* reduced bottom margin */
+margin-top: 5rem;
 position: relative;
 user-select: none;
 }
