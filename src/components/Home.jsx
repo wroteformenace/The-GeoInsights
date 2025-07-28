@@ -5,6 +5,7 @@ import BriefingSection from "./BriefingSection";
 import NewsSlider from "./NewsSlider";
 import VideoSection from "./VideoSection";
 import HERO_IMAGE from '../assets/hero-image.png';
+import { CommodityTicker } from "./CommodityTicker";
 // import NewsBubbles from "./NewsBubble";
 
 const Home = () => {
@@ -30,7 +31,7 @@ const Home = () => {
   // playsInline
   alt="hero image"
 />
-                     
+
            {/* <NewsBubbles /> */}
           <div className="overlay" />
           {/* <div className="hero-content">
@@ -44,8 +45,11 @@ const Home = () => {
         </div>
       </section>
 
+      <CommodityTicker />
+
       {/* Section Separator */}
       <div className="section-separator" />
+
 
       {/* News Slider */}
       <NewsSlider />
