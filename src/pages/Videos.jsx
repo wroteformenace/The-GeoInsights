@@ -51,7 +51,7 @@ export default function Videos() {
 
   return (
     <div className="videos-page">
-      <header className="videos-header">
+      {/* <header className="videos-header">
         <h1 className="videos-title">
           <span className="letter">VIDE</span>
           <span className="globe-wrap">
@@ -60,7 +60,7 @@ export default function Videos() {
           <span className="letter">S</span>
           <FaPlay className="play-icon" />
         </h1>
-      </header>
+      </header> */}
 
       {/* === Featured Creators === */}
       <div className="glass-panel">
