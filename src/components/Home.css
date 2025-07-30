@@ -316,9 +316,9 @@ buttoon:hover {
   background: var(--glass);
   backdrop-filter: blur(12px);
   border-radius: var(--radius) var(--radius) 0 0;
-  padding: 1rem 2rem;
+  padding: 1.5rem 3rem; /* increased padding */
   box-shadow: var(--glass-shadow);
-  max-width: 80%;
+  max-width: 100%;
   justify-content: space-around;
   align-items: center;
   border: 1px solid var(--border-glass);
@@ -327,7 +327,7 @@ buttoon:hover {
 .ticker-item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem; /* increased gap */
   color: var(--headline);
   transition: var(--transition);
 }
@@ -337,19 +337,19 @@ buttoon:hover {
 }
 
 .ticker-item img {
-  height: 24px;
-  width: 24px;
+  height: 32px; /* increased height */
+  width: 32px;  /* increased width */
   filter: drop-shadow(0 1px 1px rgba(0,0,0,0.5));
 }
 
 .commodity-name {
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 1rem; /* increased font size */
   color: var(--accent-soft);
 }
 
 .commodity-price {
-  font-size: 0.75rem;
+  font-size: 0.875rem; /* increased font size */
   color: var(--subtext);
 }
 

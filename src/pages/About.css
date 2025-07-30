@@ -11,6 +11,19 @@
 }
 
 /* --- Desktop Compass Dock --- */
+:root {
+  --compass-bg: rgba(16, 27, 40, 0.92);
+  --compass-glow: #38bdf8cc;
+  --compass-border: #38bdf8aa;
+  --compass-pulse: #67e8f9;
+  --icon-bg: #1c2a3a;
+  --icon-hover-bg: #22394d;
+  --icon-color: #38bdf8;
+  --icon-hover: #67e8f9;
+  --label-bg: #101b28ee;
+}
+
+/* --- Desktop Compass Dock --- */
 .social-compass-dock {
   position: fixed;
   top: 50%;
@@ -781,5 +794,297 @@
 @media (max-width: 768px) {
   .social-compass-dock {
     display: none;
+  }
+}
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #0e141b 0%, #1a2a3c 100%);
+  --panel-bg: rgba(255, 255, 255, 0.10);
+  --panel-glass: blur(10px) saturate(120%);
+  --bubble-gradient: linear-gradient(135deg, #38bdf8 60%, #3b82f6 100%);
+  --bubble-label: #0a1623;
+  --headline-accent: #38bdf8;
+  --headline-highlight: #67e8f9;
+  --panel-title: #38bdf8;
+  --text-main: #eaf6ff;
+  --text-sub: #cbe7ff;
+  --belief-quote: #67e8f9;
+  --belief-bg: linear-gradient(100deg, #1a293a 70%, #38bdf822 100%);
+  --social-bg: #101b28;
+  --social-accent: #38bdf8;
+  --social-hover: #67e8f9;
+  --shadow: 0 8px 32px #38bdf833;
+  --glass-border: 1.5px solid #3b82f633;
+  font-family: 'DM Sans', 'Inter', sans-serif;
+}
+
+/* --- Base --- */
+.about-wrapper {
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* --- Hero --- */
+.about-hero {
+  text-align: center;
+  padding: 5rem 1rem 3rem;
+  position: relative;
+  z-index: 5;
+}
+
+.kinetic-headline {
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -2px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2em;
+  opacity: 0;
+  animation: fadeInUp 1.2s 0.1s forwards;
+  filter: drop-shadow(0 2px 16px #38bdf844);
+  margin-top: 7%;
+}
+
+.kinetic-headline .highlight {
+  color: #0a1623;
+  background: linear-gradient(90deg, var(--headline-accent) 60%, var(--headline-highlight) 100%);
+  border-radius: 0.3em;
+  padding: 0 0.2em;
+  box-shadow: 0 2px 18px #38bdf833;
+}
+
+.hero-sub {
+  max-width: 540px;
+  margin: 2rem auto 0;
+  font-size: 1.25rem;
+  color: var(--text-sub);
+  opacity: 0;
+  animation: fadeInUp 1.4s 0.6s forwards;
+  filter: drop-shadow(0 1px 6px #38bdf844);
+}
+
+@keyframes fadeInUp {
+  0% { transform: translateY(40px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Slide Panels Section --- */
+/* === Slide Panels === */
+.slide-panels-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+  padding: 6rem 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  z-index: 3;
+  position: relative;
+}
+
+.slide-panel {
+  max-width: 100%;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease-out;
+  will-change: transform, opacity;
+}
+
+.slide-panel.left-panel {
+  text-align: left;
+  transform: translateX(-100px);
+}
+
+.slide-panel.right-panel {
+  text-align: right;
+  transform: translateX(100px);
+}
+
+.slide-panel.slide-in-left,
+.slide-panel.slide-in-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-content {
+  color: var(--text-main);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  padding: 0 1rem;
+}
+
+.slide-content h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--panel-title);
+  text-shadow: 0 2px 12px #0a162355;
+  margin-bottom: 0.5rem;
+}
+
+.slide-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-sub);
+  max-width: 760px;
+  text-shadow: 0 1px 4px #101b2844;
+}
+
+
+.slide-panel p {
+  font-size: 1.13rem;
+  color: var(--text-main);
+  position: relative;
+  z-index: 1;
+  line-height: 1.7;
+}
+
+/* --- Stat Bubbles --- */
+.stats-bubbles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4rem;
+  padding: 5rem 1rem;
+  position: relative;
+  z-index: 3;
+  background: radial-gradient(circle at center, #1a2a3c 0%, transparent 90%);
+  perspective: 800px;
+  overflow: visible;
+}
+
+.stat-bubble {
+  width: 120px;
+  height: 120px;
+  background: var(--bubble-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(80px) scale(0.8) rotate(-4deg);
+  animation: floatIn 0.8s forwards;
+  box-shadow:
+    0 0 0.5rem #67e8f944,
+    0 0 2rem #38bdf855,
+    inset 0 0 1.2rem #67e8f955;
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+  border: 2px solid #67e8f922;
+  backdrop-filter: blur(3px) saturate(140%);
+}
+
+.stat-bubble.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0deg);
+}
+
+.stat-bubble:hover {
+  transform: scale(1.1) rotate(1deg);
+  box-shadow:
+    0 0 0.7rem #67e8f977,
+    0 0 2.5rem #38bdf888,
+    inset 0 0 1.6rem #67e8f9aa;
+}
+
+.bubble-number {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 2px 12px #101b2866;
+}
+
+.bubble-label {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--bubble-label);
+  opacity: 0.9;
+  text-shadow: 0 1px 2px #00000022;
+  letter-spacing: 0.4px;
+  margin-top: 0.2rem;
+}
+.stats-bubbles::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 90%;
+  height: 100%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, #38bdf811 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(50px);
+  z-index: 1;
+}
+
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(80px) scale(0.8) rotate(-4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .stat-bubble {
+    width: 85px;
+    height: 85px;
+    font-size: 1rem;
+  }
+  .social-dock-vertical {
+    left: 1rem;
+  }
+  .slide-panel {
+    padding: 2rem 1.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-hero {
+    padding: 3.5rem 0.5rem 2rem;
+  }
+  .social-dock-vertical {
+    display: none;
+  }
+  .slide-panel h2 {
+    font-size: 1.3rem;
+  }
+  .slide-panel p {
+    font-size: 1rem;
+  }
+  .slide-panels-section {
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 700px) {
+  .slide-content h2 {
+    font-size: 1.5rem;
+  }
+  .slide-content p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+}
+@media (max-width: 600px) {
+  .stat-bubble {
+    width: 90px;
+    height: 90px;
+    font-size: 1rem;
+  }
+  .bubble-number {
+    font-size: 1.6rem;
+  }
+  .bubble-label {
+    font-size: 0.9rem;
   }
 }

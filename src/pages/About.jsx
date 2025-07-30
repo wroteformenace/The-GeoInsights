@@ -26,37 +26,32 @@ const stats = [
 export default function About() {
   const statRefs = useRef([]);
   const panelRefs = useRef([]);
-  const [showMobileDock, setShowMobileDock] = useState(false);
 
-  // Animate stats and panels on scroll
   useEffect(() => {
-    const handleScroll = () => {
-      statRefs.current.forEach((ref) => {
-        if (!ref) return;
-        const rect = ref.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80) {
-          ref.classList.add("visible");
-        }
-      });
+    const revealOnScroll = () => {
+      const threshold = window.innerHeight - 100;
 
       panelRefs.current.forEach((ref, i) => {
-        if (!ref) return;
-        const rect = ref.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80) {
+        if (ref && ref.getBoundingClientRect().top < threshold) {
           ref.classList.add(i % 2 === 0 ? "slide-in-left" : "slide-in-right");
         }
       });
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
+      statRefs.current.forEach((ref) => {
+        if (ref && ref.getBoundingClientRect().top < threshold) {
+          ref.classList.add("visible");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", revealOnScroll, { passive: true });
+    revealOnScroll();
+    return () => window.removeEventListener("scroll", revealOnScroll);
+  }, []);
 
   return (
     <div className="about-wrapper">
-
-      {/* Hero Section */}
+      {/* Hero */}
       <header className="about-hero">
         <h1 className="kinetic-headline">
           <span>Geo-Intelligence</span>
@@ -68,30 +63,29 @@ export default function About() {
         </p>
       </header>
 
-      {/* Sliding Panels Left/Right */}
+      {/* Panels */}
       <section className="slide-panels-section">
         {panels.map((panel, i) => (
           <div
-            className={`slide-panel ${i % 2 === 0 ? "left-panel" : "right-panel"}`}
             key={i}
-            ref={el => (panelRefs.current[i] = el)}
+            ref={(el) => (panelRefs.current[i] = el)}
+            className={`slide-panel ${i % 2 === 0 ? "left-panel" : "right-panel"}`}
           >
-           <div className="glass-panel">
-            <h2>{panel.title}</h2>
-            <p>{panel.text}</p>
+            <div className="glass-panel">
+              <h2>{panel.title}</h2>
+              <p>{panel.text}</p>
             </div>
           </div>
         ))}
       </section>
 
-
-      {/* Stats Bubbles */}
+      {/* Stats */}
       <section className="stats-bubbles">
         {stats.map((stat, i) => (
           <div
-            className="stat-bubble"
             key={i}
-            ref={el => (statRefs.current[i] = el)}
+            ref={(el) => (statRefs.current[i] = el)}
+            className="stat-bubble"
             style={{ animationDelay: `${i * 0.3 + 0.5}s` }}
           >
             <div className="bubble-number">{stat.value}</div>
