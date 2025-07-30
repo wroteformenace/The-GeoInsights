@@ -21,7 +21,20 @@ const Home = () => {
 
       {/* HERO */}
       <section className="hero">
-        <header className="about-hero">
+        <div className="hero-inner">
+         <img
+  src={HERO_IMAGE}
+  className="hero-image"
+  // autoPlay
+  // loop
+  // muted
+  // playsInline
+  alt="hero image"
+/>
+
+           {/* <NewsBubbles /> */}
+          <div className="overlay" />
+           <header className="about-hero">
         <h1 className="kinetic-headline">
           <span>Geo-Intelligence</span>
           <span className="highlight">&nbsp;with Clarity&nbsp;</span>
@@ -31,19 +44,6 @@ const Home = () => {
           We decode the world’s power shifts with data, context, and diverse voices.
         </p>
       </header>
-        <div className="hero-inner">
-         {/* <img
-  src={HERO_IMAGE}
-  className="hero-image"
-  // autoPlay
-  // loop
-  // muted
-  // playsInline
-  alt="hero image"
-/> */}
-
-           {/* <NewsBubbles /> */}
-          <div className="overlay" />
           {/* <div className="hero-content">
             <h1>Inside the Pulse of the Planet</h1>
             <p>Global headlines, community blogs, and deep analysis — all in one intelligent hub, curated just for you.</p>
