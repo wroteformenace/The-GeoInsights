@@ -52,16 +52,7 @@ export default function About() {
   return (
     <div className="about-wrapper">
       {/* Hero */}
-      <header className="about-hero">
-        <h1 className="kinetic-headline">
-          <span>Geo-Intelligence</span>
-          <span className="highlight">&nbsp;with Clarity&nbsp;</span>
-          <span>and Power.</span>
-        </h1>
-        <p className="hero-sub">
-          We decode the world’s power shifts with data, context, and diverse voices.
-        </p>
-      </header>
+      
 
       {/* Panels */}
       <section className="slide-panels-section">

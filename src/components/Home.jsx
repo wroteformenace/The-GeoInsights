@@ -21,8 +21,18 @@ const Home = () => {
 
       {/* HERO */}
       <section className="hero">
+        <header className="about-hero">
+        <h1 className="kinetic-headline">
+          <span>Geo-Intelligence</span>
+          <span className="highlight">&nbsp;with Clarity&nbsp;</span>
+          <span>and Power.</span>
+        </h1>
+        <p className="hero-sub">
+          We decode the world’s power shifts with data, context, and diverse voices.
+        </p>
+      </header>
         <div className="hero-inner">
-         <img
+         {/* <img
   src={HERO_IMAGE}
   className="hero-image"
   // autoPlay
@@ -30,7 +40,7 @@ const Home = () => {
   // muted
   // playsInline
   alt="hero image"
-/>
+/> */}
 
            {/* <NewsBubbles /> */}
           <div className="overlay" />
