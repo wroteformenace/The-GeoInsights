@@ -4,7 +4,7 @@ import "./Home.css";
 import BriefingSection from "./BriefingSection";
 import NewsSlider from "./NewsSlider";
 import VideoSection from "./VideoSection";
-import HERO_IMAGE from '../assets/heroimage.jpg';
+import HERO_IMAGE from '../assets/heroimage.png';
 import { CommodityTicker } from "./CommodityTicker";
 // import NewsBubbles from "./NewsBubble";
 
