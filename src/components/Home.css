@@ -327,7 +327,7 @@ buttoon:hover {
 .ticker-item {
   display: flex;
   align-items: center;
-  gap: 1rem; /* increased gap */
+  gap: 1rem; 
   color: var(--headline);
   transition: var(--transition);
 }
@@ -337,28 +337,28 @@ buttoon:hover {
 }
 
 .ticker-item img {
-  height: 32px; /* increased height */
-  width: 32px;  /* increased width */
+  height: 32px; 
+  width: 32px;  
   filter: drop-shadow(0 1px 1px rgba(0,0,0,0.5));
 }
 
 .commodity-name {
   font-weight: 600;
-  font-size: 1rem; /* increased font size */
+  font-size: 1rem; 
   color: var(--accent-soft);
 }
 
 .commodity-price {
-  font-size: 0.875rem; /* increased font size */
+  font-size: 0.875rem; 
   color: var(--subtext);
 }
 
 .positive {
-  color: #4ade80; /* or set your own: var(--green-accent) */
+  color: #33ff7e; /* or set your own: var(--green-accent) */
 }
 
 .negative {
-  color: #f87171;
+  color: #ff4141;
 }
 
 @media (prefers-color-scheme: light) {
@@ -371,5 +371,50 @@ buttoon:hover {
   }
   .commodity-price {
     color: #4a5568;
+  }
+}
+/* Mobile version for commodity ticker */
+@media (max-width: 600px) {
+  .commodity-ticker-wrapper {
+    top: auto;          /* Instead of 90vh from top, stick to bottom */
+    bottom: 0;
+    padding: 0 0.5rem;
+    z-index: 50;        /* Keep above most elements */
+  }
+
+  .ticker-bar {
+    flex-wrap: nowrap;   /* Keep ticker items in a horizontal line with horizontal scroll */
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem 1.5rem; /* Slightly reduced padding */
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  /* Hide scrollbar but keep scrollable on mobile */
+  .ticker-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .ticker-bar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+
+  .ticker-item {
+    gap: 0.5rem;
+    min-width: max-content;    /* keep items from shrinking, allow scrolling */
+  }
+
+  .ticker-item img {
+    height: 24px;
+    width: 24px;
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
+  }
+
+  .commodity-name {
+    font-size: 0.875rem;
+  }
+
+  .commodity-price {
+    font-size: 0.75rem;
   }
 }

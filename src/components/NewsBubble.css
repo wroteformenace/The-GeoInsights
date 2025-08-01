@@ -55,13 +55,76 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .news-bubble {
-    width: 60px;
-    height: 60px;
-    padding: 8px;
+    width: 70px;                /* slightly bigger for easier touch */
+    height: 70px;
+    padding: 10px;              /* increased padding for better content spacing */
+    border-width: 1px;          /* more defined border */
+    font-size: 0.9rem;          /* larger font size for readability */
+    gap: 0.5rem;                /* in case flex has gaps or internal items */
+    box-shadow:
+      inset 0 0 8px rgba(0, 229, 255, 0.3),
+      0 4px 16px rgba(0, 229, 255, 0.35),
+      0 0 30px rgba(0, 229, 255, 0.2);
+    transition: 
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      background 0.3s ease;
+  }
+
+  .news-bubble:hover,
+  .news-bubble:focus {
+    transform: scale(1.15);
+    background: radial-gradient(circle at 25% 25%, rgba(0, 229, 255, 0.6), rgba(0, 110, 170, 0.4));
+    box-shadow:
+      inset 0 0 12px rgba(0, 229, 255, 0.45),
+      0 8px 24px rgba(0, 229, 255, 0.5),
+      0 0 40px rgba(0, 229, 255, 0.3);
+    outline: none; /* remove default outline, consider adding custom focus style if needed */
   }
 
   .bubble-logo {
-    width: 80%;
-    height: 80%;
+    width: 85%;                /* fill more of the bubble */
+    height: 85%;
+    filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.25)); /* slightly stronger shadow */
+    transition: filter 0.3s ease;
+  }
+
+  /* Optional: focus-visible style for accessibility */
+  .news-bubble:focus-visible {
+    outline: 2px solid #00e5ff;
+    outline-offset: 3px;
+  }
+}
+/* Mobile version for very small screens (phones) */
+@media (max-width: 480px) {
+  .bubble-container {
+    gap: 12px;
+    padding: 1rem;
+    justify-content: center;
+  }
+
+  .news-bubble {
+    width: 50px;
+    height: 50px;
+    padding: 6px;
+    border-width: 0.5px;
+    box-shadow:
+      inset 0 0 6px rgba(0, 229, 255, 0.2),
+      0 2px 8px rgba(0, 229, 255, 0.25),
+      0 0 15px rgba(0, 229, 255, 0.1);
+    font-size: 0.75rem;
+  }
+
+  .news-bubble:hover {
+    transform: scale(1.05);
+    box-shadow:
+      inset 0 0 8px rgba(0, 229, 255, 0.3),
+      0 4px 12px rgba(0, 229, 255, 0.3),
+      0 0 20px rgba(0, 229, 255, 0.15);
+  }
+
+  .bubble-logo {
+    width: 90%;
+    height: 90%;
   }
 }
