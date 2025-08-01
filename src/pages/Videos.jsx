@@ -10,7 +10,9 @@ import {
 import {
   featuredCreators,
   latestVideos,
-  interviews
+  interviews,
+  Gunners,
+  Futures
 } from "../data/videosData";
 
 // Extract YouTube ID from embed URL
@@ -24,6 +26,8 @@ export default function Videos() {
   const creatorsRef = useRef();
   const latestRef = useRef();
   const interviewsRef = useRef();
+  const GunnersRef = useRef();
+  const FutureRef = useRef();
 
   const onPlay = (idx) => {
     playersRef.current.forEach((player, i) => {
@@ -189,6 +193,106 @@ export default function Videos() {
             <button
               className="scroller-arrow right"
               onClick={() => scrollRight(interviewsRef)}
+            >
+              <FaChevronRight />
+            </button>
+          </div>
+        </section>
+      </div>
+      
+      {/* Gunners shot */}
+       <div className="glass-panel">
+        <section className="Gunners-section">
+          <h2 className="section-subtitle">Gunners shot</h2>
+          <div className="scroller-container">
+            <button
+              className="scroller-arrow left"
+              onClick={() => scrollLeft(GunnersRef)}
+            >
+              <FaChevronLeft />
+            </button>
+
+            <div className="video-scroller" ref={GunnersRef}>
+              {Gunners.map((video, idx) => (
+                <div className="video-thumb scroll-card" key={idx}>
+                  <div className="thumb-wrapper">
+                    <YouTube
+                      videoId={extractId(video.src)}
+                      onReady={(e) =>
+                        (playersRef.current[
+                          featuredCreators.length + latestVideos.length + interviews.length +idx
+                        ] = e.target)
+                      }
+                      onPlay={() =>
+                        onPlay(
+                          featuredCreators.length +
+                            latestVideos.length +
+                             interviews.length +
+                            idx
+                        )
+                      }
+                      opts={{ width: "100%", height: "100%" }}
+                    />
+                  </div>
+                  <p className="video-title">{video.title}</p>
+                </div>
+              ))}
+            </div>
+
+            <button
+              className="scroller-arrow right"
+              onClick={() => scrollRight(GunnersRef)}
+            >
+              <FaChevronRight />
+            </button>
+          </div>
+        </section>
+      </div>
+
+            {/* Geopolitical Future */}
+       <div className="glass-panel">
+        <section className="Future-section">
+          <h2 className="section-subtitle">Geopolitical Future</h2>
+          <div className="scroller-container">
+            <button
+              className="scroller-arrow left"
+              onClick={() => scrollLeft(FutureRef)}
+            >
+              <FaChevronLeft />
+            </button>
+
+            <div className="video-scroller" ref={FutureRef}>
+              {Futures.map((video, idx) => (
+                <div className="video-thumb scroll-card" key={idx}>
+                  <div className="thumb-wrapper">
+                    <YouTube
+                      videoId={extractId(video.src)}
+                      onReady={(e) =>
+                        (playersRef.current[
+                          featuredCreators.length + latestVideos.length + interviews.length
+                          + Gunners.length +idx
+                        ] = e.target)
+                      }
+                      onPlay={() =>
+                        onPlay(
+                          featuredCreators.length +
+                            latestVideos.length +
+                             interviews.length +
+                             Gunners.length +
+                            idx
+                        )
+                      }
+                      opts={{ width: "100%", height: "100%" }}
+                    />
+                  </div>
+                  <p className="video-title">{video.title}</p>
+                </div>
+              ))}
+            </div>
+
+            <button
+              className="scroller-arrow right"
+              onClick={() => scrollRight(FutureRef)}
             >
               <FaChevronRight />
             </button>

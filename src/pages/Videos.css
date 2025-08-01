@@ -138,7 +138,9 @@
 /* === Sections === */
 .featured-creators,
 .latest-videos,
-.interviews-section {
+.interviews-section, 
+.Gunners-section,
+.Future-section{
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -240,7 +242,7 @@
 }
 
 .video-title {
-  padding: 1rem;
+  padding: 0.3rem;
   font-size: 1.08rem;
   text-align: center;
   font-weight: 700;

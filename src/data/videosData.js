@@ -82,3 +82,89 @@ export const interviews = [
     src: "https://www.youtube.com/embed/hvy5GeqtyAY?si=JDKUMGMD32PYASdb",
   },
 ];
+
+export const Gunners = [
+  {
+    title: "CAN CHINA SAVE ITSELF FROM ITSELF / LT GEN PR SHANKAR",
+    src: "https://www.youtube.com/embed/81rHUvLcyLk"
+  },
+  {
+    title: "Gunners Shot Clips : Technologies For Multi Domain Operations / Lt Gen P R Shankar",
+    src: "https://www.youtube.com/embed/3Wy8e83AVIg"
+  },
+  {
+    title: "Gunners Shot Clips : INDIA CHINA : ARMED COEXISTENCE OR ARMED FRICTION?",
+    src: "https://www.youtube.com/embed/1K_ObSdN7y0"
+  },
+  {
+    title: "Gunners Shot Clips : THE EMERGING PAKISTAN / LT GEN PR SHANKAR",
+    src: "https://www.youtube.com/embed/qjvzRzfY0Gs"
+  },
+  {
+    title: "Gunners Shot Clips : SOME THOUGHTS ON ARTILLERY",
+    src: "https://www.youtube.com/embed/p52dTx1eSN0"
+  },
+  {
+    title: "Gunners Shot : Chinese Army Challenges on LAC / Lt Gen PR Shankar",
+    src: "https://www.youtube.com/embed/vT8MlLMzYcI"
+  },
+  {
+    title: "Gunners Shot : THE INDIAN ARMY AT 2025 / Lt Gen PR Shankar",
+    src: "https://www.youtube.com/embed/D5sRV8ZyWm8"
+  },
+  {
+    title: "Gunners Shot: Are We Ready for a Two-Front War?",
+    src: "https://www.youtube.com/embed/uQ68i2WT4xo"
+  },
+  {
+    title: "Gunners Shot : Next Gen Artillery / Future Conflict Preparedness",
+    src: "https://www.youtube.com/embed/J5QJ8eRwLxg"
+  },
+  {
+    title: "Gunners Shot Clips : INDIA'S OPTIONS ON LAC",
+    src: "https://www.youtube.com/embed/JjD0E-K5_JE"
+  }
+];
+
+export const Futures = [
+  {
+    title: "Geopolitics 2025: Europe, Russia, and the Changing World Order",
+    src: "https://www.youtube.com/embed/MRFhTb1PvIU"
+  },
+  {
+    title: "China and the United States: The Road Ahead",
+    src: "https://www.youtube.com/embed/jDR4r9Y5QxI"
+  },
+  {
+    title: "India's Strategic Dilemmas in the 21st Century",
+    src: "https://www.youtube.com/embed/K2fb8rQ9e0E"
+  },
+  {
+    title: "Middle East Turmoil: Implications for Global Security",
+    src: "https://www.youtube.com/embed/xDo2iQOIeLU"
+  },
+  {
+    title: "Forecasting Global Hotspots: 2025 Outlook",
+    src: "https://www.youtube.com/embed/Xm8cRMsuAPY"
+  },
+  {
+    title: "Understanding Russia’s Foreign Policy Objectives",
+    src: "https://www.youtube.com/embed/EuvnT6rWqtc"
+  },
+  {
+    title: "A Look Inside North Korea’s Diplomatic Isolation",
+    src: "https://www.youtube.com/embed/ZLsRsuPhQ1E"
+  },
+  {
+    title: "Africa Rising: Opportunities and Challenges",
+    src: "https://www.youtube.com/embed/WnNPqA0VGCc"
+  },
+  {
+    title: "Europe After Brexit: New Alliances and Risks",
+    src: "https://www.youtube.com/embed/NCDwRWvT2z8"
+  },
+  {
+    title: "Global Economic Shifts: Winners and Losers",
+    src: "https://www.youtube.com/embed/8kKp8NwmYas"
+  }
+];
