@@ -307,8 +307,8 @@
   --headline-accent: #38bdf8;
   --headline-highlight: #67e8f9;
   --panel-title: #38bdf8;
-  --text-main: #eaf6ff;
-  --text-sub: #cbe7ff;
+  --text-main: white;
+  --text-sub: white;
   --belief-quote: #67e8f9;
   --belief-bg: linear-gradient(100deg, #1a293a 70%, #38bdf822 100%);
   --social-bg: #101b28;
@@ -348,7 +348,7 @@
   gap: 0.2em;
   opacity: 0;
   animation: fadeInUp 1.2s 0.1s forwards;
-  filter: drop-shadow(0 2px 16px #38bdf844);
+  /* filter: drop-shadow(0 2px 16px #38bdf844); */
   margin-top: 7%;
 }
 
@@ -797,84 +797,6 @@
   }
 }
 
-:root {
-  --bg-gradient: linear-gradient(135deg, #0e141b 0%, #1a2a3c 100%);
-  --panel-bg: rgba(255, 255, 255, 0.10);
-  --panel-glass: blur(10px) saturate(120%);
-  --bubble-gradient: linear-gradient(135deg, #38bdf8 60%, #3b82f6 100%);
-  --bubble-label: #0a1623;
-  --headline-accent: #38bdf8;
-  --headline-highlight: #67e8f9;
-  --panel-title: #38bdf8;
-  --text-main: #eaf6ff;
-  --text-sub: #cbe7ff;
-  --belief-quote: #67e8f9;
-  --belief-bg: linear-gradient(100deg, #1a293a 70%, #38bdf822 100%);
-  --social-bg: #101b28;
-  --social-accent: #38bdf8;
-  --social-hover: #67e8f9;
-  --shadow: 0 8px 32px #38bdf833;
-  --glass-border: 1.5px solid #3b82f633;
-  font-family: 'DM Sans', 'Inter', sans-serif;
-}
-
-/* --- Base --- */
-.about-wrapper {
-  background: var(--bg-gradient);
-  color: var(--text-main);
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  min-height: 100vh;
-  overflow-x: hidden;
-  position: relative;
-}
-
-/* --- Hero --- */
-.about-hero {
-  text-align: center;
-  padding: 5rem 1rem 3rem;
-  position: relative;
-  z-index: 5;
-}
-
-.kinetic-headline {
-  font-size: clamp(2.2rem, 6vw, 4.5rem);
-  font-weight: 900;
-  line-height: 1.08;
-  letter-spacing: -2px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.2em;
-  opacity: 0;
-  animation: fadeInUp 1.2s 0.1s forwards;
-  filter: drop-shadow(0 2px 16px #38bdf844);
-  margin-top: 7%;
-}
-
-.kinetic-headline .highlight {
-  color: #0a1623;
-  background: linear-gradient(90deg, var(--headline-accent) 60%, var(--headline-highlight) 100%);
-  border-radius: 0.3em;
-  padding: 0 0.2em;
-  box-shadow: 0 2px 18px #38bdf833;
-}
-
-.hero-sub {
-  max-width: 540px;
-  margin: 2rem auto 0;
-  font-size: 1.25rem;
-  color: var(--text-sub);
-  opacity: 0;
-  animation: fadeInUp 1.4s 0.6s forwards;
-  filter: drop-shadow(0 1px 6px #38bdf844);
-}
-
-@keyframes fadeInUp {
-  0% { transform: translateY(40px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-
-/* --- Slide Panels Section --- */
 /* === Slide Panels === */
 .slide-panels-section {
   display: flex;
