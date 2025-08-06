@@ -172,3 +172,34 @@ export const Futures = [
     src: "https://www.youtube.com/embed/wXEymEM4tWY?si=1eUtcYkqUh9x9LPz"
   }
 ];
+
+export const DefTalks = [
+  {
+    title: "Trump 25% Tariff Will Make India Stronger | DEF-TALKS By Aadi",
+    src: "https://www.youtube.com/embed/rTh38imedLc"
+  },
+  {
+    title: "Inside Story of Indian Army Surgical Strike On ULFA | DEF-TALKS By Aadi",
+    src: "https://www.youtube.com/embed/EX9BuhMVHwI"
+  },
+  {
+    title: "विदेशनीति पर मोदी को घेरने का प्लान ? | DEF-TALKS By Aadi",
+    src: "https://www.youtube.com/embed/W4WwDsh3qV8"
+  },
+  {
+    title: "Israel Vs Iran in Middle East | Aadi Achint | DEF Talks",
+    src: "https://www.youtube.com/embed/CPNvhyR77Jo"
+  },
+  {
+    title: "Crackdown on Pakistan, अंदर और बाहर, Pakistan की हालत ख़राब, India का खेल शुरू I Aadi Achint",
+    src: "https://www.youtube.com/embed/Tt58OJRMY5g"
+  },
+  {
+    title: "Maj Gen Rajiv Narayanan I India's Policy for USA, How Should India Handle USA, Canada I Aadi Achint",
+    src: "https://www.youtube.com/embed/6xlkXWtZKZY"
+  },
+  {
+    title: "Modi In Action Mode Against Pakistan | DEF-TALKS By Aadi",
+    src: "https://www.youtube.com/embed/2zHoSi0968s"
+  }
+];

@@ -12,7 +12,8 @@ import {
   latestVideos,
   interviews,
   Gunners,
-  Futures
+  Futures,
+  DefTalks
 } from "../data/videosData";
 
 // Extract YouTube ID from embed URL
@@ -28,6 +29,7 @@ export default function Videos() {
   const interviewsRef = useRef();
   const GunnersRef = useRef();
   const FutureRef = useRef();
+  const DefTalksRef = useRef();
 
   const onPlay = (idx) => {
     playersRef.current.forEach((player, i) => {
@@ -300,6 +302,58 @@ export default function Videos() {
         </section>
       </div>
 
+      {/* DefTalks */} 
+      <div className="glass-panel">
+        <section className="DefTalks-section">
+          <h2 className="section-subtitle">DefTalks</h2>
+          <div className="scroller-container">
+            <button
+              className="scroller-arrow left"
+              onClick={() => scrollLeft(DefTalksRef)}
+            >
+              <FaChevronLeft />
+            </button>
+
+            <div className="video-scroller" ref={DefTalksRef}>
+              {DefTalks.map((video, idx) => (
+                <div className="video-thumb scroll-card" key={idx}>
+                  <div className="thumb-wrapper">
+                    <YouTube
+                      videoId={extractId(video.src)}
+                      onReady={(e) =>
+                        (playersRef.current[
+                          featuredCreators.length + latestVideos.length + interviews.length
+                          + Gunners.length + Futures.length +idx
+                        ] = e.target)
+                      }
+                      onPlay={() =>
+                        onPlay(
+                          featuredCreators.length +
+                            latestVideos.length +
+                             interviews.length +
+                             Gunners.length +
+                             Futures.length +
+                            idx
+                        )
+                      }
+                      opts={{ width: "100%", height: "100%" }}
+                    />
+                  </div>
+                  <p className="video-title">{video.title}</p>
+                </div>
+              ))}
+            </div>
+
+            <button
+              className="scroller-arrow right"
+              onClick={() => scrollRight(DefTalksRef)}
+            >
+              <FaChevronRight />
+            </button>
+          </div>
+        </section>
+
     </div>
+      </div>
   );
 }
