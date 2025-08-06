@@ -81,6 +81,10 @@ export const interviews = [
     title: "UK's David Cameron: Foreign Policy Insights",
     src: "https://www.youtube.com/embed/hvy5GeqtyAY?si=JDKUMGMD32PYASdb",
   },
+  {
+    title: "The truth about vietnam war",
+    src: "https://youtu.be/mkSk7hKudpA?si=F0YU_r-VTaD3QF0_",
+  }
 ];
 
 export const Gunners = [
@@ -129,42 +133,42 @@ export const Gunners = [
 export const Futures = [
   {
     title: "Geopolitics 2025: Europe, Russia, and the Changing World Order",
-    src: "https://www.youtube.com/embed/MRFhTb1PvIU"
+    src: "https://www.youtube.com/watch?v=ksfn_7H92tc"
   },
   {
     title: "China and the United States: The Road Ahead",
-    src: "https://www.youtube.com/embed/jDR4r9Y5QxI"
+    src: "https://www.youtube.com/watch?v=ogJh7twVptM"
   },
   {
     title: "India's Strategic Dilemmas in the 21st Century",
-    src: "https://www.youtube.com/embed/K2fb8rQ9e0E"
+    src: "https://www.youtube.com/watch?v=nkwmkpI5zAk"
   },
   {
     title: "Middle East Turmoil: Implications for Global Security",
-    src: "https://www.youtube.com/embed/xDo2iQOIeLU"
+    src: "https://www.youtube.com/embed/bL62r7HJZ2s?si=jPEwksQHbwqJIEwj"
   },
   {
     title: "Forecasting Global Hotspots: 2025 Outlook",
-    src: "https://www.youtube.com/embed/Xm8cRMsuAPY"
+    src: "https://www.youtube.com/embed/ttw6pAsYtfU?si=30zTMb1IEUzZgDCi"
   },
   {
-    title: "Understanding Russia’s Foreign Policy Objectives",
-    src: "https://www.youtube.com/embed/EuvnT6rWqtc"
+    title: "Are Xi Jinping’s Days Numbered?",
+    src: "https://www.youtube.com/embed/GQpWp7izgZY?si=OJPFRo-lyjc-Z4iA"
   },
   {
-    title: "A Look Inside North Korea’s Diplomatic Isolation",
-    src: "https://www.youtube.com/embed/ZLsRsuPhQ1E"
+    title: "George Friedman: Trump, Putin and Changing Global Realities",
+    src: "https://www.youtube.com/embed/-knLXnai3Mk?si=9lcbhC8pGLpapJqb"
   },
   {
-    title: "Africa Rising: Opportunities and Challenges",
-    src: "https://www.youtube.com/embed/WnNPqA0VGCc"
+    title: "What does a desperate Putin do? George Friedman on Russia, Trump and Peace",
+    src: "https://www.youtube.com/embed/EUlsy11Mp9Q?si=qb3XPSeeeQnUgJ75"
   },
   {
-    title: "Europe After Brexit: New Alliances and Risks",
-    src: "https://www.youtube.com/embed/NCDwRWvT2z8"
+    title: "George Friedman on How Geopolitics Drives Trump's Tariffs",
+    src: "https://www.youtube.com/embed/o0YJSEMy0sc?si=g-Yf7rpBgU5KNLKS"
   },
   {
-    title: "Global Economic Shifts: Winners and Losers",
-    src: "https://www.youtube.com/embed/8kKp8NwmYas"
+    title: "George Friedman on the Iran Strike: A New War or the End of One?",
+    src: "https://www.youtube.com/embed/wXEymEM4tWY?si=1eUtcYkqUh9x9LPz"
   }
 ];
