@@ -111,8 +111,8 @@
   font-weight: 700;
   letter-spacing: 0.05em;
   color: var(--headline);
-  padding-top: 2rem;
-  margin-bottom: 2rem;
+  padding-top: 0.3rem;
+  margin-bottom: 1rem;
   position: relative;
   user-select: none;
   margin-top: auto;
