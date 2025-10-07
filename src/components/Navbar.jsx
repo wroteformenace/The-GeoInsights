@@ -13,7 +13,7 @@ const Navbar = () => {
   const [activeTab, setActiveTab] = useState('Home');
   const [darkMode, setDarkMode] = useState(() => document.body.getAttribute('data-theme') === 'dark');
 
-  const navigationItems = ['Home', 'Analysis', 'News', 'Briefings'];
+  const navigationItems = ['Home', 'Analysis', 'Videos', 'News', 'Briefings'];
 
   // Keep darkMode state in sync with actual document
   useEffect(() => {

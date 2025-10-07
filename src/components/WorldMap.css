@@ -818,7 +818,7 @@ select.form-control {
   justify-items: center;
   padding: 1rem 2rem;
   margin: 3rem auto 0 auto;
-  margin-left: 7rem;
+  margin-left: 6rem;
 }
 
 /* ========== INFO BOXES ========== */
@@ -875,7 +875,7 @@ select.form-control {
   background-position: center;
   color: white;
   height: 420px;
-  width: 570px;
+  width: 560px;
   border-radius: 2rem;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
