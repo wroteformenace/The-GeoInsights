@@ -1,0 +1,13 @@
+.site-footer {
+  background:#018dca;
+  color:#fff;
+  text-align:center;
+  padding:1rem;
+}
+.site-footer nav a {
+  color:rgba(255,255,255,0.85);
+  margin:0 1rem;
+  text-decoration:none;
+  transition:color .2s;
+}
+.site-footer nav a:hover { color:#fff; }
