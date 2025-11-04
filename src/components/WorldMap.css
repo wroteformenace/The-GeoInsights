@@ -771,7 +771,7 @@ select.form-control {
   color: black;
   margin: 0;
   line-height: var(--line-height-tight);
-  margin-left: 9rem;
+  margin-left: 14rem;
 }
 
 /* Grid container for cards */
